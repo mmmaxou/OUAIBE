@@ -22,19 +22,6 @@ $router->get('/users/{user_id}', 'UserController@show');
 $router->put('/users/{user_id}', 'UserController@update');
 $router->delete('/users/{user_id}', 'UserController@destroy');
 
-// Posts
-$router->get('/posts','PostController@index');
-$router->post('/posts','PostController@store');
-$router->get('/posts/{post_id}','PostController@show');
-$router->put('/posts/{post_id}', 'PostController@update');
-$router->delete('/posts/{post_id}', 'PostController@destroy');
-
-// Comments
-$router->get('/comments', 'CommentController@index');
-$router->get('/comments/{comment_id}', 'CommentController@show');
-
-// Comments of a Post
-$router->get('/posts/{post_id}/comments', 'PostCommentController@index');
-$router->post('/posts/{post_id}/comments', 'PostCommentController@store');
-$router->put('/posts/{post_id}/comments/{comment_id}', 'PostCommentController@update');
-$router->delete('/posts/{post_id}/comments/{comment_id}', 'PostCommentController@destroy');
+// Members
+$router->get('/members/', 'MemberController@index');
+$router->post('/members/', 'MemberController@store');
