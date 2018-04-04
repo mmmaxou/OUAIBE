@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 use Illuminate\Support\Facades\Hash;
 
-class Materiel extends Model implements AuthenticatableContract, AuthorizableContract
+class Material extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -37,10 +37,10 @@ class Materiel extends Model implements AuthenticatableContract, AuthorizableCon
 
     
     /**
-    * Define a one-to-many relationship with App\TypeMateriel
+    * Define a one-to-many relationship with App\TypeMaterial
     */
-    public function type_materiel()
+    public function type_material()
     {
-        return $this->belongsTo('App\TypeMateriel');
+        return $this->belongsTo('App\TypeMaterial');
     }
 }

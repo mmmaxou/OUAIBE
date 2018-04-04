@@ -32,11 +32,11 @@ $factory->define(App\Member::class, function (Faker\Generator $faker) {
         'password' => $hasher->make("secret")
     ];
 });
-$factory->define(App\Materiel::class, function (Faker\Generator $faker) {
+$factory->define(App\Material::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'quantity' => $faker->randomDigit,
-        'type_materiels_id' => mt_rand(1, 5)
+        'type_materials_id' => mt_rand(1, 5)
     ];
 });
 $factory->define(App\MetaData::class, function (Faker\Generator $faker) {
@@ -63,7 +63,7 @@ $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\TypeMateriel::class, function (Faker\Generator $faker) {
+$factory->define(App\TypeMaterial::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'icon' => $faker->imageUrl
