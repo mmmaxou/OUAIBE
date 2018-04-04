@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 use Illuminate\Support\Facades\Hash;
 
-class Role extends Model implements AuthenticatableContract, AuthorizableContract
+class Materiel extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -21,8 +21,8 @@ class Role extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $fillable = [
         'id',
         'name',
-        'shortDescription',
-        'elevationLevel'
+        'quantity',
+        'type_materiels_id'
     ];
 
     /**
@@ -35,11 +35,12 @@ class Role extends Model implements AuthenticatableContract, AuthorizableContrac
         'updated_at'
     ];
 
+    
     /**
-  * Define a one-to-many relationship with App\Member
-  */
-    public function member()
+    * Define a one-to-many relationship with App\TypeMateriel
+    */
+    public function type_materiel()
     {
-        return $this->hasMany('App\Member');
+        return $this->belongsTo('App\TypeMateriel');
     }
 }

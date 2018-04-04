@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleTable extends Migration
+class CreateSponsorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('role', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            
+        Schema::create('sponsors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('mail');
+            $table->string('phoneNumber');
             $table->string('shortDescription');
-            $table->tinyInteger('elevationLevel');
-            
+            $table->string('logo');
             $table->nullableTimestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role');
+        Schema::dropIfExists('sponsors');
     }
 }

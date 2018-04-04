@@ -14,13 +14,11 @@ class Member extends Model implements AuthenticatableContract, AuthorizableContr
 {
     use Authenticatable, Authorizable;
 
-    protected $table = "member";
-    
     /**
-        * The attributes that are mass assignable.
-        *
-        * @var array
-        */
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
     protected $fillable = [
         'id',
         'mail',
@@ -32,10 +30,10 @@ class Member extends Model implements AuthenticatableContract, AuthorizableContr
     ];
 
     /**
-        * The attributes excluded from the model's JSON form.
-        *
-        * @var array
-        */
+    * The attributes excluded from the model's JSON form.
+    *
+    * @var array
+    */
     protected $hidden = [
         'password',
         'created_at',
@@ -44,10 +42,9 @@ class Member extends Model implements AuthenticatableContract, AuthorizableContr
 
 
     /**
-        * Define a one-to-many relationship with App\Role
-        */
-    public function role()
+    * Define a one-to-many relationship with App\Role */
+    public function roles()
     {
-        return $this->belongsTo('App\Role', 'idRole', 'idRole');
+        return $this->belongsTo('App\Role');
     }
 }
