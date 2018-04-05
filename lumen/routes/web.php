@@ -37,6 +37,10 @@ $router->get('/metadatas/', 'MetaDataController@index');
 
 // Role
 $router->get('/roles/', 'RoleController@index');
+$router->post('/roles/', 'RoleController@store');
+$router->get('/roles/{role_id}', 'RoleController@show');
+$router->put('/roles/{role_id}', 'RoleController@update');
+$router->delete('/roles/{role_id}', 'RoleController@destroy');
 
 // Sponsor
 $router->get('/sponsors/', 'SponsorController@index');
