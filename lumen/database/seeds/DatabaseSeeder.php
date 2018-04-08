@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
 use App\Material;
+use App\Image;
 use App\Member;
 use App\MetaData;
 use App\Role;
@@ -10,30 +10,32 @@ use App\Sponsor;
 use App\Transaction;
 use App\TypeMaterial;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-       public function run(){
+class DatabaseSeeder extends Seeder {
 
-        // Disable foreign key checking because truncate() will fail
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+  /**
+   * Run the database seeds.
+   *
+   * @return void
+   */
+  public function run() {
 
-        Member::truncate();
-        Role::truncate();
+    // Disable foreign key checking because truncate() will fail
+    DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        factory(Material::class, 50)->create();
-        factory(Member::class, 50)->create();
-        factory(MetaData::class, 5)->create();
-        factory(Role::class, 10)->create();
-        factory(Sponsor::class, 25)->create();
-        factory(Transaction::class, 120)->create();
-        factory(TypeMaterial::class, 5)->create();
+    Member::truncate();
+    Role::truncate();
 
-        // Enable it back
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-    }
+    factory(Image::class, 10)->create();
+    factory(Material::class, 50)->create();
+    factory(Member::class, 50)->create();
+    factory(MetaData::class, 10)->create();
+    factory(Role::class, 10)->create();
+    factory(Sponsor::class, 25)->create();
+    factory(Transaction::class, 120)->create();
+    factory(TypeMaterial::class, 10)->create();
+
+    // Enable it back
+    DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+  }
+
 }
