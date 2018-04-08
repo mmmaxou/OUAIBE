@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaterialsTable extends Migration {
+class CreateTypesMaterialsTable extends Migration {
 
   /**
    * Run the migrations.
@@ -12,17 +12,15 @@ class CreateMaterialsTable extends Migration {
    * @return void
    */
   public function up() {
-    Schema::create('materials', function (Blueprint $table) {
+    Schema::create('types_materials', function (Blueprint $table) {
       $table->engine = 'InnoDB';
 
       $table->increments('id');
+      $table->integer('image_id')->unsigned();
       $table->string('name', 50);
-      $table->integer('quantity');
-      $table->integer('type_material_id')->unsigned();
 
       $table->nullableTimestamps();
     });
-
   }
 
   /**
@@ -31,7 +29,7 @@ class CreateMaterialsTable extends Migration {
    * @return void
    */
   public function down() {
-    Schema::dropIfExists('materials');
+    Schema::dropIfExists('types_materials');
   }
 
 }
