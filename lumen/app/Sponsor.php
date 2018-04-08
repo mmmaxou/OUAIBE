@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
@@ -6,34 +7,42 @@ use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-
 use Illuminate\Support\Facades\Hash;
 
-class Sponsor extends Model implements AuthenticatableContract, AuthorizableContract
-{
-    use Authenticatable, Authorizable;
+class Sponsor extends Model implements AuthenticatableContract, AuthorizableContract {
 
-    /**
+  use Authenticatable,
+      Authorizable;
+
+  /**
    * The attributes that are mass assignable.
    *
    * @var array
    */
-    protected $fillable = [
-        'id',
-        'name',
-        'mail',
-        'phoneNumber',
-        'shortDescription',
-        'logo'
-    ];
+  protected $fillable = [
+      'id',
+      'name',
+      'mail',
+      'phoneNumber',
+      'shortDescription',
+      'image_id'
+  ];
 
-    /**
+  /**
    * The attributes excluded from the model's JSON form.
    *
    * @var array
    */
-    protected $hidden = [
-        'created_at',
-        'updated_at'
-    ];
+  protected $hidden = [
+      'created_at',
+      'updated_at'
+  ];
+
+  /**
+   * Define a one-to-many relationship with App\Image
+   */
+  public function image() {
+    return $this->belongsTo('App\Image');
+  }
+
 }
