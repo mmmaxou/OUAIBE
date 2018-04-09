@@ -34,6 +34,15 @@ class DatabaseSeeder extends Seeder {
     factory(Transaction::class, 120)->create();
     factory(TypeMaterial::class, 10)->create();
 
+    // Get all the images attaching up to 3 random image to each member
+    $images = App\Image::all();
+    // Populate the pivot table
+    App\Member::all()->each(function ($member) use ($images) {
+      $member->images()->attach(
+              $images->random(rand(1, 3))->pluck('id')->toArray()
+      );
+    });
+
     // Enable it back
     DB::statement('SET FOREIGN_KEY_CHECKS = 1');
   }
