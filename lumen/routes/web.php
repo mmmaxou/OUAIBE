@@ -27,7 +27,11 @@ $router->delete('/users/{user_id}', 'UserController@destroy');
 // * Real classes
 // Members
 $router->get('/members/', 'MemberController@index');
+$router->get('/members/count', 'MemberController@count');
 $router->post('/members/', 'MemberController@store');
+$router->get('/members/{member_id}', 'MemberController@show');
+$router->put('/members/{member_id}', 'MemberController@update');
+$router->delete('/members/{member_id}', 'MemberController@destroy');
 
 // Material
 $router->get('/materials/', 'MaterialController@index');

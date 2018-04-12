@@ -36,38 +36,54 @@ class MemberController extends Controller {
   }
 
   public function show($id) {
-    $user = User::find($id);
-    if (!$user) {
-      return $this->error("The user with {$id} doesn't exist", 404);
+    $member = Member::find($id);
+    if (!$member) {
+      return $this->error("The member with {$id} doesn't exist", 404);
     }
-    return $this->success($user, 200);
+    return $this->success($member, 200);
   }
 
   public function update(Request $request, $id) {
-    $user = User::find($id);
-    if (!$user) {
-      return $this->error("The user with {$id} doesn't exist", 404);
+    $member = Member::find($id);
+    if (!$member) {
+      return $this->error("The member with {$id} doesn't exist", 404);
     }
     $this->validateRequest($request);
-    $user->email = $request->get('email');
-    $user->password = Hash::make($request->get('password'));
-    $user->save();
-    return $this->success("The user with with id {$user->id} has been updated", 200);
+    if ( !empty($request->get('email')) ) $member->email = $request->get('email');
+    if ( !empty($request->get('firstName')) ) $member->firstName = $request->get('firstName');
+    if ( !empty($request->get('lastName')) ) $member->lastName = $request->get('lastName');
+    if ( !empty($request->get('phoneNumber')) ) $member->phoneNumber = $request->get('phoneNumber');
+    if ( !empty($request->get('lastPaymentDate')) ) $member->lastPaymentDate = $request->get('lastPaymentDate');
+    if ( !empty($request->get('role_id')) ) $member->role_id = $request->get('role_id');
+    if ( !empty($request->get('password')) ) $member->password = Hash::make($request->get('password'));
+    $member->save();
+//     return $this->success("The member with with id {$member->id} has been updated", 200);
+     return $this->success($member, 200);
   }
 
   public function destroy($id) {
-    $user = User::find($id);
-    if (!$user) {
-      return $this->error("The user with {$id} doesn't exist", 404);
+    $member = Member::find($id);
+    if (!$member) {
+      return $this->error("The member with {$id} doesn't exist", 404);
     }
-    $user->delete();
-    return $this->success("The user with with id {$id} has been deleted", 200);
+    $member->delete();
+    return $this->success("The member with with id {$id} has been deleted", 200);
+  }
+  
+  public function count() {
+    $count = Member::with('images')->count();
+    return $this->success($count, 200);
   }
 
   public function validateRequest(Request $request) {
     $rules = [
-        'email' => 'required|email|unique:users',
-        'password' => 'required|min:6'
+        'email' => 'email|unique:members',
+        'firstName' => 'alpha',
+        'lastName' => 'alpha',
+        'phoneNumber' => 'numeric|min:10',
+        'lastPaymentDate' => 'date',
+        'role_id' => 'numeric',
+        'password' => 'min:6'
     ];
     $this->validate($request, $rules);
   }
