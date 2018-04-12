@@ -25,32 +25,103 @@ $router->delete('/users/{user_id}', 'UserController@destroy');
 
 
 // * Real classes
-// Members
+// ------------------------------ Members ---------------------------------------
+/*
+  Renvoie tous les membres
+*/
 $router->get('/members/', 'MemberController@index');
-$router->get('/members/count', 'MemberController@count');
+/*
+  Renvoie le nombre de membres  
+*/
+$router->get('/members/count/', 'MemberController@count');
+/*
+  Ajoute un membre. Règles d'ajout :
+  $rules = [
+        'email' => 'required|email|unique:members',
+        'firstName' => 'required|alpha',
+        'lastName' => 'required|alpha',
+        'phoneNumber' => 'required|numeric|min:10',
+        'lastPaymentDate' => 'required|date',
+        'role_id' => 'required|numeric',
+        'password' => 'required|min:6'
+    ];
+  Renvoie l'id du membre ajouté
+*/
 $router->post('/members/', 'MemberController@store');
+/*
+  Renvoi un membrer d'id donné
+*/
 $router->get('/members/{member_id}', 'MemberController@show');
+/*
+  Edite un membre. Règles d'ajout :
+  $rules = [
+        'email' => 'email|unique:members',
+        'firstName' => 'alpha',
+        'lastName' => 'alpha',
+        'phoneNumber' => 'numeric|min:10',
+        'lastPaymentDate' => 'date',
+        'role_id' => 'numeric',
+        'password' => 'min:6'
+    ];
+  Renvoie l'id du membre ajouté
+*/
 $router->put('/members/{member_id}', 'MemberController@update');
+/*
+  Supprime un membrer d'id donné
+*/
 $router->delete('/members/{member_id}', 'MemberController@destroy');
 
-// Material
+// ------------------------------ Material ---------------------------------------
+/*
+  Renvoie tous les materiels
+*/
 $router->get('/materials/', 'MaterialController@index');
+/*
+    Ajoute un material: Règles:
+        'name' => 'required|string',
+        'quantity' => 'required|numeric',
+        'type_material_id' => 'required|numeric'
+*/
+$router->post('/materials/', 'MaterialController@store');
+/*
+    Renvoie un materiel avec un id donné
+*/
+$router->get('/materials/{material_id}', 'MaterialController@show');
+/*
+    Edite un materiel. Règles :
+        'name' => 'string',
+        'quantity' => 'numeric',
+        'type_material_id' => 'numeric'
+*/
+$router->put('/materials/{material_id}', 'MaterialController@update');
+/*
+    Supprime un materiel avec un id donné si il existe
+*/
+$router->delete('/materials/{material_id}', 'MaterialController@destroy');
 
-// MetaData
+// ------------------------------ MetaData ---------------------------------------
 $router->get('/metadatas/', 'MetaDataController@index');
 
-// Role
+// ------------------------------ Role ---------------------------------------
 $router->get('/roles/', 'RoleController@index');
 $router->post('/roles/', 'RoleController@store');
 $router->get('/roles/{role_id}', 'RoleController@show');
 $router->put('/roles/{role_id}', 'RoleController@update');
 $router->delete('/roles/{role_id}', 'RoleController@destroy');
 
-// Sponsor
+// ------------------------------ Sponsor ---------------------------------------
 $router->get('/sponsors/', 'SponsorController@index');
 
-// Transaction
+// ------------------------------ Transaction ---------------------------------------
 $router->get('/transactions/', 'TransactionController@index');
 
-// TypeMaterial
+// ------------------------------ TypeMaterial ------------------------------ 
 $router->get('/typeMaterials/', 'TypeMaterialController@index');
+/*
+    Renvoie les materiels par catégorie
+*/
+$router->get('/typeMaterials/materials/', 'TypeMaterialController@materials');
+/*
+    Renvoie le nombre de materiel par catégorie
+*/
+$router->get('/typeMaterials/materials/count/', 'TypeMaterialController@count');
