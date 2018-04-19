@@ -16,7 +16,7 @@ class TypeMaterialController extends Controller {
     }
 
     public function index() {
-        $typesMaterials = TypeMaterial::all();
+        $typesMaterials = TypeMaterial::with('image')->get();
         return $this->success($typesMaterials, 200);
     }
 
@@ -47,7 +47,7 @@ class TypeMaterialController extends Controller {
         if (!$typeMaterials) {
             return $this->error("The typeMaterials with {$id} doesn't exist", 404);
         }
-        return $this->success($typeMaterials, 200);
+        return $this->success($typeMaterials->load('image'), 200);
     }
 
     public function update(Request $request, $id) {
