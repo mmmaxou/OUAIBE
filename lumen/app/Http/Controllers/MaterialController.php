@@ -19,7 +19,7 @@ class MaterialController extends Controller
     }
 
     public function index() {
-        $materials = Material::all();
+        $materials = Material::with(['type_material.image'])->get();
         return $this->success($materials, 200);
     }
     
@@ -39,7 +39,7 @@ class MaterialController extends Controller
         if (!$material) {
             return $this->error("The material with {$id} doesn't exist", 404);
         }
-        return $this->success($material, 200);
+        return $this->success($material->load(['type_material.image']), 200);
     }
 
     public function update(Request $request, $id) {
