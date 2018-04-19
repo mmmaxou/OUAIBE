@@ -41,10 +41,12 @@ $router->get('/members/count/', 'MemberController@count');
         'firstName' => 'required|alpha',
         'lastName' => 'required|alpha',
         'phoneNumber' => 'required|numeric|min:10',
-        'lastPaymentDate' => 'required|date',
+        'lastPaymentDate' => 'date',
         'role_id' => 'required|numeric',
-        'password' => 'required|min:6'
-    ];
+        'password' => 'required|min:6',
+        'images' => "array",
+        'images.*' => "numeric"
+  ];
   Renvoie l'id du membre ajouté
 */
 $router->post('/members', 'MemberController@store');
@@ -61,7 +63,9 @@ $router->get('/members/{member_id}', 'MemberController@show');
         'phoneNumber' => 'numeric|min:10',
         'lastPaymentDate' => 'date',
         'role_id' => 'numeric',
-        'password' => 'min:6'
+        'password' => 'min:6',
+        'images' => "array",
+        'images.*' => "numeric"
     ];
   Renvoie l'id du membre ajouté
 */
