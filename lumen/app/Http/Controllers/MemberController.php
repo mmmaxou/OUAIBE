@@ -16,7 +16,7 @@ class MemberController extends Controller {
     }
 
     public function index() {
-        $members = Member::with(['images', 'role'])->get();
+        $members = Member::with(['images', 'role.image'])->get();
         return $this->success($members, 200);
     }
 
@@ -60,7 +60,7 @@ class MemberController extends Controller {
         if ( !empty($request->get('images')) ) $member->images()->sync($request->get('images'));
         $member->save();
         //     return $this->success("The member with with id {$member->id} has been updated", 200);
-        return $this->success($member->load(['images', 'role']), 200);
+        return $this->success($member->load(['images', 'role.image']), 200);
     }
 
     public function destroy($id) {
