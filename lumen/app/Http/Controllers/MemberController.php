@@ -16,7 +16,7 @@ class MemberController extends Controller {
     }
 
     public function index() {
-        $members = Member::all();
+        $members = Member::with(['images', 'role'])->get();
         return $this->success($members, 200);
     }
 
@@ -32,15 +32,16 @@ class MemberController extends Controller {
             'role_id' => $request->get('role_id'),
             'password' => Hash::make($request->get('password'))
         ]);
+        if ( !empty($request->get('images')) ) $member->images()->sync($request->get('images'));
         return $this->success("The member with with id {$member->id} has been created", 201);
     }
 
-    public function show($id) {
+    public function show($id) { 
         $member = Member::find($id);
         if (!$member) {
-            return $this->error("The member with {$id} doesn't exist", 404);
+            return $this->error("The member with id {$id} doesn't exist", 404);
         }
-        return $this->success($member, 200);
+        return $this->success($member->load(['images', 'role']), 200);
     }
 
     public function update(Request $request, $id) {
@@ -56,9 +57,10 @@ class MemberController extends Controller {
         if ( !empty($request->get('lastPaymentDate')) ) $member->lastPaymentDate = $request->get('lastPaymentDate');
         if ( !empty($request->get('role_id')) ) $member->role_id = $request->get('role_id');
         if ( !empty($request->get('password')) ) $member->password = Hash::make($request->get('password'));
+        if ( !empty($request->get('images')) ) $member->images()->sync($request->get('images'));
         $member->save();
         //     return $this->success("The member with with id {$member->id} has been updated", 200);
-        return $this->success($member, 200);
+        return $this->success($member->load(['images', 'role']), 200);
     }
 
     public function destroy($id) {
@@ -81,9 +83,11 @@ class MemberController extends Controller {
             'firstName' => 'required|alpha',
             'lastName' => 'required|alpha',
             'phoneNumber' => 'required|numeric|min:10',
-            'lastPaymentDate' => 'required|date',
+            'lastPaymentDate' => 'date',
             'role_id' => 'required|numeric',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'images' => "array",
+            'images.*' => "numeric"
         ];
         $this->validate($request, $rules);
     }
@@ -96,7 +100,9 @@ class MemberController extends Controller {
             'phoneNumber' => 'numeric|min:10',
             'lastPaymentDate' => 'date',
             'role_id' => 'numeric',
-            'password' => 'min:6'
+            'password' => 'min:6',
+            'images' => "array",
+            'images.*' => "numeric"
         ];
         $this->validate($request, $rules);
     }
