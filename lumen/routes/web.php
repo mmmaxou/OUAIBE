@@ -43,7 +43,7 @@ $router->get('/members/count/', 'MemberController@count');
         'phoneNumber' => 'required|numeric|min:10',
         'lastPaymentDate' => 'date',
         'role_id' => 'required|numeric',
-        'password' => 'required|min:6',
+        'password' => 'min:6',
         'images' => "array",
         'images.*' => "numeric"
   ];

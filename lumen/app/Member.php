@@ -21,7 +21,7 @@ class Member extends Model implements AuthenticatableContract, AuthorizableContr
    */
   protected $fillable = [
       'id',
-      'mail',
+      'email',
       'firstName',
       'lastName',
       'phoneNumber',
