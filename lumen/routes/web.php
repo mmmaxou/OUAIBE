@@ -55,6 +55,10 @@ $router->post('/members', 'MemberController@store');
 */
 $router->get('/members/{member_id}', 'MemberController@show');
 /*
+  Renvoi les images d'un membrer d'id donné
+*/
+$router->get('/members/{member_id}/images', 'MemberController@showImages');
+/*
   Edite un membre. Règles d'ajout :
   $rules = [
         'email' => 'email|unique:members',

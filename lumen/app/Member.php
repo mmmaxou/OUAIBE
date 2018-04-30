@@ -41,11 +41,15 @@ class Member extends Model implements AuthenticatableContract, AuthorizableContr
   ];
 
   /**
-   * Define a one-to-many relationship with App\Role */
+   * Define a one-to-many relationship with App\Role 
+   */
   public function role() {
     return $this->belongsTo('App\Role');
   }
 
+  /**
+   * Define a many-to-many relationship with App\Image 
+   */
   public function images() {
     return $this->belongsToMany('App\Image');
   }

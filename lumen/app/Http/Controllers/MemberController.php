@@ -47,6 +47,14 @@ class MemberController extends Controller {
     return $this->success($member->load(['images', 'role']), 200);
   }
 
+  public function showImages($id) {
+    $member = Member::find($id);
+    if (!$member) {
+      return $this->error("The member with id {$id} doesn't exist", 404);
+    }
+    return $this->success($member->images()->get(), 200);
+  }
+
   public function update(Request $request, $id) {
     $member = Member::find($id);
     if (!$member) {
