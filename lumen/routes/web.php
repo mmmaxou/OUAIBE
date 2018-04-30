@@ -156,3 +156,38 @@ $router->put('/typeMaterials/{type_material_id}', 'TypeMaterialController@update
     Supprime un typeMaterials avec un id donné si il existe
 */
 $router->delete('/typeMaterials/{type_material_id}', 'TypeMaterialController@destroy');
+// ------------------------------ Images ---------------------------------------
+/*
+  Renvoie toutes les images
+*/
+$router->get('/images', 'ImageController@index');
+/*
+  Renvoie le nombre d'images  
+*/
+$router->get('/images/count/', 'ImageController@count');
+/*
+  Ajoute une image. Règles d'ajout :
+  $rules = [
+        'name' => 'required',
+        'src' => 'required|unique:images'
+    ];
+  Renvoie l'id de l'image ajouté
+*/
+$router->post('/images', 'ImageController@store');
+/*
+  Renvoi une image d'id donné
+*/
+$router->get('/images/{image_id}', 'ImageController@show');
+/*
+  Edite une image. Règles d'ajout :
+  $rules = [
+        'name' => '',
+        'src' => 'unique:images'
+    ];
+  Renvoie l'id de l'image ajouté
+*/
+$router->put('/images/{image_id}', 'ImageController@update');
+/*
+  Supprime une image d'id donné
+*/
+$router->delete('/images/{image_id}', 'ImageController@destroy');
