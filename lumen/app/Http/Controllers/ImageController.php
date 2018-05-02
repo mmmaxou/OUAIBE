@@ -23,9 +23,17 @@ class ImageController extends Controller {
   public function store(Request $request) {
     $this->validateRequestStore($request);
 
+    // get current time and append the upload file extension to it,
+    // then put that name to $imageName variable.
+    $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+
+    // talk the select file and move it public directory and make images
+    // folder if doesn't exsit then give it that unique name.
+    $request->image->move(public_path('img'), $imageName);
+
     $image = Image::create([
                 'name' => $request->get('name'),
-                'src' => $request->get('src')
+                'src' => url('/img/' . $imageName)
     ]);
     return $this->success("The image with id {$image->id} has been created", 201);
   }
@@ -43,11 +51,10 @@ class ImageController extends Controller {
     if (!$image) {
       return $this->error("The image with id {$id} doesn't exist", 404);
     }
+
     $this->validateRequestUpdate($request);
     if (!empty($request->get('name')))
       $image->name = $request->get('name');
-    if (!empty($request->get('src')))
-      $image->src = $request->get('src');
 
     $image->save();
     return $this->success($image, 200);
@@ -58,6 +65,12 @@ class ImageController extends Controller {
     if (!$image) {
       return $this->error("The image with id {$id} doesn't exist", 404);
     }
+    // Search and delete the file if it exists in public/images folder
+    $path = explode('/', $image->src);
+    $filePath = public_path('img') .'/'. end($path);
+    // If the file exists, delete it
+    if (file_exists($filePath))
+      unlink($filePath);
     $image->delete();
     return $this->success("The image with id {$id} has been deleted", 200);
   }
@@ -70,15 +83,14 @@ class ImageController extends Controller {
   public function validateRequestStore(Request $request) {
     $rules = [
         'name' => 'required',
-        'src' => 'required|unique:images'
+        'image' => 'required|image'
     ];
     $this->validate($request, $rules);
   }
 
   public function validateRequestUpdate(Request $request) {
     $rules = [
-        'name' => '',
-        'src' => 'unique:images'
+        'name' => ''
     ];
     $this->validate($request, $rules);
   }

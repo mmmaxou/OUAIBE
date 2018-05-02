@@ -205,9 +205,9 @@ $router->get('/images', 'ImageController@index');
 $router->get('/images/count/', 'ImageController@count');
 /*
   Ajoute une image. Règles d'ajout :
-  $rules = [
+    $rules = [
         'name' => 'required',
-        'src' => 'required|unique:images'
+        'image' => 'required|image'
     ];
   Renvoie l'id de l'image ajouté
 */
@@ -217,12 +217,11 @@ $router->post('/images', 'ImageController@store');
 */
 $router->get('/images/{image_id}', 'ImageController@show');
 /*
-  Edite une image. Règles d'ajout :
-  $rules = [
-        'name' => '',
-        'src' => 'unique:images'
+  Edite une image. Règles de modification :
+    $rules = [
+        'name' => ''
     ];
-  Renvoie l'id de l'image ajouté
+  Renvoie les infos de l'image modifié
 */
 $router->put('/images/{image_id}', 'ImageController@update');
 /*
