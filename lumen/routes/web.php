@@ -24,6 +24,9 @@ $router->put('/users/{user_id}', 'UserController@update');
 $router->delete('/users/{user_id}', 'UserController@destroy');
 
 
+// Authentication route
+Route::post('authenticate', 'JwtAuthenticateController@authenticate');
+
 // * Real classes
 // ------------------------------ Members ---------------------------------------
 /*
