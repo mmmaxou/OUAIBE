@@ -22,7 +22,7 @@ class CreateMembersTable extends Migration {
       $table->string('firstName', 30);
       $table->string('lastName', 30);
       $table->string('phoneNumber', 15);
-      $table->date('lastPaymentDate');
+      $table->date('lastPaymentDate')->nullable();
 
       $table->nullableTimestamps();
     });
