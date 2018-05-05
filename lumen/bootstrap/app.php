@@ -69,7 +69,7 @@ $app->singleton(
 // ]);
 $app->routeMiddleware([
     'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
-    'ability' => \Zizaco\Entrust\Middleware\EntrustAbility::class,
+    'ability' => App\Http\Middleware\TokenEntrustAbility::class,
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
 

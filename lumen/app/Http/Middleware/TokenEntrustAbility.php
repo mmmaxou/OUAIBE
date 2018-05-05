@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
-use Tymon\JWTAuth\Middleware\BaseMiddleware;
+use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 
 class TokenEntrustAbility extends BaseMiddleware {
 
@@ -18,26 +18,24 @@ class TokenEntrustAbility extends BaseMiddleware {
    */
   public function handle($request, Closure $next, $roles, $permissions, $validateAll = false) {
     if (!$token = $this->auth->setRequest($request)->getToken()) {
-      return $this->respond('tymon.jwt.absent', 'token_not_provided', 400);
+      return response()->json(['message' => 'The token was not provided or is invalid'], 400);
     }
 
     try {
       $user = $this->auth->authenticate($token);
     } catch (TokenExpiredException $e) {
-      return $this->respond('tymon.jwt.expired', 'token_expired', $e->getStatusCode(), [$e]);
+      return response()->json(['message' => 'The token has expired'], 401);
     } catch (JWTException $e) {
-      return $this->respond('tymon.jwt.invalid', 'token_invalid', $e->getStatusCode(), [$e]);
+      return response()->json(['message' => 'The token is invalid'], 400);
     }
 
     if (!$user) {
-      return $this->respond('tymon.jwt.user_not_found', 'user_not_found', 404);
+      return response()->json(['message' => 'The user was not found'], 404);
     }
 
-    if (!$request->user()->ability(explode('|', $roles), explode('|', $permissions), array('validate_all' => $validateAll))) {
-      return $this->respond('tymon.jwt.invalid', 'token_invalid', 401, 'Unauthorized');
+    if (!$user->ability(explode('|', $roles), explode('|', $permissions), array('validate_all' => $validateAll))) {
+      return response()->json(['message' => 'You are not authorized to make this request'], 401);
     }
-
-    $this->events->fire('tymon.jwt.valid', $user);
 
     return $next($request);
   }

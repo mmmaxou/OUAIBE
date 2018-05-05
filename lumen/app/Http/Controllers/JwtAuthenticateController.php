@@ -37,12 +37,12 @@ class JwtAuthenticateController extends Controller {
     try {
 // verify the credentials and create a token for the user
       if (!$token = $this->guard()->attempt($credentials)) {
-        return response()->json(['error' => 'Incorrect email or password'], 401);
+        return response()->json(['message' => 'Incorrect email or password'], 401);
       }
 // grab some user
     } catch (JWTException $e) {
 // something went wrong
-      return response()->json(['error' => 'Could not create token'], 500);
+      return response()->json(['message' => 'Could not create token'], 500);
     }
 
 // if no errors are encountered we can return a JWT

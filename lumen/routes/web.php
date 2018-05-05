@@ -27,65 +27,72 @@ $router->delete('/users/{user_id}', 'UserController@destroy');
 // Authentication route
 Route::post('login', 'JwtAuthenticateController@login');
 Route::post('logout', 'JwtAuthenticateController@logout');
-Route::post('me', 'JwtAuthenticateController@me');
 Route::post('refresh', 'JwtAuthenticateController@refresh');
+Route::post('me', 'JwtAuthenticateController@me');
 
 // * Real classes
 // ------------------------------ Members ---------------------------------------
-/*
-  Renvoie tous les membres
- */
-Route::group(['prefix' => 'api', 'middleware' => ['ability:admin,see-members']], function() {
-  Route::get('/members', 'MemberController@index');
+
+$router->group(['middleware' => 'ability:admin,show-members'], function() use ($router) {
+  /*
+    Renvoie tous les membres
+   */
+  $router->get('/members', 'MemberController@index');
+  /*
+    Renvoie le nombre de membres
+   */
+  $router->get('/members/count/', 'MemberController@count');
+  /*
+    Renvoi un membrer d'id donné
+   */
+  $router->get('/members/{member_id}', 'MemberController@show');
+  /*
+    Renvoi les images d'un membrer d'id donné
+   */
+  $router->get('/members/{member_id}/images', 'MemberController@showImages');
 });
-/*
-  Renvoie le nombre de membres
- */
-$router->get('/members/count/', 'MemberController@count');
-/*
-  Ajoute un membre. Règles d'ajout :
-  $rules = [
-  'email' => 'required|email|unique:members',
-  'firstName' => 'required|alpha',
-  'lastName' => 'required|alpha',
-  'phoneNumber' => 'required|numeric|min:10',
-  'lastPaymentDate' => 'date',
-  'role_id' => 'required|numeric',
-  'password' => 'min:6',
-  'images' => "array",
-  'images.*' => "numeric"
-  ];
-  Renvoie l'id du membre ajouté
- */
-$router->post('/members', 'MemberController@store');
-/*
-  Renvoi un membrer d'id donné
- */
-$router->get('/members/{member_id}', 'MemberController@show');
-/*
-  Renvoi les images d'un membrer d'id donné
- */
-$router->get('/members/{member_id}/images', 'MemberController@showImages');
-/*
-  Edite un membre. Règles d'ajout :
-  $rules = [
-  'email' => 'email|unique:members',
-  'firstName' => 'alpha',
-  'lastName' => 'alpha',
-  'phoneNumber' => 'numeric|min:10',
-  'lastPaymentDate' => 'date',
-  'role_id' => 'numeric',
-  'password' => 'min:6',
-  'images' => "array",
-  'images.*' => "numeric"
-  ];
-  Renvoie l'id du membre ajouté
- */
-$router->put('/members/{member_id}', 'MemberController@update');
-/*
-  Supprime un membrer d'id donné
- */
-$router->delete('/members/{member_id}', 'MemberController@destroy');
+
+$router->group(['middleware' => 'ability:admin,edit-members'], function() use ($router) {
+
+  /*
+    Ajoute un membre. Règles d'ajout :
+    $rules = [
+    'email' => 'required|email|unique:members',
+    'firstName' => 'required|alpha',
+    'lastName' => 'required|alpha',
+    'phoneNumber' => 'required|numeric|min:10',
+    'lastPaymentDate' => 'date',
+    'role_id' => 'required|numeric',
+    'password' => 'min:6',
+    'images' => "array",
+    'images.*' => "numeric"
+    ];
+    Renvoie l'id du membre ajouté
+   */
+  $router->post('/members', 'MemberController@store');
+
+  /*
+    Edite un membre. Règles d'ajout :
+    $rules = [
+    'email' => 'email|unique:members',
+    'firstName' => 'alpha',
+    'lastName' => 'alpha',
+    'phoneNumber' => 'numeric|min:10',
+    'lastPaymentDate' => 'date',
+    'role_id' => 'numeric',
+    'password' => 'min:6',
+    'images' => "array",
+    'images.*' => "numeric"
+    ];
+    Renvoie l'id du membre ajouté
+   */
+  $router->put('/members/{member_id}', 'MemberController@update');
+  /*
+    Supprime un membrer d'id donné
+   */
+  $router->delete('/members/{member_id}', 'MemberController@destroy');
+});
+
 
 // ------------------------------ Material ---------------------------------------
 /*

@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Support\Facades\Hash;
 use Zizaco\Entrust\EntrustRole;
 
-class Role extends EntrustRole implements AuthenticatableContract, AuthorizableContract {
+class Role extends Model implements AuthenticatableContract, AuthorizableContract {
 
   use Authenticatable,
       Authorizable;
@@ -50,6 +50,13 @@ class Role extends EntrustRole implements AuthenticatableContract, AuthorizableC
    */
   public function image() {
     return $this->belongsTo('App\Image');
+  }
+
+  /**
+   * Define a many-to-many relationship with App\Permission 
+   */
+  public function permissions() {
+    return $this->belongsToMany('App\Permission');
   }
 
 }
