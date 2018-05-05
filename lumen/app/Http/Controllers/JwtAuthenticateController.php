@@ -16,32 +16,90 @@ use Illuminate\Support\Facades\Hash;
 
 class JwtAuthenticateController extends Controller {
 
-    public function index() {
-        return response()->json(['auth' => Auth::user(), 'users' => Member::all()]);
+  /**
+   * Create a new AuthController instance.
+   *
+   * @return void
+   */
+  public function __construct() {
+    $this->middleware('auth:api', ['except' => ['login']]);
+  }
+
+  public function login(Request $request) {
+    $rules = [
+        'email' => 'required|string',
+        'password' => 'required|string'
+    ];
+    $this->validate($request, $rules);
+
+    $credentials = $request->only('email', 'password');
+
+    try {
+// verify the credentials and create a token for the user
+      if (!$token = $this->guard()->attempt($credentials)) {
+        return response()->json(['error' => 'Incorrect email or password'], 401);
+      }
+// grab some user
+    } catch (JWTException $e) {
+// something went wrong
+      return response()->json(['error' => 'Could not create token'], 500);
     }
 
-    public function authenticate(Request $request) {
-        $rules = [
-            'email' => 'required|string',
-            'password' => 'required|string'
-        ];
-        $this->validate($request, $rules);
-        
-        $credentials = $request->only('email', 'password');
+// if no errors are encountered we can return a JWT
+    return $this->respondWithToken($token);
+  }
 
-        try {
-            // verify the credentials and create a token for the user
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
-            }
-            // grab some user
-        } catch (JWTException $e) {
-            // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
-        }
+  /**
+   * Get the authenticated User
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function me() {
+    return response()->json(Member::find($this->guard()->user()->id)->load(['images', 'role']));
+  }
 
-        // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
-    }
+  /**
+   * Log the user out (Invalidate the token)
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function logout() {
+    $this->guard()->logout();
+
+    return response()->json(['message' => 'Successfully logged out']);
+  }
+
+  /**
+   * Refresh a token.
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function refresh() {
+    return $this->respondWithToken($this->guard()->refresh());
+  }
+
+  /**
+   * Get the token array structure.
+   *
+   * @param  string $token
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+  protected function respondWithToken($token) {
+    return response()->json([
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => $this->guard()->factory()->getTTL() * 60
+    ]);
+  }
+
+  /**
+   * Get the guard to be used during authentication.
+   *
+   * @return \Illuminate\Contracts\Auth\Guard
+   */
+  public function guard() {
+    return Auth::guard();
+  }
 
 }
