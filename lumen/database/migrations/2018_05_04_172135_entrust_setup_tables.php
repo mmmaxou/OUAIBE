@@ -18,7 +18,7 @@ class EntrustSetupTables extends Migration {
     Schema::create('permissions', function (Blueprint $table) {
       $table->engine = 'InnoDB';
       $table->increments('id');
-      $table->string('name')->unique();
+      $table->string('name', 191)->unique();
       $table->string('display_name')->nullable();
       $table->string('description')->nullable();
       $table->timestamps();
