@@ -111,7 +111,25 @@ $router->delete('/materials/{material_id}', 'MaterialController@destroy');
 $router->get('/metadatas/', 'MetaDataController@index');
 
 // ------------------------------ Role ---------------------------------------
+/*
+  Renvoie tous les Roles
+*/
 $router->get('/roles', 'RoleController@index');
+/*
+  Ajoute un Role. Règles d'ajout :
+  $rules = [
+        'email' => 'required|email|unique:members',
+        'firstName' => 'required|alpha',
+        'lastName' => 'required|alpha',
+        'phoneNumber' => 'required|numeric|min:10',
+        'lastPaymentDate' => 'date',
+        'role_id' => 'required|numeric',
+        'password' => 'min:6',
+        'images' => "array",
+        'images.*' => "numeric"
+  ];
+  Renvoie l'id du membre ajouté
+*/
 $router->post('/roles', 'RoleController@store');
 $router->get('/roles/{role_id}', 'RoleController@show');
 $router->put('/roles/{role_id}', 'RoleController@update');
