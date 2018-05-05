@@ -16,26 +16,32 @@ use Illuminate\Support\Facades\Hash;
 
 class JwtAuthenticateController extends Controller {
 
-  public function index() {
-    return response()->json(['auth' => Auth::user(), 'users' => Member::all()]);
-  }
-
-  public function authenticate(Request $request) {
-    $credentials = $request->only('email', 'password');
-    
-    try {
-      // verify the credentials and create a token for the user
-      if (!$token = JWTAuth::attempt($credentials)) {
-        return response()->json(['error' => 'invalid_credentials'], 401);
-      }
-      // grab some user
-    } catch (JWTException $e) {
-      // something went wrong
-      return response()->json(['error' => 'could_not_create_token'], 500);
+    public function index() {
+        return response()->json(['auth' => Auth::user(), 'users' => Member::all()]);
     }
 
-    // if no errors are encountered we can return a JWT
-    return response()->json(compact('token'));
-  }
+    public function authenticate(Request $request) {
+        $rules = [
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ];
+        $this->validate($request, $rules);
+        
+        $credentials = $request->only('email', 'password');
+
+        try {
+            // verify the credentials and create a token for the user
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
+            }
+            // grab some user
+        } catch (JWTException $e) {
+            // something went wrong
+            return response()->json(['error' => 'could_not_create_token'], 500);
+        }
+
+        // if no errors are encountered we can return a JWT
+        return response()->json(compact('token'));
+    }
 
 }
