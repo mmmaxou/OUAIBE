@@ -56,6 +56,9 @@ class Image extends Model implements AuthenticatableContract, AuthorizableContra
     return $this->hasMany('App\Role');
   }
 
+  /**
+   * Define a many-to-many relationship with App\Role
+   */
   public function members() {
     return $this->belongsToMany('App\Member');
   }
