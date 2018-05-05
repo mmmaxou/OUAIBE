@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+  return $router->app->version();
 });
 
 // * EXEMPLE
@@ -118,21 +118,29 @@ $router->get('/roles', 'RoleController@index');
 /*
   Ajoute un Role. Règles d'ajout :
   $rules = [
-        'email' => 'required|email|unique:members',
-        'firstName' => 'required|alpha',
-        'lastName' => 'required|alpha',
-        'phoneNumber' => 'required|numeric|min:10',
-        'lastPaymentDate' => 'date',
-        'role_id' => 'required|numeric',
-        'password' => 'min:6',
-        'images' => "array",
-        'images.*' => "numeric"
-  ];
+        'name' => 'required|string',
+        'shortDescription' => 'required|string',
+        'elevationLevel' => 'required|numeric',
+    ];
   Renvoie l'id du membre ajouté
 */
 $router->post('/roles', 'RoleController@store');
+/*
+  Renvoi un role d'id donné
+*/
 $router->get('/roles/{role_id}', 'RoleController@show');
+/*
+    Edite un role. Règles :
+    $rules = [
+        'name' => 'string',
+        'shortDescription' => 'string',
+        'elevationLevel' => 'numeric',
+    ];
+*/
 $router->put('/roles/{role_id}', 'RoleController@update');
+/*
+  Supprime un role d'id donné
+*/
 $router->delete('/roles/{role_id}', 'RoleController@destroy');
 
 // ------------------------------ Sponsor ---------------------------------------
