@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
+class ComposerStaticInit5a3e9d758013678ab0c07ca3be807e33
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -395,7 +395,6 @@ class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ExampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExampleController.php',
         'App\\Http\\Controllers\\ImageController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageController.php',
-        'App\\Http\\Controllers\\JwtAuthenticateController' => __DIR__ . '/../..' . '/app/Http/Controllers/JwtAuthenticateController.php',
         'App\\Http\\Controllers\\MaterialController' => __DIR__ . '/../..' . '/app/Http/Controllers/MaterialController.php',
         'App\\Http\\Controllers\\MemberController' => __DIR__ . '/../..' . '/app/Http/Controllers/MemberController.php',
         'App\\Http\\Controllers\\MetaDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/MetaDataController.php',
@@ -405,7 +404,6 @@ class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
         'App\\Http\\Controllers\\TypeMaterialController' => __DIR__ . '/../..' . '/app/Http/Controllers/TypeMaterialController.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\ExampleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/ExampleMiddleware.php',
-        'App\\Http\\Middleware\\TokenEntrustAbility' => __DIR__ . '/../..' . '/app/Http/Middleware/TokenEntrustAbility.php',
         'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
         'App\\Jobs\\ExampleJob' => __DIR__ . '/../..' . '/app/Jobs/ExampleJob.php',
         'App\\Jobs\\Job' => __DIR__ . '/../..' . '/app/Jobs/Job.php',
@@ -413,7 +411,6 @@ class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
         'App\\Material' => __DIR__ . '/../..' . '/app/Material.php',
         'App\\Member' => __DIR__ . '/../..' . '/app/Member.php',
         'App\\MetaData' => __DIR__ . '/../..' . '/app/MetaData.php',
-        'App\\Permission' => __DIR__ . '/../..' . '/app/Permission.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
@@ -849,7 +846,7 @@ class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
         'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
-        'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2018_05_04_172135_entrust_setup_tables.php',
+        'EntrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2018_05_04_171436_entrust_setup_tables.php',
         'ExampleTest' => __DIR__ . '/../..' . '/tests/ExampleTest.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',
@@ -2820,7 +2817,7 @@ class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
         'SebastianBergmann\\Timer\\RuntimeException' => __DIR__ . '/..' . '/phpunit/php-timer/src/RuntimeException.php',
         'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'SetForeignKeys' => __DIR__ . '/../..' . '/database/migrations/2019_04_08_173117_set_foreign_keys.php',
+        'SetForeignKeys' => __DIR__ . '/../..' . '/database/migrations/2018_04_08_173117_set_foreign_keys.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',
@@ -3371,11 +3368,11 @@ class ComposerStaticInit7c3d04a9b933b8222eac0d300e949538
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7c3d04a9b933b8222eac0d300e949538::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7c3d04a9b933b8222eac0d300e949538::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit7c3d04a9b933b8222eac0d300e949538::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit7c3d04a9b933b8222eac0d300e949538::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit7c3d04a9b933b8222eac0d300e949538::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit5a3e9d758013678ab0c07ca3be807e33::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit5a3e9d758013678ab0c07ca3be807e33::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit5a3e9d758013678ab0c07ca3be807e33::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5a3e9d758013678ab0c07ca3be807e33::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit5a3e9d758013678ab0c07ca3be807e33::$classMap;
 
         }, null, ClassLoader::class);
     }
