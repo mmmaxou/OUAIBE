@@ -25,6 +25,7 @@ $router->delete('/users/{user_id}', 'UserController@destroy');
 
 
 // Authentication route
+Route::get('authenticate', 'JwtAuthenticateController@index');
 Route::post('authenticate', 'JwtAuthenticateController@authenticate');
 
 // * Real classes

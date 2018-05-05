@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Material;
 use App\Image;
 use App\Member;
@@ -48,7 +49,7 @@ class DatabaseSeeder extends Seeder {
                 'phoneNumber' => "00000000000",
                 'lastPaymentDate' => NULL,
                 'role_id' => $admin->id,
-                'password' => app()->make('hash')->make("secret")
+                'password' => Hash::make("admin")
     ]);
 
     /* PERMISSION */
