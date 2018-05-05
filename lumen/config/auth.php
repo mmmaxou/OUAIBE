@@ -57,6 +57,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Member::class,
+            'table' => 'members'
         ]
     ],
     /*
