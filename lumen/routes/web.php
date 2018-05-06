@@ -33,7 +33,7 @@ Route::post('me', 'JwtAuthenticateController@me');
 // * Real classes
 // ------------------------------ Members ---------------------------------------
 
-$router->group(['middleware' => 'ability:admin,show-members'], function() use ($router) {
+$router->group(['middleware' => 'ability:admin,read-members'], function() use ($router) {
   /*
     Renvoie tous les membres
    */
@@ -92,6 +92,11 @@ $router->group(['middleware' => 'ability:admin,edit-members'], function() use ($
    */
   $router->delete('/members/{member_id}', 'MemberController@destroy');
 });
+
+/*
+  Renvoie toutes les permissions
+ */
+$router->get('/permissions', 'PermissionController@index');
 
 
 // ------------------------------ Material ---------------------------------------
