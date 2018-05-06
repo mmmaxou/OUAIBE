@@ -186,7 +186,39 @@ $router->put('/sponsors/{sponsor_id}', 'SponsorController@update');
 $router->delete('/sponsors/{sponsor_id}', 'SponsorController@destroy');
 
 // ------------------------------ Transaction ---------------------------------------
-$router->get('/transactions/', 'TransactionController@index');
+/*
+  Renvoie tous les Transactions
+*/
+$router->get('/transactions', 'TransactionController@index');
+/*
+  Ajoute un Transaction. Règles d'ajout :
+  $rules = [
+        'dateTransaction' => 'required|string',
+        'shortDescription' => 'required|string',
+        'output' => 'required|numeric',
+        'input' => 'required|numeric'
+    ];
+  Renvoie l'id du membre ajouté
+*/
+$router->post('/transactions', 'TransactionController@store');
+/*
+  Renvoi un transaction d'id donné
+*/
+$router->get('/transactions/{transaction_id}', 'TransactionController@show');
+/*
+    Edite un transaction. Règles :
+    $rules = [
+        'dateTransaction' => 'string',
+        'shortDescription' => 'string',
+        'output' => 'numeric',
+        'input' => 'numeric'
+    ];
+*/
+$router->put('/transactions/{transaction_id}', 'TransactionController@update');
+/*
+  Supprime un transaction d'id donné
+*/
+$router->delete('/transactions/{transaction_id}', 'TransactionController@destroy');
 
 // ------------------------------ TypeMaterial ------------------------------ 
 /*

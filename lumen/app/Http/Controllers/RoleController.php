@@ -34,9 +34,15 @@ class RoleController extends Controller
   {
     $role = Role::find($id);
     if (!$role) {
-      return $this->error("The role with {$id} doesn't exist", 404);
+      return $this->error("The role with id {$id} doesn't exist", 404);
     }
     return $this->success($role, 200);
+  }
+
+  public function index()
+  {
+    $roles = Role::all();
+    return $this->success($roles, 200);
   }
 
   public function update(Request $request, $id)
@@ -65,12 +71,6 @@ class RoleController extends Controller
     }
     $role->delete();
     return $this->success("The role with with id {$id} has been deleted", 200);
-  }
-
-  public function index()
-  {
-    $roles = Role::all();
-    return $this->success($roles, 200);
   }
  
   public function validateRequestStore(Request $request) {
