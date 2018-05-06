@@ -23,8 +23,10 @@ class RoleController extends Controller
     $role = Role::create([
       'name' => $request->get('name'),
       'shortDescription' => $request->get('shortDescription'),
-      'elevationLevel' => $request->get('elevationLevel')
+      'elevationLevel' => $request->get('elevationLevel'),
+      'image_id' => $request->get('image_id')
     ]);
+    if ( !empty($request->get('image')) ) $role->image()->sync($request->get('image'));
     return $this->success("The role with with id {$role->id} has been created", 201);
   }
 
@@ -45,14 +47,14 @@ class RoleController extends Controller
     }
     $this->validateRequestUpdate($request);
     
-    if (!empty($request->get('name')))
-      $role->name = $request->get('name');
-    if (!empty($request->get('shortDescription')))
-    $role->shortDescription = $request->get('shortDescription');
-    if (!empty($request->get('elevationLevel')))
-    $role->elevationLevel = $request->get('elevationLevel');
+    if (!empty($request->get('name'))) $role->name = $request->get('name');
+    if (!empty($request->get('shortDescription'))) $role->shortDescription = $request->get('shortDescription');
+    if (!empty($request->get('elevationLevel'))) $role->elevationLevel = $request->get('elevationLevel');
+    if (!empty($request->get('image_id'))) $role->image_id = $request->get('image_id');
+    if (!empty($request->get('image'))) $role->image()->sync($request->get('image'));
     $role->save();
-    return $this->success("The role with with id {$role->id} has been updated", 200);
+    //     return $this->success("The role with with id {$role->id} has been updated", 200);
+    return $this->success($role->load(['image']), 200);
   }
 
   public function destroy($id)
@@ -76,6 +78,7 @@ class RoleController extends Controller
         'name' => 'required|string',
         'shortDescription' => 'required|string',
         'elevationLevel' => 'required|numeric',
+        'image_id' => 'required|numeric'
     ];
     $this->validate($request, $rules);
   }
@@ -85,6 +88,7 @@ class RoleController extends Controller
         'name' => 'string',
         'shortDescription' => 'string',
         'elevationLevel' => 'numeric',
+        'image_id' => 'numeric'
     ];
     $this->validate($request, $rules);
   }
