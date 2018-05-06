@@ -36,31 +36,6 @@ class DatabaseSeeder extends Seeder {
     factory(Transaction::class, 120)->create();
     factory(TypeMaterial::class, 10)->create();
 
-    /* DEFAULT ADMIN */
-    $admin = new Role();
-    $admin->name = 'Admin';
-    $admin->shortDescription = 'User is allowed to manage and edit all things';
-    $admin->save();
-
-    $adminMember = Member::create([
-                'email' => "admin",
-                'firstName' => "admin",
-                'lastName' => "admin",
-                'phoneNumber' => "00000000000",
-                'lastPaymentDate' => NULL,
-                'role_id' => $admin->id,
-                'password' => Hash::make("admin")
-    ]);
-
-    /* PERMISSION */
-    $seeMembers = new Permission();
-    $seeMembers->name = 'see-members';
-    $seeMembers->display_name = 'See members'; // optional
-    $seeMembers->description = 'Can see members'; // optional
-    $seeMembers->save();
-
-    $admin->attachPermission($seeMembers);
-
 
     // Get all the images attaching up to 3 random image to each member
     $images = App\Image::all();
