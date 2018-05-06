@@ -44,9 +44,10 @@ class SponsorController extends Controller
     }
 
     public function update(Request $request, $id) {
+
         $sponsor =  Sponsor::find($id);
         if (!$sponsor) {
-            return $this->error("The sponsor with {$id} doesn't exist", 404);
+            return $this->error("The sponsor with id {$id} doesn't exist", 404);
         }
         $this->validateRequestUpdate($request);
         if ( !empty($request->get('email')) ) $sponsor->email = $request->get('email');

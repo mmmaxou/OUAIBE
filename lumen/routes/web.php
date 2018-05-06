@@ -155,11 +155,11 @@ $router->get('/sponsors/count/', 'SponsorController@count');
 /*
   Ajoute un sponsor. Règles d'ajout :
   $rules = [
-        'email' => $request->get('email'),
-        'name' => $request->get('name'),
-        'shortDescription' => $request->get('shortDescription'),
-        'phoneNumber' => $request->get('phoneNumber'),
-        'image_id' => $request->get('image_id')
+          'email' => 'email|unique:sponsors',
+          'name' => 'required|alpha',
+          'shortDescription' => 'required|alpha',
+          'phoneNumber' => 'numeric|min:10',
+          'image_id' => 'numeric'
     ];
   Renvoie l'id du sponsor ajouté
 */
@@ -171,11 +171,11 @@ $router->get('/sponsors/{sponsor_id}', 'SponsorController@show');
 /*
   Edite un sponsor. Règles d'ajout :
   $rules = [
-        'email' => $request->get('email'),
-        'name' => $request->get('name'),
-        'shortDescription' => $request->get('shortDescription'),
-        'phoneNumber' => $request->get('phoneNumber'),
-        'image_id' => $request->get('image_id')
+          'email' => 'email|unique:sponsors',
+          'name' => 'alpha',
+          'shortDescription' => 'alpha',
+          'phoneNumber' => 'numeric|min:10',
+          'image_id' => 'numeric'
     ];
   Renvoie l'id du sponsor ajouté
 */
@@ -184,6 +184,7 @@ $router->put('/sponsors/{sponsor_id}', 'SponsorController@update');
   Supprime un sponsor d'id donné
 */
 $router->delete('/sponsors/{sponsor_id}', 'SponsorController@destroy');
+
 // ------------------------------ Transaction ---------------------------------------
 $router->get('/transactions/', 'TransactionController@index');
 
