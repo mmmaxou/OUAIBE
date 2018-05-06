@@ -93,12 +93,6 @@ $router->group(['middleware' => 'ability:admin,edit-members'], function() use ($
   $router->delete('/members/{member_id}', 'MemberController@destroy');
 });
 
-/*
-  Renvoie toutes les permissions
- */
-$router->get('/permissions', 'PermissionController@index');
-
-
 // ------------------------------ Material ---------------------------------------
 /*
   Renvoie tous les materiels
@@ -136,6 +130,14 @@ $router->post('/roles', 'RoleController@store');
 $router->get('/roles/{role_id}', 'RoleController@show');
 $router->put('/roles/{role_id}', 'RoleController@update');
 $router->delete('/roles/{role_id}', 'RoleController@destroy');
+
+// ------------------------------ Permissions ---------------------------------------
+
+/*
+  Renvoie toutes les permissions
+ */
+$router->get('/permissions', 'PermissionController@index');
+$router->get('/roles/{role_id}/permissions', 'RoleController@showPermissions');
 
 // ------------------------------ Sponsor ---------------------------------------
 /*
