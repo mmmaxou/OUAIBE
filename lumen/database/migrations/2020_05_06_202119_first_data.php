@@ -92,7 +92,7 @@ class FirstData extends Migration {
             array(
                 'name' => "write-images",
                 'display_name' => "Write images",
-                'description' => "Allowed to create, update and delete an "
+                'description' => "Allowed to create, update and delete an image"
             )
     );
 

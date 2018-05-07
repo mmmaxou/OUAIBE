@@ -250,11 +250,3 @@ $router->put('/images/{image_id}', 'ImageController@update');
   Supprime une image d'id donné
  */
 $router->delete('/images/{image_id}', 'ImageController@destroy');
-
-
-
-
-// Route to create a new permission
-Route::post('permission', 'JwtAuthenticateController@authenticate');
-// Route to attache permission to a role
-Route::post('attach-permission', 'JwtAuthenticateController@attachPermission');
