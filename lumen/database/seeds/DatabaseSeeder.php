@@ -1,32 +1,51 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Material;
+use App\Image;
+use App\Member;
+use App\MetaData;
+use App\Role;
+use App\Sponsor;
+use App\Transaction;
+use App\TypeMaterial;
+use App\Permission;
 
-use App\Comment;
-use App\Post;
-use App\User;
+class DatabaseSeeder extends Seeder {
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-       public function run(){
+  /**
+   * Run the database seeds.
+   *
+   * @return void
+   */
+  public function run() {
 
-        // Disable foreign key checking because truncate() will fail
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+    // Disable foreign key checking because truncate() will fail
+    DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-        User::truncate();
-        Post::truncate();
-        Comment::truncate();
 
-        factory(User::class, 10)->create();
-        factory(Post::class, 50)->create();
-        factory(Comment::class, 100)->create();
+    factory(Image::class, 10)->create();
+    factory(Material::class, 50)->create();
+    factory(Member::class, 50)->create();
+    factory(MetaData::class, 10)->create();
+    factory(Role::class, 10)->create();
+    factory(Sponsor::class, 25)->create();
+    factory(Transaction::class, 120)->create();
+    factory(TypeMaterial::class, 10)->create();
 
-        // Enable it back
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-    }
+
+    // Get all the images attaching up to 3 random image to each member
+    $images = App\Image::all();
+    // Populate the pivot table
+    App\Member::all()->each(function ($member) use ($images) {
+      $member->images()->attach(
+              $images->random(rand(1, 3))->pluck('id')->toArray()
+      );
+    });
+
+    // Enable it back
+    DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+  }
+
 }
