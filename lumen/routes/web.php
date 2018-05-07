@@ -138,11 +138,43 @@ $router->group(['middleware' => 'ability:admin,write-materials'], function() use
 
 
 // ------------------------------ MetaData ---------------------------------------
-$router->group(['middleware' => 'ability:admin,read-metadatas'], function() use ($router) {
-  $router->get('/metadatas/', 'MetaDataController@index');
+$router->group(['middleware' => 'ability:admin,read-metaDatas'], function() use ($router) {
+  /*
+    Renvoie tous les MetaDatas
+  */
+  $router->get('/metaDatas', 'MetaDataController@index');
+  /*
+    Renvoi un metaData d'id donné
+  */
+  $router->get('/metaDatas/{metaKey}', 'MetaDataController@show');
 });
-$router->group(['middleware' => 'ability:admin,write-metadatas'], function() use ($router) {
-  
+$router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use ($router) {
+  /*
+    Ajoute un MetaData. Règles d'ajout :
+    $rules = [
+        'metaKey' => 'required|string',
+        'metaValue' => 'required|string'
+      ];
+    Renvoie l'id du membre ajouté
+  */
+  $router->post('/metaDatas', 'MetaDataController@store');
+
+  /*
+      Edite un metaData. Règles :
+      $rules = [
+        'metaKey' => 'string',
+        'metaValue' => 'string'
+      ];
+  */
+  $router->put('/metaDatas/{metaKey}', 'MetaDataController@update');
+  /*
+    Supprime un metaData d'id donné
+  */
+  $router->delete('/metaDatas/{metaKey}', 'MetaDataController@destroy');
+  /*
+    Renvoie toutes les permissions d'un metaDatas
+   */
+  $router->get('/metaDatas/{metaKey}/permissions', 'MetaDataController@showPermissions');
 });
 
 // ------------------------------ Role ---------------------------------------
@@ -351,3 +383,4 @@ $router->group(['middleware' => 'ability:admin,write-images'], function() use ($
    */
   $router->delete('/images/{image_id}', 'ImageController@destroy');
 });
+
