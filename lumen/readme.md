@@ -22,3 +22,11 @@ The Lumen framework is open-sourced software licensed under the [MIT license](ht
 
 ## Commands :
 Start the server : php -S localhost:8000 -t public
+
+## Install
+- Copy .env.example file and renames it in .env
+- configure the .env
+cmd : composer update
+cmd : php artisan migrate
+cmd (optional) : php artisan db:seed
+cmd : php artisan jwt:secret
