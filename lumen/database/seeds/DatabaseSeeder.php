@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder {
     // Disable foreign key checking because truncate() will fail
     DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-    Member::truncate();
-    Role::truncate();
 
     factory(Image::class, 10)->create();
     factory(Material::class, 50)->create();
