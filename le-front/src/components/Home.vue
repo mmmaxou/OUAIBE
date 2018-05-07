@@ -84,14 +84,14 @@
 </template>
 
 <script>
-  export default {
-    name: 'HelloWorld',
-    data() {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
+export default {
+  name: 'Home',
+  data () {
+    return {
+      msg: 'L E - W E B'
     }
   }
+}
 
 </script>
 
