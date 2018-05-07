@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Support\Facades\Hash;
+use Zizaco\Entrust\EntrustRole;
 
 class Role extends Model implements AuthenticatableContract, AuthorizableContract {
 
@@ -49,6 +50,13 @@ class Role extends Model implements AuthenticatableContract, AuthorizableContrac
    */
   public function image() {
     return $this->belongsTo('App\Image');
+  }
+
+  /**
+   * Define a many-to-many relationship with App\Permission 
+   */
+  public function permissions() {
+    return $this->belongsToMany('App\Permission');
   }
 
 }

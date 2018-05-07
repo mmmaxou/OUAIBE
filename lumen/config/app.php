@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'user' => 'App\Member',
+    
     'defaults' => [
         'guard' => 'api',
         'passwords' => 'members',

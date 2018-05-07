@@ -1,4 +1,4 @@
-lumen/vendor
+lumen/vendor/
 lumen/.idea
 lumen/Homestead.json
 lumen/Homestead.yaml

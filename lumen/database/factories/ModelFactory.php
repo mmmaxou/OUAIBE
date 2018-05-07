@@ -15,7 +15,6 @@ $factory->define(App\Role::class, function (Faker\Generator $faker) {
   return [
       'name' => $faker->jobTitle,
       'shortDescription' => $faker->realText(64),
-      'elevationLevel' => $faker->numberBetween(0, 10),
       'image_id' => mt_rand(1, 10)
   ];
 });

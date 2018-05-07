@@ -52,6 +52,26 @@ class SetForeignKeys extends Migration {
               ->onDelete('restrict')
               ->onUpdate('restrict');
     });
+
+    Schema::table('permission_role', function (Blueprint $table) {
+      $table->foreign('permission_id')->references('id')->on('permissions')
+              ->onUpdate('cascade')->onDelete('cascade');
+      $table->foreign('role_id')->references('id')->on('roles')
+              ->onUpdate('cascade')->onDelete('cascade');
+    });
+
+
+    Schema::table('image_member', function (Blueprint $table) {
+      $table->foreign('image_id')
+              ->references('id')
+              ->on('images')
+              ->onDelete('restrict')
+              ->onUpdate('restrict');
+
+      $table->foreign('member_id')->references('id')->on('members')
+              ->onDelete('restrict')
+              ->onUpdate('restrict');
+    });
   }
 
   /**
@@ -74,6 +94,14 @@ class SetForeignKeys extends Migration {
     });
     Schema::table('sponsors', function(Blueprint $table) {
       $table->dropForeign('sponsors_image_id_foreign');
+    });
+    Schema::table('image_member', function(Blueprint $table) {
+      $table->dropForeign('image_member_image_id_foreign');
+      $table->dropForeign('image_member_member_id_foreign');
+    });
+    Schema::table('permission_role', function(Blueprint $table) {
+      $table->dropForeign('permission_role_permission_id_foreign');
+      $table->dropForeign('permission_role_role_id_foreign');
     });
   }
 

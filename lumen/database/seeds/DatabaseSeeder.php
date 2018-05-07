@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Material;
 use App\Image;
 use App\Member;
@@ -9,6 +10,7 @@ use App\Role;
 use App\Sponsor;
 use App\Transaction;
 use App\TypeMaterial;
+use App\Permission;
 
 class DatabaseSeeder extends Seeder {
 
@@ -33,6 +35,7 @@ class DatabaseSeeder extends Seeder {
     factory(Sponsor::class, 25)->create();
     factory(Transaction::class, 120)->create();
     factory(TypeMaterial::class, 10)->create();
+
 
     // Get all the images attaching up to 3 random image to each member
     $images = App\Image::all();

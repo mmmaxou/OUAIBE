@@ -31,7 +31,6 @@ class SponsorController extends Controller
             'phoneNumber' => $request->get('phoneNumber'),
             'image_id' => $request->get('image_id')
         ]);
-        if ( !empty($request->get('image')) ) $sponsor->image()->sync($request->get('image'));
         return $this->success("The sponsor with with id {$sponsor->id} has been created", 201);
     }
 
@@ -55,7 +54,6 @@ class SponsorController extends Controller
         if ( !empty($request->get('shortDescription')) ) $sponsor->shortDescription = $request->get('shortDescription');
         if ( !empty($request->get('phoneNumber')) ) $sponsor->phoneNumber = $request->get('phoneNumber');
         if ( !empty($request->get('image_id')) ) $sponsor->image_id = $request->get('image_id');
-        if ( !empty($request->get('image')) ) $sponsor->image()->sync($request->get('image'));
         $sponsor->save();
         //     return $this->success("The sponsor with with id {$sponsor->id} has been updated", 200);
         return $this->success($sponsor->load(['image']), 200);
