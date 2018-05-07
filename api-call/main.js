@@ -4,7 +4,18 @@ const ApiInterface = function (routeName) {
 	var self = {
 		All: function () {
 			return new Promise( function (resolve, reject) {
-				fetch('https://jsonplaceholder.typicode.com/' + this.routeName + '/')
+				const uri = WEBSITE_ADDRESS + routeName
+				console.log(uri)
+				let options = {
+					url:uri,
+					method:'GET',
+					mode: 'cors',
+					headers:{
+						'Access-Control-Allow-Origin':'*'
+					},
+					body:null,
+				};
+				fetch(options)
 					.then(response => response.json())
 					.then(json => resolve(json))
 			})
@@ -13,12 +24,11 @@ const ApiInterface = function (routeName) {
 
 	return self
 }
-const MembresInterface = new ApiInterface('membres')
-
-
-
+const MembresInterface = new ApiInterface('members')
 
 $('#base').click(function () {
-	MembresInterface.All().then( json => console.log(json))
+	MembresInterface
+		.All()
+		.then( json => console.log(json))
 })
 
