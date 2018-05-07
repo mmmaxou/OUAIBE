@@ -6,28 +6,27 @@ use App\MetaData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class MetaDataController extends Controller
-{
-    public function __construct()
-    {
-        /*
-    $this->middleware('oauth', ['except' => ['index', 'show']]);
-    $this->middleware('authorize:' . __CLASS__, ['except' => ['index', 'show']]);
-    */
-    }
-    
-    public function index()
-    {
-        $metaDatas = MetaData::all();
-        return $this->success($metaDatas, 200);
-    }
+class MetaDataController extends Controller {
+
+  public function __construct() {
+    /*
+      $this->middleware('oauth', ['except' => ['index', 'show']]);
+      $this->middleware('authorize:' . __CLASS__, ['except' => ['index', 'show']]);
+     */
+  }
+
+  public function index() {
+    $metaDatas = MetaData::all();
+    return $this->success($metaDatas, 200);
+  }
 
   public function store(Request $request) {
     $this->validateRequestStore($request);
 
     $metaData = MetaData::create([
                 'metaKey' => $request->get('metaKey'),
-                'metaValue' => $request->get('metaValue')
+                'metaValue' => $request->get('metaValue'),
+                'description' => $request->get('description')
     ]);
     return $this->success("The metaData with with metaKey {$metaData->metaKey} has been created", 201);
   }
@@ -47,8 +46,12 @@ class MetaDataController extends Controller
     }
     $this->validateRequestUpdate($request);
 
-    if (!empty($request->get('metaKey'))) $metaData->metaKey = $request->get('metaKey');
-    if (!empty($request->get('metaValue'))) $metaData->metaValue = $request->get('metaValue');
+    if (!empty($request->get('metaKey')))
+      $metaData->metaKey = $request->get('metaKey');
+    if (!empty($request->get('metaValue')))
+      $metaData->metaValue = $request->get('metaValue');
+    if (!empty($request->get('description')))
+      $metaData->metaValue = $request->get('description');
     $metaData->save();
     return $this->success($metaData, 200);
   }
@@ -65,7 +68,8 @@ class MetaDataController extends Controller
   public function validateRequestStore(Request $request) {
     $rules = [
         'metaKey' => 'required|string',
-        'metaValue' => 'required|string'
+        'metaValue' => 'required|string',
+        'description' => 'string'
     ];
     $this->validate($request, $rules);
   }
@@ -73,8 +77,10 @@ class MetaDataController extends Controller
   public function validateRequestUpdate(Request $request) {
     $rules = [
         'metaKey' => 'string',
-        'metaValue' => 'string'
+        'metaValue' => 'string',
+        'description' => 'string'
     ];
     $this->validate($request, $rules);
   }
+
 }

@@ -22,6 +22,7 @@ class MetaData extends Model implements AuthenticatableContract, AuthorizableCon
     protected $fillable = [
         'metakey',
         'metavalue',
+        'description'
     ];
 
     /**

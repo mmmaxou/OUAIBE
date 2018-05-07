@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder {
     factory(Image::class, 10)->create();
     factory(Material::class, 50)->create();
     factory(Member::class, 50)->create();
-    factory(MetaData::class, 10)->create();
+    //factory(MetaData::class, 10)->create();
     factory(Role::class, 10)->create();
     factory(Sponsor::class, 25)->create();
     factory(Transaction::class, 120)->create();

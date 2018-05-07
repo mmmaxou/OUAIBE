@@ -18,7 +18,7 @@ class FirstData extends Migration {
      * Insert default roles (admin)
      */
 
-    DB::table('roles')->insert(
+    $adminRoleId = DB::table('roles')->insertGetId(
             array(
                 'id' => 1,
                 'image_id' => NULL,
@@ -38,7 +38,7 @@ class FirstData extends Migration {
                 'lastName' => "admin",
                 'phoneNumber' => "00000000000",
                 'lastPaymentDate' => NULL,
-                'role_id' => 1,
+                'role_id' => $adminRoleId,
                 'password' => Hash::make("admin")
             )
     );
@@ -174,6 +174,59 @@ class FirstData extends Migration {
                 'display_name' => "Write metadatas",
                 'description' => "Allowed to create, update and delete a metadata"
             )
+    );
+
+    /*
+     * Insert all metadatas with default value
+     */
+
+    DB::table('metadatas')->insert([
+        [
+            'metaKey' => "siteTitle",
+            'metaValue' => "My association",
+            'description' => "Name of the association and the website"
+        ],
+        [
+            'metaKey' => "siteDescription",
+            'metaValue' => "Description of my association",
+            'description' => "Short description of the association and the website"
+        ],
+        [
+            'metaKey' => "siteColor",
+            'metaValue' => "#940031",
+            'description' => "Color of the site in hexa ('#....') or rgb/rgba ('rgb(.,.,.)')"
+        ],
+        [
+            'metaKey' => "siteLogo",
+            'metaValue' => "https://www.ingenieur-imac.fr/images/logoIMAC.png",
+            'description' => "URL of the association logo"
+        ],
+        [
+            'metaKey' => "facebook_PrivateLink",
+            'metaValue' => NULL,
+            'description' => "Url of the private Facebook group"
+        ],
+        [
+            'metaKey' => "facebook_PublicLink",
+            'metaValue' => NULL,
+            'description' => "Url of the public Facebook page"
+        ],
+        [
+            'metaKey' => "twitter_PublicLink",
+            'metaValue' => NULL,
+            'description' => "Twitter account URL"
+        ],
+        [
+            'metaKey' => "trello_PrivateLink",
+            'metaValue' => NULL,
+            'description' => "Private url of the trello"
+        ],
+        [
+            'metaKey' => "drive_PrivateLink",
+            'metaValue' => NULL,
+            'description' => "Private url of the google drive"
+        ]
+            ]
     );
   }
 

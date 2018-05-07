@@ -16,7 +16,8 @@ class CreateMetadatasTable extends Migration {
       $table->engine = 'InnoDB';
 
       $table->string('metaKey', 50)->primary;
-      $table->string('metaValue', 200)->nullable();
+      $table->string('metaValue', 200);
+      $table->string('description', 200)->nullable();
       $table->nullableTimestamps();
     });
   }
