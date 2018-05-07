@@ -29,21 +29,21 @@ class MetaDataController extends Controller
                 'metaKey' => $request->get('metaKey'),
                 'metaValue' => $request->get('metaValue')
     ]);
-    return $this->success("The metaData with with id {$metaData->id} has been created", 201);
+    return $this->success("The metaData with with metaKey {$metaData->metaKey} has been created", 201);
   }
 
-  public function show($id) {
-    $metaData = MetaData::find($id);
+  public function show($metaKey) {
+    $metaData = MetaData::find($metaKey);
     if (!$metaData) {
-      return $this->error("The metaData with id {$id} doesn't exist", 404);
+      return $this->error("The metaData with metaKey {$metaKey} doesn't exist", 404);
     }
     return $this->success($metaData, 200);
   }
 
-  public function update(Request $request, $id) {
-    $metaData = MetaData::find($id);
+  public function update(Request $request, $metaKey) {
+    $metaData = MetaData::find($metaKey);
     if (!$metaData) {
-      return $this->error("The metaData with {$id} doesn't exist", 404);
+      return $this->error("The metaData with {$metaKey} doesn't exist", 404);
     }
     $this->validateRequestUpdate($request);
 
@@ -53,13 +53,13 @@ class MetaDataController extends Controller
     return $this->success($metaData, 200);
   }
 
-  public function destroy($id) {
-    $metaData = MetaData::find($id);
+  public function destroy($metaKey) {
+    $metaData = MetaData::find($metaKey);
     if (!$metaData) {
-      return $this->error("The metaData with {$id} doesn't exist", 404);
+      return $this->error("The metaData with {$metaKey} doesn't exist", 404);
     }
     $metaData->delete();
-    return $this->success("The metaData with with id {$id} has been deleted", 200);
+    return $this->success("The metaData with with metaKey {$metaKey} has been deleted", 200);
   }
 
   public function validateRequestStore(Request $request) {
