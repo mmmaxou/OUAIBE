@@ -17,9 +17,9 @@ class CreateTransactionsTable extends Migration {
 
       $table->increments('id');
       $table->date('dateTransaction');
-      $table->float('output', 10, 4);
-      $table->float('input', 10, 4);
-      $table->string('shortDescription', 200);
+      $table->float('output', 10, 4)->nullable();
+      $table->float('input', 10, 4)->nullable();
+      $table->string('shortDescription', 200)->nullable();
       $table->nullableTimestamps();
     });
   }

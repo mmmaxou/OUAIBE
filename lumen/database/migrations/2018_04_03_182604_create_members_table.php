@@ -17,11 +17,11 @@ class CreateMembersTable extends Migration {
 
       $table->increments('id');
       $table->integer('role_id')->unsigned();
-      $table->string('email', 80);
-      $table->string('password', 255);
+      $table->string('email', 80)->nullable();
+      $table->string('password', 255)->nullable();
       $table->string('firstName', 30);
-      $table->string('lastName', 30);
-      $table->string('phoneNumber', 15);
+      $table->string('lastName', 30)->nullable();
+      $table->string('phoneNumber', 15)->nullable();
       $table->date('lastPaymentDate')->nullable();
 
       $table->nullableTimestamps();

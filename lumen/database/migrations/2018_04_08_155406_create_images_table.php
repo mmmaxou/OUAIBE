@@ -17,7 +17,7 @@ class CreateImagesTable extends Migration {
 
       $table->increments('id');
       $table->string('name', 80);
-      $table->string('src', 200);
+      $table->string('src', 200)->unique();
       $table->timestamps();
     });
   }

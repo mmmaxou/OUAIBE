@@ -16,11 +16,11 @@ class CreateSponsorsTable extends Migration {
       $table->engine = 'InnoDB';
 
       $table->increments('id');
-      $table->integer('image_id')->unsigned();
+      $table->integer('image_id')->unsigned()->nullable();
       $table->string('name', 50);
-      $table->string('email', 80);
-      $table->string('phoneNumber', 15);
-      $table->string('shortDescription', 200);
+      $table->string('email', 80)->nullable();
+      $table->string('phoneNumber', 15)->nullable();
+      $table->string('shortDescription', 200)->nullable();
       $table->nullableTimestamps();
     });
 

@@ -18,7 +18,7 @@ class CreateRolesTable extends Migration {
       $table->increments('id');
       $table->integer('image_id')->unsigned()->nullable();
       $table->string('name', 50);
-      $table->string('shortDescription', 200);
+      $table->string('shortDescription', 200)->nullable();
 
       $table->nullableTimestamps();
     });
