@@ -10,7 +10,7 @@ export default {
   name: 'Home',
   data () {
     return {
-      msg: 'L E - W E B'
+      msg: 'GITHUB'
     }
   }
 }
