@@ -17,40 +17,40 @@ class SetForeignKeys extends Migration {
       $table->foreign('type_material_id')
               ->references('id')
               ->on('types_materials')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
     });
 
     Schema::table('types_materials', function (Blueprint $table) {
       $table->foreign('image_id')
               ->references('id')
               ->on('images')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('set null')
+              ->onUpdate('cascade');
     });
 
     Schema::table('members', function (Blueprint $table) {
       $table->foreign('role_id')
               ->references('id')
               ->on('roles')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
     });
 
     Schema::table('roles', function (Blueprint $table) {
       $table->foreign('image_id')
               ->references('id')
               ->on('images')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('set null')
+              ->onUpdate('cascade');
     });
 
     Schema::table('sponsors', function (Blueprint $table) {
       $table->foreign('image_id')
               ->references('id')
               ->on('images')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('set null')
+              ->onUpdate('cascade');
     });
 
     Schema::table('permission_role', function (Blueprint $table) {
@@ -65,12 +65,12 @@ class SetForeignKeys extends Migration {
       $table->foreign('image_id')
               ->references('id')
               ->on('images')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
 
       $table->foreign('member_id')->references('id')->on('members')
-              ->onDelete('restrict')
-              ->onUpdate('restrict');
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
     });
   }
 

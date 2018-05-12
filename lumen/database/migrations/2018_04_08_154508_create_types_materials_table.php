@@ -16,7 +16,7 @@ class CreateTypesMaterialsTable extends Migration {
       $table->engine = 'InnoDB';
 
       $table->increments('id');
-      $table->integer('image_id')->unsigned();
+      $table->integer('image_id')->unsigned()->nullable();
       $table->string('name', 50);
 
       $table->nullableTimestamps();
