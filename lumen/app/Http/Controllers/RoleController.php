@@ -81,7 +81,7 @@ class RoleController extends Controller {
     $rules = [
         'name' => 'required|string',
         'shortDescription' => 'required|string',
-        'image_id' => 'required|numeric'
+        'image_id' => 'required|numeric|exists:images,id'
     ];
     $this->validate($request, $rules);
   }
@@ -90,7 +90,7 @@ class RoleController extends Controller {
     $rules = [
         'name' => 'string',
         'shortDescription' => 'string',
-        'image_id' => 'numeric'
+        'image_id' => 'numeric|exists:images,id'
     ];
     $this->validate($request, $rules);
   }

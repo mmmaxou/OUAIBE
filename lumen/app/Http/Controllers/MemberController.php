@@ -103,10 +103,10 @@ class MemberController extends Controller {
         'lastName' => 'required|alpha',
         'phoneNumber' => 'required|numeric|min:10',
         'lastPaymentDate' => 'date',
-        'role_id' => 'required|numeric',
+        'role_id' => 'required|numeric|exists:roles,id',
         'password' => 'min:6',
         'images' => "array",
-        'images.*' => "numeric"
+        'images.*' => "numeric|exists:images,id"
     ];
     $this->validate($request, $rules);
   }
@@ -118,18 +118,12 @@ class MemberController extends Controller {
         'lastName' => 'alpha',
         'phoneNumber' => 'numeric|min:10',
         'lastPaymentDate' => 'date',
-        'role_id' => 'numeric',
+        'role_id' => 'numeric|exists:roles,id',
         'password' => 'min:6',
         'images' => "array",
-        'images.*' => "numeric"
+        'images.*' => "numeric|exists:images,id"
     ];
     $this->validate($request, $rules);
-  }
-
-  public function isAuthorized(Request $request) {
-    $resource = "users";
-    // $user     = User::find($this->getArgs($request)["user_id"]);
-    return $this->authorizeUser($request, $resource);
   }
 
 }

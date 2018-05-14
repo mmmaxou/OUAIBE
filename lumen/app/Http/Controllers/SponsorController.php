@@ -79,7 +79,7 @@ class SponsorController extends Controller
             'name' => 'required|alpha',
             'shortDescription' => 'alpha',
             'phoneNumber' => 'numeric|min:10',
-            'image_id' => 'numeric'
+            'image_id' => 'numeric|exists:images,id'
         ];
         $this->validate($request, $rules);
     }
@@ -90,7 +90,7 @@ class SponsorController extends Controller
             'name' => 'alpha',
             'shortDescription' => 'alpha',
             'phoneNumber' => 'numeric|min:10',
-            'image_id' => 'numeric'
+            'image_id' => 'numeric|exists:images,id'
         ];
         $this->validate($request, $rules);
     }

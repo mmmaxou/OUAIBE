@@ -75,7 +75,7 @@ class MaterialController extends Controller
         $rules = [
             'name' => 'required|string',
             'quantity' => 'required|numeric',
-            'type_material_id' => 'required|numeric'
+            'type_material_id' => 'required|numeric|exists:types_materials,id'
         ];
         $this->validate($request, $rules);
     }
@@ -84,7 +84,7 @@ class MaterialController extends Controller
         $rules = [
             'name' => 'string',
             'quantity' => 'numeric',
-            'type_material_id' => 'numeric'
+            'type_material_id' => 'numeric|exists:types_materials,id'
         ];
         $this->validate($request, $rules);
     }
