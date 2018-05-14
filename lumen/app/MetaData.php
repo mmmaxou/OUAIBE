@@ -14,6 +14,9 @@ class MetaData extends Model implements AuthenticatableContract, AuthorizableCon
     use Authenticatable, Authorizable;
 
     protected $table = 'metadatas';
+    protected  $primaryKey = 'metaKey';
+    public $keyType = 'string';
+    public $incrementing = false;
     /**
    * The attributes that are mass assignable.
    *

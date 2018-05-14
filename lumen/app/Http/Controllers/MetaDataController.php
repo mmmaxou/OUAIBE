@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class MetaDataController extends Controller {
 
+
   public function __construct() {
     /*
       $this->middleware('oauth', ['except' => ['index', 'show']]);
@@ -25,14 +26,14 @@ class MetaDataController extends Controller {
 
     $metaData = MetaData::create([
                 'metaKey' => $request->get('metaKey'),
-                'metaValue' => $request->get('metaValue'),
-                'description' => $request->get('description')
+                'metaValue' => $request->get('metaValue')
     ]);
     return $this->success("The metaData with with metaKey {$metaData->metaKey} has been created", 201);
   }
 
   public function show($metaKey) {
     $metaData = MetaData::find($metaKey);
+    //$metaData = MetaData::where('metaKey', $metaKey);
     if (!$metaData) {
       return $this->error("The metaData with metaKey {$metaKey} doesn't exist", 404);
     }
