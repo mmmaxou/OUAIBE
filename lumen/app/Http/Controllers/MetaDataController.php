@@ -72,7 +72,7 @@ class MetaDataController extends Controller {
 
   public function validateRequestStore(Request $request) {
     $rules = [
-        'metaKey' => 'required|string',
+        'metaKey' => 'required|string|unique:metaDatas',
         'metaValue' => 'required|string',
         'description' => 'string'
     ];
@@ -81,7 +81,7 @@ class MetaDataController extends Controller {
 
   public function validateRequestUpdate(Request $request) {
     $rules = [
-        'metaKey' => 'string',
+        'metaKey' => 'string|unique:metaDatas',
         'metaValue' => 'string',
         'description' => 'string'
     ];
