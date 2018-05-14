@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="module-instance">
         {{ text }}
     </div>
 </template>
@@ -15,5 +15,8 @@ export default {
 </script>
 
 <style>
-
+.module-instance {
+  display: flex;
+  border: 1px solid black;
+}
 </style>

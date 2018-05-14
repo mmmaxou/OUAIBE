@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ModuleInstance class="module-instance"
+        <ModuleInstance
           v-for="instance in moduleList"
           v-bind:text="instance.text"
           v-bind:key="instance.id">
@@ -29,7 +29,5 @@ export default {
 </script>
 
 <style>
-.module-instance {
-    color: red;
-}
+
 </style>
