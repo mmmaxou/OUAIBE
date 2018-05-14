@@ -24,10 +24,14 @@ class MetaDataController extends Controller {
   public function store(Request $request) {
     $this->validateRequestStore($request);
 
+    MetaData::unguard();
     $metaData = MetaData::create([
                 'metaKey' => $request->get('metaKey'),
-                'metaValue' => $request->get('metaValue')
+                'metaValue' => $request->get('metaValue'),
+                'description' => $request->get('description')
     ]);
+    MetaData::reguard();
+    
     return $this->success("The metaData with with metaKey {$metaData->metaKey} has been created", 201);
   }
 
