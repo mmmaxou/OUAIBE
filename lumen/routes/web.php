@@ -200,7 +200,9 @@ $router->group(['middleware' => 'ability:admin,write-roles'], function() use ($r
     $rules = [
     'name' => 'required|string',
     'shortDescription' => 'required|string',
-    'image_id' => 'required|numeric|exists:images,id'
+    'image_id' => 'required|numeric|exists:images,id',
+    'permissions' => "array",
+    'permissions.*' => "numeric|exists:permissions,id"
     ];
     Renvoie l'id du membre ajouté
    */
@@ -211,7 +213,9 @@ $router->group(['middleware' => 'ability:admin,write-roles'], function() use ($r
     $rules = [
     'name' => 'string',
     'shortDescription' => 'string',
-    'image_id' => 'numeric|exists:images,id'
+    'image_id' => 'numeric|exists:images,id',
+    'permissions' => "array",
+    'permissions.*' => "numeric|exists:permissions,id"
     ];
    */
   $router->put('/roles/{role_id}', 'RoleController@update');

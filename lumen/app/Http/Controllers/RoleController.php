@@ -81,7 +81,9 @@ class RoleController extends Controller {
     $rules = [
         'name' => 'required|string',
         'shortDescription' => 'required|string',
-        'image_id' => 'required|numeric|exists:images,id'
+        'image_id' => 'required|numeric|exists:images,id',
+        'permissions' => "array",
+        'permissions.*' => "numeric|exists:permissions,id"
     ];
     $this->validate($request, $rules);
   }
@@ -90,7 +92,9 @@ class RoleController extends Controller {
     $rules = [
         'name' => 'string',
         'shortDescription' => 'string',
-        'image_id' => 'numeric|exists:images,id'
+        'image_id' => 'numeric|exists:images,id',
+        'permissions' => "array",
+        'permissions.*' => "numeric|exists:permissions,id"
     ];
     $this->validate($request, $rules);
   }
