@@ -9,9 +9,6 @@
 export default {
   props: ['text'],
   data () {
-    return {
-      
-    }
   }
 }
 
