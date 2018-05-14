@@ -76,7 +76,7 @@ class TypeMaterialController extends Controller {
     public function validateRequestStore(Request $request) {
         $rules = [
             'name' => 'required|string',
-            'image_id' => 'required|numeric'
+            'image_id' => 'required|numeric|exists:images,id'
         ];
         $this->validate($request, $rules);
     }
@@ -84,7 +84,7 @@ class TypeMaterialController extends Controller {
     public function validateRequestUpdate(Request $request) {
         $rules = [
             'name' => 'string',
-            'image_id' => 'numeric'
+            'image_id' => 'numeric|exists:images,id'
         ];
         $this->validate($request, $rules);
     }
