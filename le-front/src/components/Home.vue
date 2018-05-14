@@ -1,16 +1,38 @@
 <template>
-<div class="hello">
-  <h1>{{ msg }}</h1>
-  <h2>Grid here</h2>
-  </div>
+    <div id="main">
+
+      <h1>{{ msg }}</h1>
+      <h2 v-on:click="test">Modules here</h2>
+
+      <ModuleInstance
+          v-for="instance in moduleList"
+          v-bind:text="instance.text"
+          v-bind:key="instance.id">
+      </ModuleInstance>
+    </div>
 </template>
 
 <script>
+import ModuleInstance from '@/components/ModuleInstance'
+
 export default {
   name: 'Home',
   data () {
     return {
-      msg: 'GITHUB'
+      msg: 'GITHUB',
+      moduleList: [
+        { id: 0, text: 'module 0' },
+        { id: 1, text: 'module 1' },
+        { id: 2, text: 'module 2' }
+      ]
+    }
+  },
+  components: {
+    ModuleInstance
+  },
+  methods: {
+    test: function () {
+      this.msg += 'mdr'
     }
   }
 }
