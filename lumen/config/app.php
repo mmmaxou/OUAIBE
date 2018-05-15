@@ -7,6 +7,8 @@ return [
         'guard' => 'api',
         'passwords' => 'members',
     ],
+    
+    'locale' => env('APP_LOCALE', 'en'),
 
     'guards' => [
         'api' => [
