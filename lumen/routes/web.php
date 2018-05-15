@@ -4,99 +4,99 @@
   |--------------------------------------------------------------------------
   | Application Routes
   |--------------------------------------------------------------------------
-  |
-  | Here is where you can register all of the routes for an application.
-  | It is a breeze. Simply tell Lumen the URIs it should respond to
-  | and give it the Closure to call when that URI is requested.
-  |
  */
 
 $router->get('/', function () use ($router) {
   return $router->app->version();
 });
 
-// Authentication route
-
+// ------------------------- Authentication routes -----------------------------
 /*
-  Se connecter
+  Login
   $rules = [
-  'email' => 'required|string',
-  'password' => 'required|string'
+    'email' => 'required|string',
+    'password' => 'required|string'
   ];
-  Renvoie un token
+  Return an access token
  */
 Route::post('login', 'JwtAuthenticateController@login');
 
 /*
-  Se déconnecter
+  Logout
  */
 Route::post('logout', 'JwtAuthenticateController@logout');
 
 /*
-  Rafraichir la connexion
-  Renvoie un nouveau token
+  Refresh the connection
+  Return a new token
  */
 Route::post('refresh', 'JwtAuthenticateController@refresh');
+
+/*
+  Return the information of the member who owns this token
+ */
 Route::post('me', 'JwtAuthenticateController@me');
 
 // ------------------------------ Members ---------------------------------------
 
 $router->group(['middleware' => 'ability:admin,read-members'], function() use ($router) {
   /*
-    Renvoie tous les membres
+    Return all members
    */
   $router->get('/members', 'MemberController@index');
   /*
-    Renvoie le nombre de membres
+    Return the number of members
    */
   $router->get('/members/count/', 'MemberController@count');
   /*
-    Renvoi un membrer d'id donné
+    Return a given member from his id
    */
   $router->get('/members/{member_id}', 'MemberController@show');
   /*
-    Renvoi les images d'un membrer d'id donné
+    Return all images from a given id member
    */
   $router->get('/members/{member_id}/images', 'MemberController@showImages');
 });
 
+
 $router->group(['middleware' => 'ability:admin,edit-members'], function() use ($router) {
 
   /*
-    Ajoute un membre. Règles d'ajout :
+    Add a member. Add rules:
     $rules = [
-    'email' => 'required|email|unique:members',
-    'firstName' => 'required|alpha',
-    'lastName' => 'required|alpha',
-    'phoneNumber' => 'required|numeric|min:10',
-    'lastPaymentDate' => 'date',
-    'role_id' => 'required|numeric|exists:roles,id',
-    'password' => 'min:6',
-    'images' => "array",
-    'images.*' => "numeric|exists:images,id"
+      'email' => 'required|email|unique:members',
+      'firstName' => 'required|alpha',
+      'lastName' => 'required|alpha',
+      'phoneNumber' => 'required|numeric|min:10',
+      'lastPaymentDate' => 'date',
+      'role_id' => 'required|numeric|exists:roles,id',
+      'password' => 'min:6',
+      'images' => "array",
+      'images.*' => "numeric|exists:images,id"
     ];
-    Renvoie l'id du membre ajouté
+    Return a message with the id of the added member
    */
   $router->post('/members', 'MemberController@store');
 
   /*
-    Edite un membre. Règles d'ajout :
+    Edit a member. 
     $rules = [
-    'email' => 'email|unique:members',
-    'firstName' => 'alpha',
-    'lastName' => 'alpha',
-    'phoneNumber' => 'numeric|min:10',
-    'lastPaymentDate' => 'date',
-    'role_id' => 'numeric|exists:roles,id',
-    'password' => 'min:6',
-    'images' => "array",
-    'images.*' => "numeric|exists:images,id"
+      'email' => 'email|unique:members',
+      'firstName' => 'alpha',
+      'lastName' => 'alpha',
+      'phoneNumber' => 'numeric|min:10',
+      'lastPaymentDate' => 'date',
+      'role_id' => 'numeric|exists:roles,id',
+      'password' => 'min:6',
+      'images' => "array",
+      'images.*' => "numeric|exists:images,id"
     ];
-    Renvoie l'id du membre ajouté
+    Return the edited member
    */
   $router->put('/members/{member_id}', 'MemberController@update');
+  
   /*
-    Supprime un membrer d'id donné
+    Delete a member from a given id
    */
   $router->delete('/members/{member_id}', 'MemberController@destroy');
 });
@@ -105,37 +105,42 @@ $router->group(['middleware' => 'ability:admin,edit-members'], function() use ($
 
 $router->group(['middleware' => 'ability:admin,read-materials'], function() use ($router) {
   /*
-    Renvoie tous les materiels
+    Return all the materials
    */
   $router->get('/materials', 'MaterialController@index');
 
   /*
-    Renvoie un materiel avec un id donné
+    Return a material from a given id
    */
   $router->get('/materials/{material_id}', 'MaterialController@show');
 });
 
 $router->group(['middleware' => 'ability:admin,write-materials'], function() use ($router) {
+  
   /*
-    Ajoute un material: Règles:
+    Add a material
     $rules = [
-    'name' => 'required|string',
-    'quantity' => 'required|numeric',
-    'type_material_id' => 'required|numeric|exists:types_materials,id'
+      'name' => 'required|string',
+      'quantity' => 'required|numeric',
+      'type_material_id' => 'required|numeric|exists:types_materials,id'
     ];
+    Return a message with the id of the added material
    */
   $router->post('/materials', 'MaterialController@store');
+  
   /*
-    Edite un materiel. Règles :
+    Edit a material
     $rules = [
-    'name' => 'string',
-    'quantity' => 'numeric',
-    'type_material_id' => 'numeric|exists:types_materials,id'
+      'name' => 'string',
+      'quantity' => 'numeric',
+      'type_material_id' => 'numeric|exists:types_materials,id'
     ];
+    Return the edited material
    */
   $router->put('/materials/{material_id}', 'MaterialController@update');
+  
   /*
-    Supprime un materiel avec un id donné si il existe
+    Delete a materials from a given id
    */
   $router->delete('/materials/{material_id}', 'MaterialController@destroy');
 });
@@ -144,253 +149,280 @@ $router->group(['middleware' => 'ability:admin,write-materials'], function() use
 // ------------------------------ MetaData ---------------------------------------
 $router->group(['middleware' => 'ability:admin,read-metaDatas'], function() use ($router) {
   /*
-    Renvoie tous les MetaDatas
+    Return all MetaDatas
    */
   $router->get('/metaDatas', 'MetaDataController@index');
   /*
-    Renvoi un metaData d'id donné
+    Return a metaData from a given metaKey
    */
   $router->get('/metaDatas/{metaKey}', 'MetaDataController@show');
 });
 $router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use ($router) {
+  
   /*
-    Ajoute un MetaData. Règles d'ajout :
+    Add a metadata
     $rules = [
-    'metaKey' => 'required|string',
-    'metaValue' => 'required|string'
+      'metaKey' => 'required|string',
+      'metaValue' => 'required|string'
     ];
-    Renvoie l'id du membre ajouté
+    Return a message with the id of the added metadata
    */
   $router->post('/metaDatas', 'MetaDataController@store');
 
   /*
-    Edite un metaData. Règles :
+    Edit a metaData
     $rules = [
-    'metaKey' => 'string',
-    'metaValue' => 'string'
+      'metaKey' => 'string',
+      'metaValue' => 'string'
     ];
+    Return the edited metadata
    */
   $router->put('/metaDatas/{metaKey}', 'MetaDataController@update');
+  
   /*
-    Supprime un metaData d'id donné
+    Delete a metaDatas from a given id
    */
   $router->delete('/metaDatas/{metaKey}', 'MetaDataController@destroy');
-  /*
-    Renvoie toutes les permissions d'un metaDatas
-   */
-  $router->get('/metaDatas/{metaKey}/permissions', 'MetaDataController@showPermissions');
 });
 
-// ------------------------------ Role ---------------------------------------
+// ------------------------------- Role ----------------------------------------
+
 $router->group(['middleware' => 'ability:admin,read-roles'], function() use ($router) {
+  
   /*
-    Renvoie tous les Roles
+    Return all roles
    */
   $router->get('/roles', 'RoleController@index');
+  
   /*
-    Renvoi un role d'id donné
+    Return a role from a given id
    */
   $router->get('/roles/{role_id}', 'RoleController@show');
 });
+
 $router->group(['middleware' => 'ability:admin,write-roles'], function() use ($router) {
   /*
-    Ajoute un Role. Règles d'ajout :
+    Add a role
     $rules = [
-    'name' => 'required|string',
-    'shortDescription' => 'required|string',
-    'image_id' => 'required|numeric|exists:images,id',
-    'permissions' => "array",
-    'permissions.*' => "numeric|exists:permissions,id"
+      'name' => 'required|string',
+      'shortDescription' => 'required|string',
+      'image_id' => 'required|numeric|exists:images,id',
+      'permissions' => "array",
+      'permissions.*' => "numeric|exists:permissions,id"
     ];
-    Renvoie l'id du membre ajouté
+    Return a message with the id of the added role
    */
   $router->post('/roles', 'RoleController@store');
 
   /*
-    Edite un role. Règles :
+    Edit a role
     $rules = [
-    'name' => 'string',
-    'shortDescription' => 'string',
-    'image_id' => 'numeric|exists:images,id',
-    'permissions' => "array",
-    'permissions.*' => "numeric|exists:permissions,id"
+      'name' => 'string',
+      'shortDescription' => 'string',
+      'image_id' => 'numeric|exists:images,id',
+      'permissions' => "array",
+      'permissions.*' => "numeric|exists:permissions,id"
     ];
+    Return the edited role
    */
   $router->put('/roles/{role_id}', 'RoleController@update');
+  
   /*
-    Supprime un role d'id donné
+    Delete a role from a given id
    */
   $router->delete('/roles/{role_id}', 'RoleController@destroy');
+  
   /*
-    Renvoie toutes les permissions d'un roles
+    Return all permissions of a role from a given id
    */
   $router->get('/roles/{role_id}/permissions', 'RoleController@showPermissions');
+  
   /*
-    Renvoie toutes les permissions
+    Return all permissions
    */
   $router->get('/permissions', 'PermissionController@index');
 });
 // ------------------------------ Sponsor ---------------------------------------
+
 $router->group(['middleware' => 'ability:admin,read-sponsors'], function() use ($router) {
   /*
-    Renvoie tous les sponsors
+    Return all sponsors
    */
   $router->get('/sponsors', 'SponsorController@index');
+  
   /*
-    Renvoie le nombre de sponsors
+    Return the number of sponsors
    */
   $router->get('/sponsors/count/', 'SponsorController@count');
+  
   /*
-    Renvoi un sponsor d'id donné
+    Return a sponsor from a given id
    */
   $router->get('/sponsors/{sponsor_id}', 'SponsorController@show');
+  
 });
+
 $router->group(['middleware' => 'ability:admin,write-sponsors'], function() use ($router) {
   /*
-    Ajoute un sponsor. Règles d'ajout :
+    Add a sponsor
     $rules = [
-    'email' => 'email|unique:sponsors',
-    'name' => 'required|alpha',
-    'shortDescription' => 'alpha',
-    'phoneNumber' => 'numeric|min:10',
-    'image_id' => 'numeric|exists:images,id'
+      'email' => 'email|unique:sponsors',
+      'name' => 'required|alpha',
+      'shortDescription' => 'alpha',
+      'phoneNumber' => 'numeric|min:10',
+      'image_id' => 'numeric|exists:images,id'
     ];
-    Renvoie l'id du sponsor ajouté
+    Return a message with the id of the added sponsor
    */
   $router->post('/sponsors', 'SponsorController@store');
+  
   /*
-    Edite un sponsor. Règles d'ajout :
+    Edit a sponsor
     $rules = [
-    'email' => 'email|unique:sponsors',
-    'name' => 'alpha',
-    'shortDescription' => 'alpha',
-    'phoneNumber' => 'numeric|min:10',
-    'image_id' => 'numeric|exists:images,id'
+      'email' => 'email|unique:sponsors',
+      'name' => 'alpha',
+      'shortDescription' => 'alpha',
+      'phoneNumber' => 'numeric|min:10',
+      'image_id' => 'numeric|exists:images,id'
     ];
-    Renvoie l'id du sponsor ajouté
+    Return the edited sponsor
    */
   $router->put('/sponsors/{sponsor_id}', 'SponsorController@update');
+  
   /*
-    Supprime un sponsor d'id donné
+    Delete a sponsor from a given id
    */
   $router->delete('/sponsors/{sponsor_id}', 'SponsorController@destroy');
 });
 // ------------------------------ Transaction ---------------------------------------
 $router->group(['middleware' => 'ability:admin,read-transactions'], function() use ($router) {
   /*
-    Renvoie tous les Transactions
+    Return all transactions
    */
   $router->get('/transactions', 'TransactionController@index');
+  
   /*
-    Renvoie une transaction d'id donné
+    Return a transaction from a given id
    */
   $router->get('/transactions/{transaction_id}', 'TransactionController@show');
+  
 });
 $router->group(['middleware' => 'ability:admin,write-transactions'], function() use ($router) {
   /*
-    Ajoute un Transaction. Règles d'ajout :
+    Add a transaction
     $rules = [
-    'dateTransaction' => 'required|string',
-    'shortDescription' => 'required|string',
-    'output' => 'required|numeric',
-    'input' => 'required|numeric'
+      'dateTransaction' => 'required|string',
+      'shortDescription' => 'required|string',
+      'output' => 'required|numeric',
+      'input' => 'required|numeric'
     ];
-    Renvoie l'id du membre ajouté
+    Return a message with the id of the added transaction
    */
   $router->post('/transactions', 'TransactionController@store');
 
   /*
-    Edite un transaction. Règles :
+    Edit a transaction
     $rules = [
-    'dateTransaction' => 'string',
-    'shortDescription' => 'string',
-    'output' => 'numeric',
-    'input' => 'numeric'
+      'dateTransaction' => 'string',
+      'shortDescription' => 'string',
+      'output' => 'numeric',
+      'input' => 'numeric'
     ];
+    Return the edited transaction
    */
   $router->put('/transactions/{transaction_id}', 'TransactionController@update');
+  
   /*
-    Supprime un transaction d'id donné
+    Delete a transaction from a given id
    */
   $router->delete('/transactions/{transaction_id}', 'TransactionController@destroy');
 });
-// ------------------------------ TypeMaterial ------------------------------ 
+// ------------------------------- TypeMaterial ------------------------------- 
+
 $router->group(['middleware' => 'ability:admin,read-types-materials'], function() use ($router) {
   /*
-    Renvoie tous les typeMaterials
+    Return all typeMaterials
    */
   $router->get('/typeMaterials', 'TypeMaterialController@index');
+  
   /*
-    Renvoie les materiels par catégorie
+    Return the materials by category
    */
   $router->get('/typeMaterials/materials/', 'TypeMaterialController@materials');
+  
   /*
-    Renvoie le nombre de materiel par catégorie
+    Return the number of materials by category
    */
   $router->get('/typeMaterials/materials/count/', 'TypeMaterialController@count');
+  
   /*
-    Renvoie un typeMateriel avec un id donné
+    Return a material type from a given id
    */
   $router->get('/typeMaterials/{type_material_id}', 'TypeMaterialController@show');
 });
 $router->group(['middleware' => 'ability:admin,write-types-materials'], function() use ($router) {
   /*
-    Ajoute un typeMateriel: Règles:
+    Add a typeMaterial
     $rules = [
-    'name' => 'required|string',
-    'image_id' => 'required|numeric|exists:images,id'
+      'name' => 'required|string',
+      'image_id' => 'required|numeric|exists:images,id'
     ];
    */
   $router->post('/typeMaterials', 'TypeMaterialController@store');
 
   /*
-    Edite un typeMateriel. Règles :
+    Edit a typeMaterials
     $rules = [
-    'name' => 'string',
-    'image_id' => 'numeric|exists:images,id'
+      'name' => 'string',
+      'image_id' => 'numeric|exists:images,id'
     ];
    */
   $router->put('/typeMaterials/{type_material_id}', 'TypeMaterialController@update');
+  
   /*
-    Supprime un typeMaterials avec un id donné si il existe
+    Deletes a typeMaterials with a given id
    */
   $router->delete('/typeMaterials/{type_material_id}', 'TypeMaterialController@destroy');
 });
 // ------------------------------ Images ---------------------------------------
 $router->group(['middleware' => 'ability:admin,read-images'], function() use ($router) {
   /*
-    Renvoie toutes les images
+    Return all images
    */
   $router->get('/images', 'ImageController@index');
+  
   /*
-    Renvoie le nombre d'images
+    Returns the number of images
    */
   $router->get('/images/count/', 'ImageController@count');
+  
   /*
-    Renvoi une image d'id donné
+    Return a image from a given id
    */
   $router->get('/images/{image_id}', 'ImageController@show');
 });
+
 $router->group(['middleware' => 'ability:admin,write-images'], function() use ($router) {
   /*
-    Ajoute une image. Règles d'ajout :
+    Add an image
     $rules = [
-    'name' => 'required',
-    'image' => 'required|image'
+      'name' => 'required',
+      'image' => 'required|image'
     ];
-    Renvoie l'id de l'image ajouté
+    Return a message with the id of the added image
    */
   $router->post('/images', 'ImageController@store');
   /*
-    Edite une image. Règles de modification :
+    Edit a image
     $rules = [
-    'name' => ''
+      'name' => ''
     ];
-    Renvoie les infos de l'image modifié
+    Returns the info of the edited image
    */
   $router->put('/images/{image_id}', 'ImageController@update');
+  
   /*
-    Supprime une image d'id donné
+    Delete a image with a given id
    */
   $router->delete('/images/{image_id}', 'ImageController@destroy');
 });

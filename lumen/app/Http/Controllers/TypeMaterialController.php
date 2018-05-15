@@ -21,12 +21,12 @@ class TypeMaterialController extends Controller {
     }
 
     public function materials() {
-        $typeMaterials = TypeTypeMaterial::with('materials')->get();
+        $typeMaterials = TypeMaterial::with('materials')->get();
         return $this->success($typeMaterials, 200);
     }
 
     public function count() {
-        $typeMaterials = TypeTypeMaterial::select('id', 'name')
+        $typeMaterials = TypeMaterial::select('id', 'name')
             ->withCount('materials')
             ->get();
         return $this->success($typeMaterials, 200);
