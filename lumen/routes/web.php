@@ -10,8 +10,6 @@
   | and give it the Closure to call when that URI is requested.
   |
  */
-header('Content-Type: application/json');
-header("Access-Control-Allow-Origin: *");
 
 $router->get('/', function () use ($router) {
   return $router->app->version();
