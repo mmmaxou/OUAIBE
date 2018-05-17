@@ -16,6 +16,13 @@ export default {
 </script>
 
 <style lang="stylus">
-.app
-  color red
+html
+  margin 0
+  padding 0
+  box-sizing border-box
+
+*
+  margin inherit
+  padding inherit
+  box-sizing inherit
 </style>
