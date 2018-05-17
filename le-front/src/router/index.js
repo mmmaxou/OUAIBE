@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Equipment from '@/components/Equipment'
-import Funds from '@/components/Funds'
-import Home from '@/components/Home'
-import Sponsors from '@/components/Sponsors'
-import UserProfile from '@/components/UserProfile'
-import UserPicture from '@/components/UserPicture'
+import Equipment from '@/views/Equipment'
+import Funds from '@/views/Funds'
+import Home from '@/views/Home'
+import Sponsors from '@/views/Sponsors'
+import UserProfile from '@/views/UserProfile'
 
 Vue.use(Router)
 
@@ -21,13 +20,7 @@ export default new Router({
     {
       path: '/user/:id',
       name: 'UserProfile',
-      component: UserProfile,
-      children: [
-        {
-          path: 'picture',
-          component: UserPicture
-        }
-      ]
+      component: UserProfile
     },
     {
       path: '/equipment',

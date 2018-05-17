@@ -1,15 +1,9 @@
-<template>
-    <div id="main">
-
-      <h1>{{ msg }}</h1>
-      <h2 v-on:click="test">Modules here</h2>
-
-      <Modules />
-    </div>
+<template lang="pug">
+.home
+  p home
 </template>
 
 <script>
-import Modules from '@/components/Modules'
 
 export default {
   name: 'Home',
@@ -18,9 +12,7 @@ export default {
       msg: 'GITHUB'
     }
   },
-  components: {
-    Modules
-  },
+  components: {},
   methods: {
     test: function () {
       this.msg += 'mdr'

@@ -1,15 +1,11 @@
-<template>
-    <div>
-        TOP BAR
-    </div>
+<template lang="pug">
+.topbar
+  p TOP BAR
 </template>
-
 <script>
 
 export default {
-  data () {
-    return {}
-  }
+  name: 'TopBar'
 }
 
 </script>

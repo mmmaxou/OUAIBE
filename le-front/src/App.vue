@@ -1,26 +1,21 @@
-<template>
-  <div id="app">
-    <TopBar />
-    <SideBar />
-    <router-view />
-  </div>
+<template lang="pug">
+.app
+  StaticUI
+  router-view
 </template>
 
 <script>
-import TopBar from '@/components/TopBar'
-import SideBar from '@/components/SideBar'
+import StaticUI from '@/components/StaticUI'
 
 export default {
   name: 'App',
   components: {
-    TopBar,
-    SideBar
+    StaticUI
   }
 }
 </script>
 
-<style>
-#app {
-
-}
+<style lang="stylus">
+.app
+  color red
 </style>
