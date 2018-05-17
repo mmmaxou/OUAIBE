@@ -36,7 +36,7 @@ class TransactionController extends Controller {
   }
 
   public function index() {
-    $transactions = Transaction::all();
+    $transactions = Transaction::orderBy('dateTransaction','desc')->get();
     return $this->success($transactions, 200);
   }
 
@@ -70,8 +70,8 @@ class TransactionController extends Controller {
 
   public function validateRequestStore(Request $request) {
     $rules = [
-        'dateTransaction' => 'date|required|string',
-        'shortDescription' => 'required|string',
+        'dateTransaction' => 'required|date',
+        'shortDescription' => 'string',
         'output' => 'required|numeric',
         'input' => 'required|numeric'
     ];
@@ -80,7 +80,7 @@ class TransactionController extends Controller {
 
   public function validateRequestUpdate(Request $request) {
     $rules = [
-        'dateTransaction' => 'date|string',
+        'dateTransaction' => 'date',
         'shortDescription' => 'string',
         'output' => 'numeric',
         'input' => 'numeric'

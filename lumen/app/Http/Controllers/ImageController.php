@@ -82,7 +82,7 @@ class ImageController extends Controller {
 
   public function validateRequestStore(Request $request) {
     $rules = [
-        'name' => 'required',
+        'name' => 'required|string',
         'image' => 'required|image'
     ];
     $this->validate($request, $rules);
@@ -90,7 +90,7 @@ class ImageController extends Controller {
 
   public function validateRequestUpdate(Request $request) {
     $rules = [
-        'name' => ''
+        'name' => 'string'
     ];
     $this->validate($request, $rules);
   }

@@ -7,15 +7,16 @@
  */
 
 $router->get('/', function () use ($router) {
-  return $router->app->version();
+  header('Location: https://documenter.getpostman.com/view/4187696/doc-api-bdi/RW86LAPG');
+  exit;
 });
 
 // ------------------------- Authentication routes -----------------------------
 /*
   Login
   $rules = [
-    'email' => 'required|string',
-    'password' => 'required|string'
+  'email' => 'required|string',
+  'password' => 'required|string'
   ];
   Return an access token
  */
@@ -64,37 +65,37 @@ $router->group(['middleware' => 'ability:admin,write-members'], function() use (
   /*
     Add a member. Add rules:
     $rules = [
-      'email' => 'required|email|unique:members',
-      'firstName' => 'required|alpha',
-      'lastName' => 'required|alpha',
-      'phoneNumber' => 'required|numeric|min:10',
-      'lastPaymentDate' => 'date',
-      'role_id' => 'required|numeric|exists:roles,id',
-      'password' => 'min:6',
-      'images' => "array",
-      'images.*' => "numeric|exists:images,id"
+    'email' => 'required|email|unique:members',
+    'firstName' => 'required|alpha',
+    'lastName' => 'required|alpha',
+    'phoneNumber' => 'required|numeric|min:10',
+    'lastPaymentDate' => 'date',
+    'role_id' => 'required|numeric|exists:roles,id',
+    'password' => 'min:6',
+    'images' => "array",
+    'images.*' => "numeric|exists:images,id"
     ];
     Return a message with the id of the added member
    */
   $router->post('/members', 'MemberController@store');
 
   /*
-    Edit a member. 
+    Edit a member.
     $rules = [
-      'email' => 'email|unique:members',
-      'firstName' => 'alpha',
-      'lastName' => 'alpha',
-      'phoneNumber' => 'numeric|min:10',
-      'lastPaymentDate' => 'date',
-      'role_id' => 'numeric|exists:roles,id',
-      'password' => 'min:6',
-      'images' => "array",
-      'images.*' => "numeric|exists:images,id"
+    'email' => 'email|unique:members',
+    'firstName' => 'alpha',
+    'lastName' => 'alpha',
+    'phoneNumber' => 'numeric|min:10',
+    'lastPaymentDate' => 'date',
+    'role_id' => 'numeric|exists:roles,id',
+    'password' => 'min:6',
+    'images' => "array",
+    'images.*' => "numeric|exists:images,id"
     ];
     Return the edited member
    */
   $router->put('/members/{member_id}', 'MemberController@update');
-  
+
   /*
     Delete a member from a given id
    */
@@ -116,29 +117,29 @@ $router->group(['middleware' => 'ability:admin,read-materials'], function() use 
 });
 
 $router->group(['middleware' => 'ability:admin,write-materials'], function() use ($router) {
-  
+
   /*
     Add a material
     $rules = [
-      'name' => 'required|string',
-      'quantity' => 'required|numeric',
-      'type_material_id' => 'required|numeric|exists:types_materials,id'
+    'name' => 'required|string',
+    'quantity' => 'required|numeric',
+    'type_material_id' => 'required|numeric|exists:types_materials,id'
     ];
     Return a message with the id of the added material
    */
   $router->post('/materials', 'MaterialController@store');
-  
+
   /*
     Edit a material
     $rules = [
-      'name' => 'string',
-      'quantity' => 'numeric',
-      'type_material_id' => 'numeric|exists:types_materials,id'
+    'name' => 'string',
+    'quantity' => 'numeric',
+    'type_material_id' => 'numeric|exists:types_materials,id'
     ];
     Return the edited material
    */
   $router->put('/materials/{material_id}', 'MaterialController@update');
-  
+
   /*
     Delete a materials from a given id
    */
@@ -158,13 +159,13 @@ $router->group(['middleware' => 'ability:admin,read-metaDatas'], function() use 
   $router->get('/metaDatas/{metaKey}', 'MetaDataController@show');
 });
 $router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use ($router) {
-  
+
   /*
     Add a metadata
     $rules = [
-      'metaKey' => 'required|string|unique:metaDatas',
-      'metaValue' => 'required|string',
-      'description' => 'string'
+    'metaKey' => 'required|string|unique:metaDatas',
+    'metaValue' => 'required|string',
+    'description' => 'string'
     ];
     Return a message with the id of the added metadata
    */
@@ -173,14 +174,14 @@ $router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use
   /*
     Edit a metaData
     $rules = [
-      'metaKey' => 'string|unique:metaDatas',
-      'metaValue' => 'string',
-      'description' => 'string'
+    'metaKey' => 'string|unique:metaDatas',
+    'metaValue' => 'string',
+    'description' => 'string'
     ];
     Return the edited metadata
    */
   $router->put('/metaDatas/{metaKey}', 'MetaDataController@update');
-  
+
   /*
     Delete a metaDatas from a given id
    */
@@ -190,12 +191,12 @@ $router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use
 // ------------------------------- Role ----------------------------------------
 
 $router->group(['middleware' => 'ability:admin,read-roles'], function() use ($router) {
-  
+
   /*
     Return all roles
    */
   $router->get('/roles', 'RoleController@index');
-  
+
   /*
     Return a role from a given id
    */
@@ -206,11 +207,11 @@ $router->group(['middleware' => 'ability:admin,write-roles'], function() use ($r
   /*
     Add a role
     $rules = [
-      'name' => 'required|string',
-      'shortDescription' => 'required|string',
-      'image_id' => 'required|numeric|exists:images,id',
-      'permissions' => "array",
-      'permissions.*' => "numeric|exists:permissions,id"
+    'name' => 'required|string',
+    'shortDescription' => 'required|string',
+    'image_id' => 'required|numeric|exists:images,id',
+    'permissions' => "array",
+    'permissions.*' => "numeric|exists:permissions,id"
     ];
     Return a message with the id of the added role
    */
@@ -219,26 +220,26 @@ $router->group(['middleware' => 'ability:admin,write-roles'], function() use ($r
   /*
     Edit a role
     $rules = [
-      'name' => 'string',
-      'shortDescription' => 'string',
-      'image_id' => 'numeric|exists:images,id',
-      'permissions' => "array",
-      'permissions.*' => "numeric|exists:permissions,id"
+    'name' => 'string',
+    'shortDescription' => 'string',
+    'image_id' => 'numeric|exists:images,id',
+    'permissions' => "array",
+    'permissions.*' => "numeric|exists:permissions,id"
     ];
     Return the edited role
    */
   $router->put('/roles/{role_id}', 'RoleController@update');
-  
+
   /*
     Delete a role from a given id
    */
   $router->delete('/roles/{role_id}', 'RoleController@destroy');
-  
+
   /*
     Return all permissions of a role from a given id
    */
   $router->get('/roles/{role_id}/permissions', 'RoleController@showPermissions');
-  
+
   /*
     Return all permissions
    */
@@ -251,46 +252,45 @@ $router->group(['middleware' => 'ability:admin,read-sponsors'], function() use (
     Return all sponsors
    */
   $router->get('/sponsors', 'SponsorController@index');
-  
+
   /*
     Return the number of sponsors
    */
   $router->get('/sponsors/count/', 'SponsorController@count');
-  
+
   /*
     Return a sponsor from a given id
    */
   $router->get('/sponsors/{sponsor_id}', 'SponsorController@show');
-  
 });
 
 $router->group(['middleware' => 'ability:admin,write-sponsors'], function() use ($router) {
   /*
     Add a sponsor
     $rules = [
-      'email' => 'email|unique:sponsors',
-      'name' => 'required|alpha',
-      'shortDescription' => 'alpha',
-      'phoneNumber' => 'numeric|min:10',
-      'image_id' => 'numeric|exists:images,id'
+    'email' => 'email|unique:sponsors',
+    'name' => 'required|string',
+    'shortDescription' => 'string',
+    'phoneNumber' => 'numeric|min:10',
+    'image_id' => 'numeric|exists:images,id'
     ];
     Return a message with the id of the added sponsor
    */
   $router->post('/sponsors', 'SponsorController@store');
-  
+
   /*
     Edit a sponsor
     $rules = [
-      'email' => 'email|unique:sponsors',
-      'name' => 'alpha',
-      'shortDescription' => 'alpha',
-      'phoneNumber' => 'numeric|min:10',
-      'image_id' => 'numeric|exists:images,id'
+    'email' => 'email|unique:sponsors',
+    'name' => 'string',
+    'shortDescription' => 'string',
+    'phoneNumber' => 'numeric|min:10',
+    'image_id' => 'numeric|exists:images,id'
     ];
     Return the edited sponsor
    */
   $router->put('/sponsors/{sponsor_id}', 'SponsorController@update');
-  
+
   /*
     Delete a sponsor from a given id
    */
@@ -299,24 +299,23 @@ $router->group(['middleware' => 'ability:admin,write-sponsors'], function() use 
 // ------------------------------ Transaction ---------------------------------------
 $router->group(['middleware' => 'ability:admin,read-transactions'], function() use ($router) {
   /*
-    Return all transactions
+    Return all transactions ordered by descending date
    */
   $router->get('/transactions', 'TransactionController@index');
-  
+
   /*
     Return a transaction from a given id
    */
   $router->get('/transactions/{transaction_id}', 'TransactionController@show');
-  
 });
 $router->group(['middleware' => 'ability:admin,write-transactions'], function() use ($router) {
   /*
     Add a transaction
     $rules = [
-      'dateTransaction' => 'required|string',
-      'shortDescription' => 'required|string',
-      'output' => 'required|numeric',
-      'input' => 'required|numeric'
+    'dateTransaction' => 'required|date',
+    'shortDescription' => 'string',
+    'output' => 'required|numeric',
+    'input' => 'required|numeric'
     ];
     Return a message with the id of the added transaction
    */
@@ -325,15 +324,15 @@ $router->group(['middleware' => 'ability:admin,write-transactions'], function() 
   /*
     Edit a transaction
     $rules = [
-      'dateTransaction' => 'string',
-      'shortDescription' => 'string',
-      'output' => 'numeric',
-      'input' => 'numeric'
+    'dateTransaction' => 'date',
+    'shortDescription' => 'string',
+    'output' => 'numeric',
+    'input' => 'numeric'
     ];
-    Return the edited transaction
+    Return a validation message
    */
   $router->put('/transactions/{transaction_id}', 'TransactionController@update');
-  
+
   /*
     Delete a transaction from a given id
    */
@@ -346,17 +345,17 @@ $router->group(['middleware' => 'ability:admin,read-types-materials'], function(
     Return all typeMaterials
    */
   $router->get('/typeMaterials', 'TypeMaterialController@index');
-  
+
   /*
     Return the materials by category
    */
   $router->get('/typeMaterials/materials/', 'TypeMaterialController@materials');
-  
+
   /*
     Return the number of materials by category
    */
   $router->get('/typeMaterials/materials/count/', 'TypeMaterialController@count');
-  
+
   /*
     Return a material type from a given id
    */
@@ -366,8 +365,8 @@ $router->group(['middleware' => 'ability:admin,write-types-materials'], function
   /*
     Add a typeMaterial
     $rules = [
-      'name' => 'required|string',
-      'image_id' => 'required|numeric|exists:images,id'
+    'name' => 'required|string',
+    'image_id' => 'required|numeric|exists:images,id'
     ];
    */
   $router->post('/typeMaterials', 'TypeMaterialController@store');
@@ -375,12 +374,12 @@ $router->group(['middleware' => 'ability:admin,write-types-materials'], function
   /*
     Edit a typeMaterials
     $rules = [
-      'name' => 'string',
-      'image_id' => 'numeric|exists:images,id'
+    'name' => 'string',
+    'image_id' => 'numeric|exists:images,id'
     ];
    */
   $router->put('/typeMaterials/{type_material_id}', 'TypeMaterialController@update');
-  
+
   /*
     Deletes a typeMaterials with a given id
    */
@@ -392,12 +391,12 @@ $router->group(['middleware' => 'ability:admin,read-images'], function() use ($r
     Return all images
    */
   $router->get('/images', 'ImageController@index');
-  
+
   /*
     Returns the number of images
    */
   $router->get('/images/count/', 'ImageController@count');
-  
+
   /*
     Return a image from a given id
    */
@@ -408,8 +407,8 @@ $router->group(['middleware' => 'ability:admin,write-images'], function() use ($
   /*
     Add an image
     $rules = [
-      'name' => 'required',
-      'image' => 'required|image'
+    'name' => 'required|string',
+    'image' => 'required|image'
     ];
     Return a message with the id of the added image
    */
@@ -417,12 +416,12 @@ $router->group(['middleware' => 'ability:admin,write-images'], function() use ($
   /*
     Edit a image
     $rules = [
-      'name' => ''
+    'name' => 'string'
     ];
     Returns the info of the edited image
    */
   $router->put('/images/{image_id}', 'ImageController@update');
-  
+
   /*
     Delete a image with a given id
    */

@@ -76,8 +76,8 @@ class SponsorController extends Controller
     public function validateRequestStore(Request $request) {
         $rules = [
             'email' => 'email|unique:sponsors',
-            'name' => 'required|alpha',
-            'shortDescription' => 'alpha',
+            'name' => 'required|string',
+            'shortDescription' => 'string',
             'phoneNumber' => 'numeric|min:10',
             'image_id' => 'numeric|exists:images,id'
         ];
@@ -87,8 +87,8 @@ class SponsorController extends Controller
     public function validateRequestUpdate(Request $request) {
         $rules = [
             'email' => 'email|unique:sponsors',
-            'name' => 'alpha',
-            'shortDescription' => 'alpha',
+            'name' => 'string',
+            'shortDescription' => 'string',
             'phoneNumber' => 'numeric|min:10',
             'image_id' => 'numeric|exists:images,id'
         ];
