@@ -59,7 +59,7 @@ $router->group(['middleware' => 'ability:admin,read-members'], function() use ($
 });
 
 
-$router->group(['middleware' => 'ability:admin,edit-members'], function() use ($router) {
+$router->group(['middleware' => 'ability:admin,write-members'], function() use ($router) {
 
   /*
     Add a member. Add rules:
@@ -162,8 +162,9 @@ $router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use
   /*
     Add a metadata
     $rules = [
-      'metaKey' => 'required|string',
-      'metaValue' => 'required|string'
+      'metaKey' => 'required|string|unique:metaDatas',
+      'metaValue' => 'required|string',
+      'description' => 'string'
     ];
     Return a message with the id of the added metadata
    */
@@ -172,8 +173,9 @@ $router->group(['middleware' => 'ability:admin,write-metaDatas'], function() use
   /*
     Edit a metaData
     $rules = [
-      'metaKey' => 'string',
-      'metaValue' => 'string'
+      'metaKey' => 'string|unique:metaDatas',
+      'metaValue' => 'string',
+      'description' => 'string'
     ];
     Return the edited metadata
    */

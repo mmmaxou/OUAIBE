@@ -63,7 +63,7 @@ class RoleController extends Controller {
     if (!empty($request->get('image_id')))
       $role->image_id = $request->get('image_id');
     if (!empty($request->get('permissions')))
-      $member->permissions()->sync($request->get('permissions'));
+      $role->permissions()->sync($request->get('permissions'));
     $role->save();
     return $this->success($role->load(['image']), 200);
   }

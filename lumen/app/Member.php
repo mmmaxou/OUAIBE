@@ -13,8 +13,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class Member extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject {
 
-  use EntrustUserTrait,
-      Authenticatable,
+  use Authenticatable,
       Authorizable;
 
   /**
