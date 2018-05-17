@@ -29,7 +29,7 @@ class ImageController extends Controller {
 
     // talk the select file and move it public directory and make images
     // folder if doesn't exsit then give it that unique name.
-    $request->image->move(public_path('img'), $imageName);
+    $request->file('image')->move(public_path('img'), $imageName);
 
     $image = Image::create([
                 'name' => $request->get('name'),
