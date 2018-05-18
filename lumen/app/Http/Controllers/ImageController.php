@@ -25,12 +25,14 @@ class ImageController extends Controller {
 
     // get current time and append the upload file extension to it,
     // then put that name to $imageName variable.
-    $imageName = time() . '.' . $request->image->getClientOriginalExtension();
+    $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
 
     // talk the select file and move it public directory and make images
-    // folder if doesn't exsit then give it that unique name.
-    $request->file('image')->move(public_path('img'), $imageName);
-
+    // folder if doesn't exsit then give it that unique name.	/*$file = Input::file('file');
+    $moveFile = $file->move(public_path('img'), $imageName);
+    if (!$moveFile)
+      return $this->error("The image could not be downloaded", 500);
+    
     $image = Image::create([
                 'name' => $request->get('name'),
                 'src' => url('/img/' . $imageName)
@@ -67,7 +69,7 @@ class ImageController extends Controller {
     }
     // Search and delete the file if it exists in public/images folder
     $path = explode('/', $image->src);
-    $filePath = public_path('img') .'/'. end($path);
+    $filePath = public_path('img') . '/' . end($path);
     // If the file exists, delete it
     if (file_exists($filePath))
       unlink($filePath);
