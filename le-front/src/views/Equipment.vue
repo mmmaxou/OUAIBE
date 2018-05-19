@@ -1,20 +1,18 @@
-<template>
-    <div>
-        MATÉRIEL
-    </div>
+<template lang="pug">
+.equipment
+  p matériel
 </template>
 
 <script>
-
 export default {
-  name: 'UserPicture',
+  name: 'Equipment',
   data () {
     return {}
-  }
+  },
+  components: {}
 }
-
 </script>
 
-<style>
+<style lang="stylus">
 
 </style>

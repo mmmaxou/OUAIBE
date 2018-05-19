@@ -1,16 +1,20 @@
 <template lang="pug">
 .app
-  StaticUI
-  router-view
+  TopBar.app__topbar
+  .main
+    SideBar.main__sidebar
+    .router-container.main__router-container(ref="container")
+      router-view
 </template>
 
 <script>
-import StaticUI from '@/components/StaticUI'
+import TopBar from '@/components/TopBar'
+import SideBar from '@/components/SideBar'
 
 export default {
   name: 'App',
   components: {
-    StaticUI
+    TopBar, SideBar
   }
 }
 </script>
@@ -20,9 +24,25 @@ html
   margin 0
   padding 0
   box-sizing border-box
+  background #222328
 
 *
   margin inherit
   padding inherit
   box-sizing inherit
+
+.app
+  display flex
+  flex-direction column
+
+  .main
+    display flex
+    flex-direction row
+
+    .topbar
+      width 100%
+      flex-grow 1
+
+    .router-container
+      padding 20px
 </style>

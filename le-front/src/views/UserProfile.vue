@@ -1,20 +1,18 @@
-<template>
-    <div>
-        Profil de {{ $route.params.id }}
-    </div>
+<template lang="pug">
+.userprofile
+  p profil de {{ $route.params.id }}
 </template>
 
 <script>
-
 export default {
   name: 'UserProfile',
   data () {
     return {}
-  }
+  },
+  components: {}
 }
-
 </script>
 
-<style>
+<style lang="stylus">
 
 </style>

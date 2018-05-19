@@ -1,20 +1,18 @@
-<template>
-    <div>
-        SPONSORS
-    </div>
+<template lang="pug">
+.sponsors
+  p sponsors
 </template>
 
 <script>
-
 export default {
-  name: 'UserPicture',
+  name: 'Sponsors',
   data () {
     return {}
-  }
+  },
+  components: {}
 }
-
 </script>
 
-<style>
+<style lang="stylus">
 
 </style>

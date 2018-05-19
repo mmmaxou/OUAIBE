@@ -1,6 +1,6 @@
 <template lang="pug">
 .sidebar
-  h2.sidebar__item(v-for="item in menu") {{ item }}
+  h2.sidebar__item(v-for="item, index in menu" :key="index") {{ item.name }}
 </template>
 
 <script>
@@ -9,14 +9,14 @@ export default {
   data () {
     return {
       "menu" : [
-        "home",
-        "membres",
-        "matériel",
-        "trésorerie",
-        "sponsors",
-        "configuration",
-        "agenda",
-        "déconnexion"
+        { name: "home", url: "" },
+        { name: "membres", url: "members" },
+        { name: "matériel", url: "equipment" },
+        { name: "trésorerie", url: "funds" },
+        { name: "sponsors", url: "sponsors" },
+        { name: "configuration", url: "config" },
+        { name: "agenda", url: "agenda" },
+        { name: "déconnexion", url: "logout" }
       ]
     }
   }
@@ -32,7 +32,7 @@ export default {
   align-items center
   justify-content space-between
   padding 10px 0 10px 10px
-  max-width 250px
+  width 250px
   height 90vh
   background #23262d
   

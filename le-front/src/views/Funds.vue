@@ -1,20 +1,18 @@
-<template>
-    <div>
-        TRÉSORERIE
-    </div>
+<template lang="pug">
+.funds
+  p trésorerie
 </template>
 
 <script>
-
 export default {
-  name: 'UserPicture',
+  name: 'Funds',
   data () {
     return {}
-  }
+  },
+  components: {}
 }
-
 </script>
 
-<style>
+<style lang="stylus">
 
 </style>

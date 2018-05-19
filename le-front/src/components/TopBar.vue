@@ -2,7 +2,7 @@
 .topbar
   img.topbar__logo(src="../assets/logo.png")
   h1.topbar__title BDI
-  topbar__right
+  .topbar__right
     Notifications
     User
 </template>
@@ -22,16 +22,19 @@ export default {
 
 <style lang="stylus">
 .topbar
-  height: 100px
-  width 100%
+  height: 80px
+  width 100vw
   background #23262d
   display flex
   align-items center
   justify-content space-between
+  padding 0 10px
+  
+  &__logo
+    padding 0
 
   &__right
     display flex
     align-items center
     justify-content space-between
-
 </style>
