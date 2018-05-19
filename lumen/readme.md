@@ -25,8 +25,20 @@ Start the server : php -S localhost:8000 -t public
 
 ## Install
 - Copy .env.example file and renames it in .env
-- configure the .env
-cmd : composer update
-cmd : php artisan migrate
-cmd (optional) : php artisan db:seed
-cmd : php artisan jwt:secret
+- Configure the .env
+- Update composer
+```
+composer update
+```
+- Create the database migration
+```
+php artisan migrate
+```
+- Add the fake data (optional)
+```
+php artisan db:seed
+```
+- Create the jwt key
+```
+php artisan jwt:secret
+```
