@@ -7,10 +7,11 @@
         </div>
 
         <div class="Chart">
-          <h2>Charts</h2>
-          <line-example></line-example>
+          <h2>Bureau</h2>
+          <Table></Table>
         </div>
       </div>
+
       <div class="Chart__list">
         <div class="Chart">
           <h2>Charts</h2>
@@ -28,11 +29,14 @@
 <script>
 import LineExample from './figures/LineChart.js'
 import Doughnut from './figures/DoughnutChart.js'
+import Table from './figures/Table.vue'
+
 export default {
   name: 'app',
   components: {
     LineExample,
-    Doughnut
+    Doughnut,
+    Table
   }
 }
 </script>
@@ -65,5 +69,6 @@ export default {
 .Chart__list {
   flex-grow: 1;
   margin-right: 20px;
+
 }
 </style>
