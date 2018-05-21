@@ -2,7 +2,7 @@
     <div class="container">
       <div class="Chart__list">
         <div class="Chart">
-          <h2>Charts</h2>
+          <h2>Trésorerie</h2>
           <line-example></line-example>
         </div>
 
@@ -11,18 +11,19 @@
           <Table></Table>
         </div>
       </div>
-
       <div class="Chart__list">
         <div class="Chart">
-          <h2>Charts</h2>
+          <h2>Matériel</h2>
           <Doughnut></Doughnut>
         </div>
-
         <div class="Chart">
-          <h2>Charts</h2>
-          <line-example></line-example>
+          <h2>Calendar</h2>
+          <p>placeholder for the real one</p>
+          <Agenda></Agenda>
         </div>
       </div>
+
+
     </div>
 </template>
 
@@ -30,13 +31,15 @@
 import LineExample from './figures/LineChart.js'
 import Doughnut from './figures/DoughnutChart.js'
 import Table from './figures/Table.vue'
-
+import Agenda from './figures/Agenda.vue'
 export default {
   name: 'app',
   components: {
     LineExample,
     Doughnut,
-    Table
+    Table,
+    Agenda
+
   }
 }
 </script>
@@ -57,9 +60,10 @@ export default {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+
 }
 .Chart {
-  background: #212733;
+  background: #23262D;
   border-radius: 15px;
   box-shadow: 0px 2px 15px rgba(25, 25, 25, 0.27);
   margin: 0;
