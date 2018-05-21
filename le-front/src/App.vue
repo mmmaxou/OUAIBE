@@ -25,6 +25,8 @@ html
   padding 0
   box-sizing border-box
   background #222328
+  width 100vw
+  overflow-x hidden
 
 *
   margin inherit
@@ -45,4 +47,5 @@ html
 
     .router-container
       padding 20px
+      width 100%
 </style>

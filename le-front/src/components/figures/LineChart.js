@@ -1,6 +1,7 @@
 import {Line} from 'vue-chartjs'
 
-export default Line.extend({
+export default {
+  extends: Line,
   data () {
     return {
       gradient: null,
@@ -31,4 +32,4 @@ export default Line.extend({
     }, {responsive: true, maintainAspectRatio: false})
 
   }
-})
+}
