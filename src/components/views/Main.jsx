@@ -4,8 +4,8 @@ import ExampleComponent from '../ExampleComponent'
 export default (state, actions) => {
   return (
     <div>
-      {console.log(state)}
-      {console.log(actions)}
+      {console.log('state', state)}
+      {console.log('actions', actions)}
       <h1>Allons coder le ouaibe(h1)</h1>
       <h2>Un h2</h2>
       <h3>Un h3</h3>

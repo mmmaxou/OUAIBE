@@ -6,6 +6,7 @@ import {
 import actions from './actions'
 import state from './state'
 import view from './components/views/Main'
+import runTestAPI from './API/Tests'
 
 /*
 RAPPEL :
@@ -26,7 +27,7 @@ Une application hyperapp prend 4 paramètres:
 4. Le noeud DOM dans lequel l'application devra dessiner. Ici on prend `document.body` mais on pourrait dessiner
    une application Hyperapp dans une sous-partie d'une page web.
  */
-
+runTestAPI()
 app(
   state,
   actions,
