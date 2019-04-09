@@ -41,13 +41,14 @@
     "no-undef": "warn",
     "no-unreachable": "warn",
     "no-trailing-spaces": "warn",
-    "no-mutation": "warn",
     "eol-last": "warn",
     "quotes": "warn",
     "valid-typeof": "warn",
     "fp/no-unused-expression": "off",
     "fp/no-nil": "off",
-    "no-unused-vars": [2, { "varsIgnorePattern": "h" }],
+    "no-unused-vars": [2, {
+      "varsIgnorePattern": "h"
+    }],
     "react/jsx-uses-vars": "warn"
   },
 

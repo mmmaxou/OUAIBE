@@ -7,6 +7,9 @@
   "plugins": [
     "@babel/plugin-transform-destructuring",
     "@babel/plugin-proposal-object-rest-spread",
-    ["transform-react-jsx", { "pragma": "h" }]
+    "@babel/transform-runtime",
+    ["transform-react-jsx", {
+      "pragma": "h"
+    }],
   ]
 }
