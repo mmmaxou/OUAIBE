@@ -67,15 +67,16 @@ $app->singleton(
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
+
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+ ]);
+
 $app->routeMiddleware([
     'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
     'ability' => App\Http\Middleware\TokenEntrustAbility::class,
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
-$app->middleware([
-    App\Http\Middleware\CorsMiddleware::class
- ]);
-
 /*
   |--------------------------------------------------------------------------
   | Register Service Providers
