@@ -72,6 +72,9 @@ $app->routeMiddleware([
     'ability' => App\Http\Middleware\TokenEntrustAbility::class,
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
+$app->middleware([
+    App\Http\Middleware\CorsMiddleware::class
+ ]);
 
 /*
   |--------------------------------------------------------------------------
