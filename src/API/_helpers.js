@@ -10,10 +10,11 @@ import {
  */
 export const createUri = (route, object) => {
   /// https://github.com/Freeboard/thingproxy
-  const proxy = 'https://thingproxy.freeboard.io/fetch/'
   const uri = BASE_URL + route + '?'
   const params = Object.entries(object).map(pair => pair.join('=')).join('&')
-  return proxy + uri + params
+  return uri + params
+  // const proxy = 'https://thingproxy.freeboard.io/fetch/'
+  // return proxy + uri + params
 }
 
 /**
