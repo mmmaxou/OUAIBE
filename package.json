@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
+    "test": "mocha -b --require @babel/register --colors -w test/**/*.js",
     "start": "webpack-dashboard -m -- webpack-dev-server --port 4000",
     "start:inline": "webpack-dev-server --port 4000",
     "prod": "NODE_ENV=production webpack --progress"
@@ -11,10 +12,6 @@
     "type": "git",
     "url": "https://github.com/mmmaxou/OUAIBE"
   },
-  "keywords": [
-    "fetch",
-    "functional"
-  ],
   "author": "Maximilien Pluchard / Olivier Meyer / Nicolas Senecal",
   "license": "MIT",
   "bugs": {

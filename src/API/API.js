@@ -1,7 +1,11 @@
-import Member from './Members'
-import Connect from './Connect'
+import {
+  Members
+} from './Members'
+import {
+  Connect
+} from './Connect'
 const API = {
-  Member,
+  Members,
   Connect
 }
 export default API

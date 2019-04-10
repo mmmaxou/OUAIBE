@@ -3,7 +3,9 @@ import {
   setCookie,
   getCookie,
   serverError,
-  deleteCookie
+  deleteCookie,
+  error,
+  success
 } from './_helpers'
 
 import {
@@ -32,23 +34,20 @@ const login = (email, password) => {
     fetch(url, opt)
       .then(res => res.json())
       .then(json => resolve(json))
-      .catch(serverError)
+      .catch(err => {
+        // Erreur serveur
+        serverError(err)
+        reject(err)
+      })
   })
 }
-const Connect = {
+export const Connect = {
   /**
-   * @brief
    * Login and store the token
    *
-   * @param {string} email
-   * @param {string} password
-   *
-   * If successful, return the token :
-   * @return {string}
-   * If there is a server error, return the server error :
-   * @return {Error}
-   * If there is a connection error, return the message
-   * @return {Error}
+   * @param {string} email The email
+   * @param {string} password The password
+   * @return {Promise}
    */
   loginAndStoreToken (email, password) {
     return new Promise((resolve, reject) => {
@@ -56,12 +55,11 @@ const Connect = {
         .then(json => {
           if (json.message) {
             // Mot de passe ou identifiant incorrect
-            reject(json.message)
-            console.error(json.message)
+            reject(error(json.message))
           } else {
             // Identification reussie
             setCookie(TOKEN_NAME, json.access_token, json.expires_in)
-            resolve(json.access_token)
+            resolve(success(json.access_token))
           }
         })
         .catch(err => {
@@ -73,11 +71,10 @@ const Connect = {
   },
 
   /**
-   * @brief
    * Return the stored Token or create a new one
    *
    * Creation is debug purpose only
-   * @return {string}
+   * @return {Promise}
    */
   async getToken () {
     const token = getCookie(TOKEN_NAME) || await Connect.loginAndStoreToken('admin', 'admin').catch(serverError)
@@ -85,20 +82,12 @@ const Connect = {
   },
 
   /**
-   * @brief
    * Logout the user
    *
-   * @param {string=} userToken
-   *
-   * If successful, return the message :
-   * @return {string}
-   * If there is a server error, return the server error :
-   * @return {Error}
-   * If the token is invalid, return the message
-   * @return {Error}
+   * @return {Promise}
    */
   logout () {
-    return new Promise(async (resolve) => {
+    return new Promise(async (resolve, reject) => {
       const token = await Connect.getToken()
       const url = createUri('logout', {
         token
@@ -111,30 +100,28 @@ const Connect = {
         .then(res => {
           if (res.status === 200) {
             // Logout successfull
-            res.json().then(json => resolve(json.message))
+            res.json().then(json => resolve(success(json.message)))
             deleteCookie(TOKEN_NAME)
           } else {
             // Unauthorized
-            resolve(res)
+            resolve(error(res))
           }
         })
-        .catch(serverError)
+        .catch(err => {
+          // Erreur serveur
+          serverError(err)
+          reject(err)
+        })
     })
   },
 
   /**
-   * @brief
    * Refresh the token
    *
-   * @param {string=} userToken
-   *
-   * If successful, return the new token :
-   * @return {string}
-   * If there is a server error, return the server error :
-   * @return {Error}
+   * @return {Promise}
    */
   refresh () {
-    return new Promise(async (resolve) => {
+    return new Promise(async (resolve, reject) => {
       const token = await Connect.getToken()
       const url = createUri('refresh', {
         token
@@ -149,20 +136,29 @@ const Connect = {
             // Logout successfull
             res.json()
               .then(json => {
-                resolve(json.access_token)
+                resolve(success(json.access_token))
                 setCookie(TOKEN_NAME, json.access_token, json.expires_in)
               })
           } else {
             // Unauthorized
-            resolve(res)
+            resolve(error(res))
           }
         })
-        .catch(serverError)
+        .catch(err => {
+          // Erreur serveur
+          serverError(err)
+          reject(err)
+        })
     })
   },
 
+  /**
+   * Give information about the currently connected token
+   *
+   * @return {Promise}
+   */
   me () {
-    return new Promise(async (resolve) => {
+    return new Promise(async (resolve, reject) => {
       const token = await Connect.getToken()
       const url = createUri('me', {
         token
@@ -178,16 +174,18 @@ const Connect = {
             res.json()
               .then(json => {
                 const user = createMember(json)
-                resolve(user)
+                resolve(success(user))
               })
           } else {
             // Unauthorized
-            resolve(res)
+            resolve(error(res))
           }
         })
-        .catch(serverError)
+        .catch(err => {
+          // Erreur serveur
+          serverError(err)
+          reject(err)
+        })
     })
   }
 }
-
-export default Connect
