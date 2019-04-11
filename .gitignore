@@ -27,6 +27,7 @@ build/Release
 node_modules
 package-lock.json
 yarn.lock
+lumen
 
 # Remove some common IDE working directories
 .idea

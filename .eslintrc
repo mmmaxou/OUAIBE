@@ -49,7 +49,8 @@
     "no-unused-vars": [2, {
       "varsIgnorePattern": "h"
     }],
-    "react/jsx-uses-vars": "warn"
+    "react/jsx-uses-vars": "warn",
+    "semi": "error"
   },
 
   "extends": ["standard", "plugin:fp/recommended"]

@@ -11,7 +11,16 @@ import {
 export const createUri = (route, object) => {
   /// https://github.com/Freeboard/thingproxy
   const uri = BASE_URL + route + '?'
-  const params = Object.entries(object).map(pair => pair.join('=')).join('&')
+  const params = Object.entries(object)
+    .map(pair => {
+      if (pair[1] instanceof Array) {
+        const flatted = pair[1].map(e => [pair[0], e].join('=')).join('&')
+        return flatted
+      } else {
+        return pair.join('=')
+      }
+    })
+    .join('&')
   return uri + params
   // const proxy = 'https://thingproxy.freeboard.io/fetch/'
   // return proxy + uri + params
@@ -71,7 +80,33 @@ export const success = (obj) => ({
   data: obj,
   successful: true
 })
+
 export const error = (obj) => ({
   data: obj,
   successful: false
+})
+
+export const handleServerResponse = (resolve) => (res) => {
+  if (res.status >= 200 && res.status < 300) {
+    // Get all successful
+    res.json().then(json => {
+      resolve(success(json.data))
+    })
+  } else if (res.status >= 400 && res.status < 500) {
+    res.json().then(json => {
+      resolve(error(json))
+    })
+  } else {
+    // Unauthorized
+    resolve(error(res))
+  }
+}
+export const handleServerError = (reject) => (err) => {
+  // Erreur serveur
+  serverError(err)
+  reject(err)
+}
+export const createOpt = (method) => ({
+  method,
+  mode: 'cors'
 })

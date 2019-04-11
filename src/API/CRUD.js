@@ -3,120 +3,75 @@ import {
 } from './Connect'
 import {
   createUri,
-  serverError,
-  success,
-  error
+  createOpt,
+  handleServerResponse,
+  handleServerError
 } from './_helpers'
 
 export default (endpoint) => {
   return {
     getAll () {
-      return new Promise(async (resolve) => {
+      return new Promise(async (resolve, reject) => {
         const token = await Connect.getToken()
-        const url = createUri(endpoint, {
-          token
-        })
-        const opt = {
-          mode: 'cors',
-          method: 'GET'
-        }
+        const url = createUri(endpoint, { token })
+        const opt = createOpt('GET')
         fetch(url, opt)
-          .then(res => {
-            if (res.status === 200) {
-              // Get all successful
-              res.json().then(json => {
-                resolve(success(json.data))
-              })
-            } else {
-              // Unauthorized
-              resolve(error(res))
-            }
-          })
-          .catch(serverError)
+          .then(handleServerResponse(resolve))
+          .catch(handleServerError(reject))
       })
     },
     getOne (id) {
       console.assert(id, 'No id given')
-      return new Promise(async (resolve) => {
+      return new Promise(async (resolve, reject) => {
         const token = await Connect.getToken()
-        const url = createUri(endpoint + '/' + id, {
-          token
-        })
-        const opt = {
-          mode: 'cors',
-          method: 'GET'
-        }
+        const url = createUri(endpoint + '/' + id, { token })
+        const opt = createOpt('GET')
         fetch(url, opt)
-          .then(res => {
-            if (res.status === 200) {
-              // Get one
-              res.json().then(json => {
-                resolve(success(json.data))
-              })
-            } else {
-              // Unauthorized
-              resolve(error(res))
-            }
-          })
-          .catch(serverError)
+          .then(handleServerResponse(resolve))
+          .catch(handleServerError(reject))
+      })
+    },
+    count () {
+      return new Promise(async (resolve, reject) => {
+        const token = await Connect.getToken()
+        const url = createUri(endpoint + '/count', { token })
+        const opt = createOpt('GET')
+        fetch(url, opt)
+          .then(handleServerResponse(resolve))
+          .catch(handleServerError(reject))
       })
     },
     create (obj) {
       console.assert(obj, 'No obj given')
-      return new Promise(async (resolve) => {
+      return new Promise(async (resolve, reject) => {
         const token = await Connect.getToken()
-        const url = createUri(endpoint, {
-          token,
-          ...obj
-        })
-        const opt = {
-          mode: 'cors',
-          method: 'POST'
-        }
+        const url = createUri(endpoint, { token, ...obj })
+        const opt = createOpt('POST')
         fetch(url, opt)
-          .then(res => {
-            if (res.status === 200) {
-              res.json().then(json => {
-                // Je ne sais pas si c'est mieux de mettre.data ou juste data
-                resolve(success(json.data))
-              })
-            } else if (res.status === 422) {
-              res.json().then(json => {
-                resolve(error(json))
-              })
-            } else {
-              // Unauthorized
-              resolve(error(res))
-            }
-          })
-          .catch(serverError)
+          .then(handleServerResponse(resolve))
+          .catch(handleServerError(reject))
       })
     },
     delete (id) {
       console.assert(id, 'No id given')
-      return new Promise(async (resolve) => {
+      return new Promise(async (resolve, reject) => {
         const token = await Connect.getToken()
-        const url = createUri(endpoint + '/' + id, {
-          token
-        })
-        const opt = {
-          mode: 'cors',
-          method: 'DELETE'
-        }
+        const url = createUri(endpoint + '/' + id, { token })
+        const opt = createOpt('DELETE')
         fetch(url, opt)
-          .then(res => {
-            console.log('res', res)
-            if (res.status === 200) {
-              // Get one
-              res.json().then(json => {
-                resolve(success(json.data))
-              })
-            } else {
-              // Unauthorized
-              resolve(error(res))
-            }
-          })
-          .catch(serverError)
+          .then(handleServerResponse(resolve))
+          .catch(handleServerError(reject))
+      })
+    },
+    update (id, obj) {
+      console.assert(id, 'No id given')
+      return new Promise(async (resolve, reject) => {
+        const token = await Connect.getToken()
+        const url = createUri(endpoint + '/' + id, { token, ...obj })
+        const opt = createOpt('PUT')
+        fetch(url, opt)
+          .then(handleServerResponse(resolve))
+          .catch(handleServerError(reject))
       })
     }
   }

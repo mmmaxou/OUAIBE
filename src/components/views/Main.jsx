@@ -1,11 +1,9 @@
 import { h } from 'hyperapp'
 import ExampleComponent from '../ExampleComponent'
 
-export default (state, actions) => {
+export default () => {
   return (
     <div>
-      {console.log('state', state)}
-      {console.log('actions', actions)}
       <h1>Allons coder le ouaibe(h1)</h1>
       <h2>Un h2</h2>
       <h3>Un h3</h3>
