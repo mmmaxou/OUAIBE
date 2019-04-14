@@ -36,7 +36,10 @@ export const newStucture = (name, type, requiredProps) => {
         .filter(prop => prop[1] !== undefined)
         .map(prop => {
           if (prop[0].endsWith('_id') ||
-              prop[0] === 'quantity') {
+              prop[0] === 'quantity' ||
+              prop[0] === 'materials_count' ||
+              prop[0] === 'output' ||
+              prop[0] === 'input') {
             return [prop[0], Number(prop[1])]
           }
           return prop

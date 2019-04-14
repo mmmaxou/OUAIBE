@@ -1,12 +1,17 @@
 import API from './API'
 import { Structures } from '../structures/Structures'
+import { getFormattedDate } from './_helpers'
 const TESTS = {
   Connect: false,
-  Materialss: false,
+  Members: false,
   Materials: false,
   Roles: false,
   Permissions: false,
-  Sponsors: true
+  Sponsors: false,
+  Transactions: false,
+  MetaDatas: true,
+  TypeMaterials: false,
+  Images: false
 }
 export default async () => {
   console.log('=== Running test for api call ===')
@@ -17,6 +22,10 @@ export default async () => {
   await testRoles()
   await testPermissions()
   await testSponsors()
+  await testTransactions()
+  await testMetaDatas()
+  await testTypeMaterials()
+  await testImages()
   console.log('=== All tests done ===')
 }
 
@@ -89,5 +98,53 @@ async function testSponsors () {
     console.log('    = #update =', await API.Sponsors.update(2, updatedSponsor))
     console.log('    = #create =', await API.Sponsors.create(sponsor))
     console.log('    = #delete =', await API.Sponsors.delete(22))
+  }
+}
+async function testTransactions () {
+  if (TESTS.Transactions) {
+    const transaction = Structures.Transaction.createNew(getFormattedDate(), -15.2, 59.1)
+    const updatedTransaction = Structures.Transaction.createNew(getFormattedDate(), -6, 48, 'Achat de lumières fluos.')
+    console.log('  == Transactions ==')
+    console.log('    = #getAll =', await API.Transactions.getAll())
+    console.log('    = #getOne =', await API.Transactions.getOne(1))
+    console.log('    = #update =', await API.Transactions.update(2, updatedTransaction))
+    console.log('    = #create =', await API.Transactions.create(transaction))
+    console.log('    = #delete =', await API.Transactions.delete(22))
+  }
+}
+async function testMetaDatas () {
+  if (TESTS.MetaDatas) {
+    const metaData = Structures.MetaData.createNew('testKey', 'testValue')
+    console.log('Metadata : ', metaData)
+    console.log('  == Transactions ==')
+    console.log('    = #getAll =', await API.MetaDatas.getAll())
+    console.log('    = #getOne =', await API.MetaDatas.getOne('siteColor'))
+    console.log('    = #create =', await API.MetaDatas.create(metaData))
+    console.log('    = #update =', await API.MetaDatas.update('facebook_PrivateLink', 'cuisine facile'))
+    console.log('    = #delete =', await API.MetaDatas.delete(metaData.metaKey))
+  }
+}
+async function testTypeMaterials () {
+  if (TESTS.TypeMaterials) {
+    const typeMaterial = Structures.TypeMaterial.createNew('Audiovisuel', 1)
+    const updatedTypeMaterial = Structures.TypeMaterial.createNew('Cinema', 2)
+    console.log('  == TypeMaterials ==')
+    console.log('    = #getAll =', await API.TypeMaterials.getAll())
+    console.log('    = #getOne =', await API.TypeMaterials.getOne(1))
+    console.log('    = #update =', await API.TypeMaterials.update(2, updatedTypeMaterial))
+    console.log('    = #create =', await API.TypeMaterials.create(typeMaterial))
+    console.log('    = #delete =', await API.TypeMaterials.delete(22))
+    console.log('    = #material =', await API.TypeMaterials.material())
+    console.log('    = #materialCount =', await API.TypeMaterials.materialCount())
+  }
+}
+async function testImages () {
+  if (TESTS.Images) {
+    const image = Structures.Image.createNew('Audiovisuel')
+    console.log('  == Images ==')
+    console.log('    = #getAll =', await API.Images.getAll())
+    console.log('    = #getOne =', await API.Images.getOne(1))
+    console.log('    = #create =', await API.Images.create(image))
+    console.log('    = #delete =', await API.Images.delete(22))
   }
 }

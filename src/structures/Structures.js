@@ -50,5 +50,35 @@ export const Structures = {
       phoneNumber,
       image_id
     })
+  },
+  Transaction: {
+    ...(newStucture('Transaction', structure_types.TRANSACTION, ['dateTransaction', 'output', 'input'])),
+    createNew: (dateTransaction, output, input, shortDescription = undefined) => Structures.Transaction.create({
+      dateTransaction,
+      output,
+      input,
+      shortDescription
+    })
+  },
+  TypeMaterial: {
+    ...(newStucture('TypeMaterial', structure_types.TYPE_MATERIAL, ['name', 'image_id'])),
+    createNew: (name, image_id) => Structures.TypeMaterial.create({
+      name,
+      image_id
+    })
+  },
+  MetaData: {
+    ...(newStucture('MetaData', structure_types.METADATA, ['metaKey', 'metaValue'])),
+    createNew: (metaKey, metaValue, description = undefined) => Structures.MetaData.create({
+      metaKey,
+      metaValue,
+      description
+    })
+  },
+  Image: {
+    ...(newStucture('Image', structure_types.IMAGE, ['name'])),
+    createNew: (name) => Structures.Image.create({
+      name
+    })
   }
 }

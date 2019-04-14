@@ -1,6 +1,7 @@
 import {
   BASE_URL
 } from './Config'
+import * as dateFormat from 'dateformat'
 
 /**
  * Create a URL with the given object correctly formatted for the server
@@ -12,6 +13,12 @@ export const createUri = (route, object) => {
   /// https://github.com/Freeboard/thingproxy
   const uri = BASE_URL + route + '?'
   const params = Object.entries(object)
+    .filter(pair => {
+      if (pair[0] === 'structure_type') {
+        return false
+      }
+      return true
+    })
     .map(pair => {
       if (pair[1] instanceof Array) {
         const flatted = pair[1].map(e => [pair[0], e].join('=')).join('&')
@@ -101,6 +108,7 @@ export const handleServerResponse = (resolve) => (res) => {
     resolve(error(res))
   }
 }
+export const getFormattedDate = () => dateFormat(new Date(), 'yyyy-mm-dd')
 export const handleServerError = (reject) => (err) => {
   // Erreur serveur
   serverError(err)
