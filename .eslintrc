@@ -41,6 +41,8 @@
     "no-undef": "warn",
     "no-unreachable": "warn",
     "no-trailing-spaces": "warn",
+    "fp/no-mutation": "warn,
+    "no-mutation": "warn,
     "eol-last": "warn",
     "quotes": "warn",
     "valid-typeof": "warn",

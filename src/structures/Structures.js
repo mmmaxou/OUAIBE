@@ -13,7 +13,7 @@ export const Structures = {
     })
   },
   Member: {
-    ...(newStucture('Member', structure_types.MEMBER, ['email', 'firstName', 'lastName', 'lastPaymentDate', 'phoneNumber', 'role', 'role_id'])),
+    ...(newStucture('Member', structure_types.MEMBER, ['email', 'firstName', 'lastName', 'phoneNumber', 'role_id'])),
     createNew: (email, firstName, lastName, phoneNumber, role_id, password = undefined, images = undefined) => Structures.Member.create({
       email,
       firstName,
