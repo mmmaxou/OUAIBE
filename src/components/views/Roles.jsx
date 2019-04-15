@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
-import RolesHeader from '../RolesHeader'
-import RolesList from '../RolesList'
+import RolesHeader from '../Roles/RolesHeader'
+import RolesList from '../Roles/RolesList'
 
 export default (/* state, actions */) => {
   return (

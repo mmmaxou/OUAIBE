@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
-import MaterialsHeader from '../MaterialsHeader'
-import MaterialsList from '../MaterialsList'
+import MaterialsHeader from '../Materials/MaterialsHeader'
+import MaterialsList from '../Materials/MaterialsList'
 
 export default (/* state, actions */) => {
   return (

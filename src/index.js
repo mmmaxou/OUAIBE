@@ -3,6 +3,7 @@ import {
 } from 'hyperapp'
 // import logger from '@hyperapp/logger'
 
+import { location } from '@hyperapp/router'
 import actions from './actions'
 import state from './state'
 import view from './components/views/Main'
@@ -28,9 +29,11 @@ Une application hyperapp prend 4 paramètres:
    une application Hyperapp dans une sous-partie d'une page web.
  */
 runTestAPI()
-app(
+const main = app(
   state,
   actions,
   view,
   document.body
 )
+const unsubscribe = location.subscribe(main.location)
+console.log('unsubscribe: ', unsubscribe)
