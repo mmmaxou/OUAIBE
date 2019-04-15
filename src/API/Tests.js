@@ -9,7 +9,7 @@ const TESTS = {
   Permissions: false,
   Sponsors: false,
   Transactions: false,
-  MetaDatas: true,
+  MetaDatas: false,
   TypeMaterials: false,
   Images: false
 }
@@ -43,7 +43,7 @@ async function testMembers () {
   if (TESTS.Members) {
     const member = Structures.Member.createNew('randdom@gmail.com', 'jean', 'paul', '0652070765', 1)
     const member2 = Structures.Member.createNew('randdom@gmail.com', 'jean', 'paul', '0652070765', 1, '123456', [5, 9])
-    const updatedMember = Structures.Member.createNew('updatedEmail@gmail.com', 'updatedPassword', 'updatedName', 'updatedLastname', '0652070765', 1)
+    const updatedMember = Structures.Member.createNew('updatedEmail@gmail.com', 'updatedName', 'updatedLastname', '0652070765', 1)
     console.log('  == Members ==')
     console.log('    = #getAll =', await API.Members.getAll())
     console.log('    = #getOne =', await API.Members.getOne(1))
@@ -116,7 +116,7 @@ async function testMetaDatas () {
   if (TESTS.MetaDatas) {
     const metaData = Structures.MetaData.createNew('testKey', 'testValue')
     console.log('Metadata : ', metaData)
-    console.log('  == Transactions ==')
+    console.log('  == Metadatas ==')
     console.log('    = #getAll =', await API.MetaDatas.getAll())
     console.log('    = #getOne =', await API.MetaDatas.getOne('siteColor'))
     console.log('    = #create =', await API.MetaDatas.create(metaData))
