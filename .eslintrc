@@ -42,7 +42,7 @@
     "no-unreachable": "warn",
     "no-trailing-spaces": "warn",
     "fp/no-mutation": "warn",
-    "no-mutation": "warn",
+    "no-mutation": "off",
     "eol-last": "warn",
     "quotes": "warn",
     "valid-typeof": "warn",
