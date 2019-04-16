@@ -1,7 +1,6 @@
 import {
   app
 } from 'hyperapp'
-// import logger from '@hyperapp/logger'
 
 import { location } from '@hyperapp/router'
 import actions from './actions'
@@ -28,12 +27,9 @@ Une application hyperapp prend 4 paramètres:
 4. Le noeud DOM dans lequel l'application devra dessiner. Ici on prend `document.body` mais on pourrait dessiner
    une application Hyperapp dans une sous-partie d'une page web.
  */
+
 runTestAPI()
-const main = app(
-  state,
-  actions,
-  view,
-  document.body
-)
+
+const main = app(state, actions, view, document.body)
 const unsubscribe = location.subscribe(main.location)
 console.log('unsubscribe: ', unsubscribe)

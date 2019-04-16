@@ -1,7 +1,7 @@
 import { location } from '@hyperapp/router'
 
 export default {
-  location: location.state,
+  location: location.actions,
   exampleSetState: (value) => (state) => ({
     ...state,
     input: {...state.input, value: value}
