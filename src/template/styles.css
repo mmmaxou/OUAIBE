@@ -49,7 +49,6 @@ html, body {
   flex-direction: column;
   justify-content: flex-end;
   padding: 16px;
-  height: 151px;
 }
 
 .bdi-drawer-header>.mdl-layout__header-row {
@@ -88,8 +87,16 @@ html, body {
   max-width: 1080px;
 }
 
-.bdi-charts {
+.bdi-card-grid {
   align-items: center;
+}
+.bdi-card {
+  padding:0;
+}
+.bdi-card-header, .bdi-card-content {
+  margin: 0px;
+  padding:16px;
+  width:100%;
 }
 .bdi-chart:nth-child(1) {
   color: #ACEC00;
