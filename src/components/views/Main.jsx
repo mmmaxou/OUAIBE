@@ -11,13 +11,14 @@ export default () => {
   return (
     <div>
       <Menu />
-      Le menu
+      <p>Le menu</p>
       <Switch>
-        <Route path='*' render={Home}></Route>
+        <Route path='/' render={Home}></Route>
         <Route path='/members' render={Members}></Route>
         <Route path='/materials' render={Materials}></Route>
         <Route path='/roles' render={Roles}></Route>
         <Route path='/sponsors' render={Sponsors}></Route>
+        <Route path='/members/:id' render={Members}></Route>
       </Switch>
     </div>
   )

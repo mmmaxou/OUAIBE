@@ -32,4 +32,4 @@ runTestAPI()
 
 const main = app(state, actions, view, document.body)
 const unsubscribe = location.subscribe(main.location)
-console.log('unsubscribe: ', unsubscribe)
+console.assert('unsubscribe: ', unsubscribe)
