@@ -4,6 +4,7 @@ import SponsorEntry from './SponsorEntry'
 export default (/* props */) => {
   return (
     <div>
+      <SponsorEntry />
     </div>
   )
 }

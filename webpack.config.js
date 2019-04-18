@@ -16,7 +16,7 @@ const config = {
   ],
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, './lib'),
+    path: path.resolve(__dirname, '/lib/'),
     filename: 'bundle.js',
     library: libraryName,
     libraryTarget: 'umd',
@@ -59,7 +59,12 @@ const config = {
       allChunks: true
     }),
     new DashboardPlugin()
-  ]
+  ],
+  devServer: {
+    port: 4000,
+    open: true,
+    historyApiFallback: true
+  }
 }
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(new UglifyJSPlugin())
