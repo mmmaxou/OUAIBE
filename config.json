@@ -1,3 +1,4 @@
 {
-  "BASE_URL": "https://bdi.nicolassenecal.com/api/"
+  "BASE_URL": "https://bdi.nicolassenecal.com/api/",
+  "CACHE_TIME" : 300
 }
