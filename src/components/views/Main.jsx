@@ -7,14 +7,16 @@ import Roles from './Roles'
 import Sponsors from './Sponsors'
 import Home from './Home'
 
-export default () => {
+export default (state, actions) => {
+  console.log(state)
+  console.log(actions)
   return (
     <div>
       <Menu />
       <p>Le menu</p>
       <Switch>
         <Route path='/' render={Home}></Route>
-        <Route path='/members' render={Members}></Route>
+        <Route path='/members' render={() => Members(state, actions)}></Route>
         <Route path='/materials' render={Materials}></Route>
         <Route path='/roles' render={Roles}></Route>
         <Route path='/sponsors' render={Sponsors}></Route>

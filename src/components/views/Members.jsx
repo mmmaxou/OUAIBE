@@ -2,21 +2,14 @@ import { h } from 'hyperapp'
 import MembersHeader from '../Members/MembersHeader'
 import MembersList from '../Members/MembersList'
 
-export default ({location, match}) => {
-  const params = match.params || {}
+export default (state, actions) => {
+  console.log("state")
+  console.log(state.members.data)
+  
   return (
-    <div>
+    <div oncreate={() => actions.members.getAll()}>
       <p>Member view</p>
-      <h3>Location: {location.pathname}</h3>
-      <p>Les params : </p>
-      {console.log(match)}
-      {
-        Object.keys(params).map(key => (
-          <li>
-            {key} : {params[key]}
-          </li>
-        ))
-      }
+      <h3>Members </h3>
       <MembersHeader />
       <MembersList />
     </div>
