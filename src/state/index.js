@@ -2,5 +2,12 @@ import { location } from '@hyperapp/router'
 
 export default {
   location: location.state,
-  a: 'a'
+  members: {
+    lastRefresh: 0,
+    data: []
+  },
+  sponsors: {
+    lastRefresh: 0,
+    data: []
+  }
 }
