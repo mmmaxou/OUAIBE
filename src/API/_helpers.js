@@ -1,6 +1,6 @@
 import {
   BASE_URL
-} from './Config'
+} from '../../config.json'
 import * as dateFormat from 'dateformat'
 
 /**
