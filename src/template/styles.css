@@ -14,34 +14,70 @@
  * limitations under the License.
  */
 
+
+
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
+
+  --blue-grey     : #607D8B;
+  --blue-grey-50  : #ECEFF1;
+  --blue-grey-100 : #CFD8DC;
+  --blue-grey-200 : #B0BEC5;
+  --blue-grey-300 : #90A4AE;
+  --blue-grey-400 : #78909C;
+  --blue-grey-500 : #607D8B;
+  --blue-grey-600 : #546E7A;
+  --blue-grey-700 : #455A64;
+  --blue-grey-800 : #37474F;
+  --blue-grey-900 : #263238;
+
+  --grey     : #9E9E9E;
+  --grey-50  : #FAFAFA;
+  --grey-100 : #F5F5F5;
+  --grey-200 : #EEEEEE;
+  --grey-300 : #E0E0E0;
+  --grey-400 : #BDBDBD;
+  --grey-500 : #9E9E9E;
+  --grey-600 : #757575;
+  --grey-700 : #616161;
+  --grey-800 : #424242;
+  --grey-900 : #212121;
+
+  --red     : #f44336;
+  --red-50  : #ffebee;
+  --red-100 : #ffcdd2;
+  --red-200 : #ef9a9a;
+  --red-300 : #e57373;
+  --red-400 : #ef5350;
+  --red-500 : #f44336;
+  --red-600 : #e53935;
+  --red-700 : #d32f2f;
+  --red-800 : #c62828;
+  --red-900 : #b71c1c;
 }
-.bdi-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
+
+/*BUTTONS*/
+.mdl-menu {
+  background-color: var(--grey-600);
 }
-.bdi-layout .mdl-layout__header .mdl-layout__drawer-button {
-  color: rgba(0, 0, 0, 0.54);
+.mdl-menu .mdl-menu__item {
+  color: var(--grey-50);
 }
-.mdl-layout__drawer .avatar {
-  margin-bottom: 16px;
+.mdl-menu .mdl-menu__item:hover {
+  background-color: var(--grey-700);
 }
+
+/*HEADER*/
+.bdi-header {
+  background-color: var(--grey-800);
+  color : var(--grey-400);
+}
+
+/*MENU*/
 .bdi-drawer {
+  background-color: var(--grey-700);
+  color: var(--grey-50);
   border: none;
-}
-/* iOS Safari specific workaround */
-.bdi-drawer .mdl-menu__container {
-  z-index: -1;
-}
-.bdi-drawer .bdi-navigation {
-  z-index: -2;
-}
-/* END iOS Safari specific workaround */
-.bdi-drawer .mdl-menu .mdl-menu__item {
-  display: flex;
-  align-items: center;
 }
 .bdi-drawer-header {
   box-sizing: border-box;
@@ -50,9 +86,13 @@ html, body {
   justify-content: flex-end;
   padding: 16px;
 }
-
 .bdi-drawer-header>.mdl-layout__header-row {
   padding: 0;
+}
+.bdi-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
 }
 
 .bdi-avatar-dropdown {
@@ -65,39 +105,65 @@ html, body {
 
 .bdi-navigation {
   flex-grow: 1;
+  background-color: var(--grey-800);
 }
+
 .bdi-layout .bdi-navigation .mdl-navigation__link {
   display: flex !important;
   flex-direction: row;
   align-items: center;
-  color: rgba(255, 255, 255, 0.56);
+  color: white;
   font-weight: 500;
 }
 .bdi-layout .bdi-navigation .mdl-navigation__link:hover {
-  background-color: #00BCD4;
-  color: #37474F;
+  background-color: var(--red);
 }
 .bdi-navigation .mdl-navigation__link .material-icons {
   font-size: 24px;
-  color: rgba(255, 255, 255, 0.56);
+  color: var(--grey-500);
   margin-right: 32px;
 }
+.bdi-layout .bdi-navigation .mdl-navigation__link:hover .material-icons {
+  color: var(--grey-50);
+}
 
+/*CONTENT*/
+.mdl-layout__content {
+  background-color: var(--grey-900);
+}
 .bdi-content {
   max-width: 1080px;
 }
 
-.bdi-card-grid {
-  align-items: center;
-}
 .bdi-card {
+  background-color: var(--grey-800);
+  color: white;
   padding:0;
 }
-.bdi-card-header, .bdi-card-content {
+.bdi-table-header {
   margin: 0px;
   padding:16px;
   width:100%;
+  background-color: var(--grey-700);
 }
+.bdi-table-header button {
+  align-self: flex-end;
+  height:auto;
+}
+.bdi-table-titles {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.bdi-table-line {
+  padding:0;
+  margin:0;
+  width:100%;
+}
+.bdi-table-line-fields {
+  padding: 0;
+  margin: 0;
+}
+
 .bdi-chart:nth-child(1) {
   color: #ACEC00;
 }
@@ -116,17 +182,6 @@ html, body {
   flex-direction: column;
   align-items: stretch;
 }
-/* TODO: Find a proper solution to have the graphs
- * not float around outside their container in IE10/11.
- * Using a browserhacks.com solution for now.
- */
-_:-ms-input-placeholder, :root .bdi-graphs {
-  min-height: 664px;
-}
-_:-ms-input-placeholder, :root .bdi-graph {
-  max-height: 300px;
-}
-/* TODO end */
 .bdi-graph:nth-child(1) {
   color: #00b9d8;
 }

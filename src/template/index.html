@@ -40,7 +40,7 @@
   <body>
     <!-- HEADER -->
     <div class="bdi-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-      <header class="bdi-header mdl-layout__header mdl-color--blue-grey-800 mdl-color-text--blue-grey-100">
+      <header class="bdi-header mdl-layout__header">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">Accueil</span>
           <div class="mdl-layout-spacer"></div>
@@ -64,7 +64,7 @@
       </header>
 
       <!-- MENU -->
-      <div class="bdi-drawer mdl-layout__drawer mdl-color--blue-grey-600 mdl-color-text--blue-grey-50">
+      <div class="bdi-drawer mdl-layout__drawer">
         <header class="bdi-drawer-header">
           <div class="mdl-layout__header-row">
             <span class="mdl-layout-title mdl">Trésorier</span>
@@ -76,75 +76,114 @@
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>
-              <span class="visuallyhidden">Accounts</span>
             </button>
             <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
               <li class="mdl-menu__item">Déconnexion</li>
             </ul>
           </div>
         </header>
-          <nav class="bdi-navigation mdl-navigation mdl-color--blue-grey-700">
-          <a class="mdl-navigation__link mdl-color-text--white" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Accueil</a>
-          <a class="mdl-navigation__link mdl-color-text--white" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">contacts</i>Membres</a>
-          <a class="mdl-navigation__link mdl-color-text--white" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Stocks</a>
-          <a class="mdl-navigation__link mdl-color-text--white" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">monetization_on</i>Trésorerie</a>
-          <a class="mdl-navigation__link mdl-color-text--white" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">airport_shuttle</i>Sponsors</a>
-          <a class="mdl-navigation__link mdl-color-text--white" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">supervisor_account</i>Rôles</a>
+        <nav class="bdi-navigation mdl-navigation">
+          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">home</i>Accueil</a>
+          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">contacts</i>Membres</a>
+          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">shopping_cart</i>Stocks</a>
+          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">monetization_on</i>Trésorerie</a>
+          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">airport_shuttle</i>Sponsors</a>
+          <a class="mdl-navigation__link" href=""><i class="material-icons" role="presentation">supervisor_account</i>Rôles</a>
         </nav>
       </div>
 
       <!-- CONTENT -->
-      <main class="mdl-layout__content mdl-color--blue-grey-800">
+      <main class="mdl-layout__content">
         <div class="mdl-grid bdi-content">
 
-          <div class="bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid mdl-color--gray700">
-            <div class="bdi-card-header mdl-cell mdl-cell--12-col mdl-grid mdl-color--blue-grey-600">
-              <div class="mdl-cell mdl-cell--3-col mdl-card__title-text mdl-color-text--white">
-                Nombre de membres
+          <div class="bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="bdi-table-header mdl-cell mdl-cell--12-col mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-card__title-text">
+                52 membres
               </div>
-              <div class="mdl-cell mdl-cell--3-col mdl-card__title-text mdl-color-text--white">
-                Membre au bureau
+              <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-card__title-text">
+                21 membres au bureau
               </div>
-              <button class="mdl-cell mdl-cell--3-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              <button class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                 Copier tous les mails
               </button>
-              <div class="mdl-cell mdl-cell--3-col mdl-card__title-text mdl-color-text--white">
-                info marrante
-              </div>
-
-              <div class="mdl-cell mdl-cell--3-col mdl-card__supporting-text mdl-color-text--white">
-                <strong>Nom</strong>
-              </div>
-              <div class="mdl-cell mdl-cell--3-col mdl-card__supporting-text mdl-color-text--white">
-                <strong>Rôle</strong>
-              </div>
-              <div class="mdl-cell mdl-cell--3-col mdl-card__supporting-text mdl-color-text--white">
-                <strong>Contact</strong>
-              </div>
-              <div class="mdl-cell mdl-cell--3-col mdl-card__supporting-text mdl-color-text--white">
-                <strong>Membre depuis</strong>
+              <button class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                Ajouter un membre
+              </button>
+            </div>
+            <div class="bdi-table-titles mdl-cell mdl-cell--12-col mdl-grid">      
+              <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
+            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Membre depuis</div>
+                </div>
               </div>
             </div>
 
-            <div class="bdi-card-content mdl-cell mdl-cell--12-col mdl-grid mdl-color--blue-grey-700">
-              <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="bdi-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">%</tspan></text>
-              </svg>
-              <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="bdi-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-              </svg>
-              <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="bdi-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-              </svg>
-              <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="bdi-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-              </svg>
+            <div class="bdi-table-content mdl-cell mdl-cell--12-col mdl-grid">
+              <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                    <i class="material-icons">more_vert</i>
+                  </button>
+                </div>
+              </div>
+              <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                    <i class="material-icons">more_vert</i>
+                  </button>
+                </div>
+              </div>
+              <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                    <i class="material-icons">more_vert</i>
+                  </button>
+                </div>
+              </div>
+              <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                </div>
+                <div class="mdl-cell mdl-cell--1-col">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                    <i class="material-icons">more_vert</i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+
+
+
+
+
+
 
           <div class="bdi-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
             <svg fill="currentColor" viewBox="0 0 500 250" class="bdi-graph">
