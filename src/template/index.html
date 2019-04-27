@@ -98,84 +98,206 @@
 
           <div class="bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
             <div class="bdi-table-header mdl-cell mdl-cell--12-col mdl-grid">
-              <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-card__title-text">
+              <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-card__title-text">
                 52 membres
               </div>
-              <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-card__title-text">
+              <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-card__title-text">
                 21 membres au bureau
               </div>
-              <button class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              <button class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                 Copier tous les mails
               </button>
-              <button class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              <button class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                 Ajouter un membre
               </button>
             </div>
             <div class="bdi-table-titles mdl-cell mdl-cell--12-col mdl-grid">      
               <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
+                <div class="mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">            
             
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Nom</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Rôle</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Contact</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-typography--title">Membre depuis</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-typography--title">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-typography--title">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-typography--title">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-typography--title">Membre depuis</div>
                 </div>
               </div>
             </div>
 
             <div class="bdi-table-content mdl-cell mdl-cell--12-col mdl-grid">
               <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Membre depuis</div>
                 </div>
-                <div class="mdl-cell mdl-cell--1-col">
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <div class="bdi-table-line-edit mdl-cell mdl-cell--1-col mdl-grid">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="memberbtn0">
                     <i class="material-icons">more_vert</i>
                   </button>
+                  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="memberbtn0">
+                    <li class="mdl-menu__item">éditer</li>
+                    <li class="mdl-menu__item">supprimer</li>
+                  </ul>
                 </div>
               </div>
               <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">Membre depuis</div>
                 </div>
-                <div class="mdl-cell mdl-cell--1-col">
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <div class="bdi-table-line-edit mdl-cell mdl-cell--1-col mdl-grid">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="memberbtn1">
                     <i class="material-icons">more_vert</i>
                   </button>
+                  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="memberbtn1">
+                    <li class="mdl-menu__item">éditer</li>
+                    <li class="mdl-menu__item">supprimer</li>
+                  </ul>
                 </div>
               </div>
+
+              <div class="bdi-table-line bdi-table-line-open mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Nom</div>
+                    <div>Nom</div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Prénom</div>
+                    <div>Prénom</div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Rôle</div>
+                    <div>Rôle</div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Téléphone</div>
+                    <div>Téléphone</div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Mail</div>
+                    <div>Mail</div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Dernier paiment</div>
+                    <div>04/04/2019</div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Membre depuis</div>
+                    <div>01/02/2018</div>
+                  </div>
+                </div>
+                <div class="bdi-table-line-edit mdl-cell mdl-cell--1-col mdl-grid">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="memberbtn2">
+                    <i class="material-icons">more_vert</i>
+                  </button>
+                  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="memberbtn2">
+                    <li class="mdl-menu__item">éditer</li>
+                    <li class="mdl-menu__item">supprimer</li>
+                  </ul>
+                </div>
+              </div>
+
               <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-cell--2-col-phone">Nom</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-cell--2-col-phone">Rôle</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-cell--2-col-phone">Contact</div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-cell--2-col-phone">Membre depuis</div>
                 </div>
-                <div class="mdl-cell mdl-cell--1-col">
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <div class="bdi-table-line-edit mdl-cell mdl-cell--1-col mdl-grid">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="memberbtn3">
                     <i class="material-icons">more_vert</i>
                   </button>
+                  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="memberbtn3">
+                    <li class="mdl-menu__item">éditer</li>
+                    <li class="mdl-menu__item">supprimer</li>
+                  </ul>
                 </div>
               </div>
-              <div class="bdi-table-line mdl-cell mdl-cell--12-col mdl-grid">
-                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-grid">            
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Nom</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Rôle</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Contact</div>
-                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">Membre depuis</div>
+
+                <div class="bdi-table-line bdi-table-line-open mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">            
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Nom</div>
+                    <div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4lastname">
+                        <label class="mdl-textfield__label" for="member4lastname">Nom</label>
+                      </div>
+                    </form>
+                  </div>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Prénom</div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4firstname">
+                        <label class="mdl-textfield__label" for="member4firstname">Prénom</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Rôle</div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4role">
+                        <label class="mdl-textfield__label" for="member4role">Rôle</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Téléphone</div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4phone">
+                        <label class="mdl-textfield__label" for="member4phone">Téléphone</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Mail</div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4mail">
+                        <label class="mdl-textfield__label" for="member4mail">Mail</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Dernier paiment</div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4lastpayment">
+                        <label class="mdl-textfield__label" for="member4lastpayment">04/04/2018</label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
+                    <div class="mdl-typography--title">Membre depuis</div>
+                      <form action="#">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" id="member4createdat">
+                        <label class="mdl-textfield__label" for="member4createdat">01/01/2018</label>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-                <div class="mdl-cell mdl-cell--1-col">
-                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <div class="bdi-table-line-edit mdl-cell mdl-cell--1-col mdl-grid">
+                  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="memberbtn4">
                     <i class="material-icons">more_vert</i>
                   </button>
+                  <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="memberbtn4">
+                    <li class="mdl-menu__item">éditer</li>
+                    <li class="mdl-menu__item">supprimer</li>
+                  </ul>
                 </div>
               </div>
+
             </div>
           </div>
 

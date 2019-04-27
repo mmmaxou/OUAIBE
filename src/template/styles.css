@@ -150,20 +150,24 @@ html, body {
   align-self: flex-end;
   height:auto;
 }
-.bdi-table-titles {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-.bdi-table-line {
+.bdi-table-titles, .bdi-table-content, .bdi-table-line {
   padding:0;
   margin:0;
   width:100%;
 }
-.bdi-table-line-fields {
-  padding: 0;
-  margin: 0;
+.bdi-table-line-open {
+  padding-top:16px;
+  margin-bottom: 8px;
+  background-color: var(--grey-700);
 }
-
+.bdi-table-line-fields, .bdi-table-line-edit {
+  margin-top: 0;
+  padding-top: 0;
+}
+.bdi-table-line-edit {
+  display:flex;
+  justify-content: flex-end;
+}
 .bdi-chart:nth-child(1) {
   color: #ACEC00;
 }
