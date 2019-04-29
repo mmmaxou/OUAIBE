@@ -21,7 +21,7 @@ export default (promises) => ({
         .then(response => actions.setOne({id: id, data: response.data}))
         .catch(err => console.log('error :', err.message))
     } else {
-      console.log("no")
+      console.log('no')
     }
     return state
   },
@@ -30,13 +30,13 @@ export default (promises) => ({
     const dataWithRefresh = data.map(elem => ({...elem, lastRefresh: lastRefresh}))
     return ({
       ...state,
-      lastRefresh: lastRefresh, 
+      lastRefresh: lastRefresh,
       data: dataWithRefresh
     })
   },
   setOne: ({id, data}) => (state) => {
     const lastRefresh = new Date().getTime()
-    console.log("setOne state")
+    console.log('setOne state')
     console.log(id)
     return ({
       ...state,
