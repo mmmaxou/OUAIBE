@@ -155,6 +155,9 @@ html, body {
   margin:0;
   width:100%;
 }
+.bdi-table-line:hover {
+  background-color: #616161;
+}
 .bdi-table-line-open {
   padding-top:16px;
   margin-bottom: 8px;
