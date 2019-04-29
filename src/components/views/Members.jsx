@@ -3,14 +3,10 @@ import MembersHeader from '../Members/MembersHeader'
 import MembersList from '../Members/MembersList'
 
 export default (state, actions) => {
-  console.log('state')
-  console.log(state.data)
   return (
-    <div oncreate={() => actions.getAll()}>
-      <p>Member view</p>
-      <h3>Members </h3>
-      <MembersHeader />
-      <MembersList />
+    <div key="members" class='bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid' oncreate={() => actions.getAll()}>
+      <MembersHeader count={state.data.length} />
+      <MembersList data={state.data} />
     </div>
   )
 }

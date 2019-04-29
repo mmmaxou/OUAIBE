@@ -10,7 +10,6 @@ import Sponsors from './Sponsors'
 import Home from './Home'
 
 export default (state, actions) => {
-  console.log(state)
   return (
     <html lang='fr'>
       <Head name={state.metadatas.siteTitle}
