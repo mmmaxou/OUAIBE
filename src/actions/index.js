@@ -13,6 +13,15 @@ export default {
     console.log(payload.name, payload.event)
     return state
   },
+  setPageName: (name) => (state) => {
+    if (state.actualPage === name) {
+      return state
+    }
+    return ({
+      ...state,
+      actualPage: name
+    })
+  },
   members: CRUD(API.Members),
   sponsors: CRUD(API.Sponsors)
 }

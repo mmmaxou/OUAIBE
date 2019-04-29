@@ -30,6 +30,6 @@ Une application hyperapp prend 4 paramètres:
 
 runTestAPI()
 
-const main = app(state, actions, view, document.body)
+const main = app(state, actions, view, document)
 const unsubscribe = location.subscribe(main.location)
 console.assert('unsubscribe: ', unsubscribe)
