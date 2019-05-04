@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import MemberShortEntry from './MemberShortEntry'
+import MemberEntry from './MemberEntry'
 
 export default (props) => {
   return (
@@ -18,15 +19,28 @@ export default (props) => {
       <div class='bdi-table-content mdl-cell mdl-cell--12-col mdl-grid'>
         {
           props.data.map(elem => {
-            return <div key={'membres-' + elem.id} class='bdi-table-line mdl-cell mdl-cell--12-col mdl-grid'>
-              <MemberShortEntry
+            if (props.selectedId === elem.id) {
+              return (
+                <MemberEntry key={'membres-' + elem.id}
+                  firstName={elem.firstName}
+                  lastName={elem.lastName}
+                  email={elem.email}
+                  roleName={elem.role.name}
+                  phoneNumber={elem.phoneNumber}
+                  lastPaymentDate={elem.lastPaymentDate}
+                />
+              )
+            }
+            return (
+              <MemberShortEntry key={'membres-' + elem.id}
+                onclick={() => props.onElementClick(elem.id)} 
                 firstName={elem.firstName}
                 lastName={elem.lastName}
                 email={elem.email}
                 roleName={elem.role.name}
                 phoneNumber={elem.phoneNumber}
               />
-            </div>
+            )
           })
         }
       </div>
