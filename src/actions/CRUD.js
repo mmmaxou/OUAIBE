@@ -4,6 +4,7 @@ import {
 
 const isOutOfDate = (date) => (new Date() - date >= CACHE_TIME)
 const deleteById = (props, id) => props.filter(i => i.id !== id)
+const sortById = (props) => [...props].sort((a, b) => a.id > b.id)
 
 export default (promises) => ({
   getAll: (forceRefresh = false) => (state, actions) => {
@@ -31,19 +32,27 @@ export default (promises) => ({
     return ({
       ...state,
       lastRefresh: lastRefresh,
-      data: dataWithRefresh
+      data: sortById(dataWithRefresh)
     })
   },
   setOne: ({id, data}) => (state) => {
     const lastRefresh = new Date().getTime()
-    console.log('setOne state')
+    return ({
+      ...state,
+      data: sortById([
+        ...deleteById(state.data, id),
+        {...data, lastRefresh: lastRefresh}
+      ])
+    })
+  },
+  select: (id) => (state, actions) => {
+    if (id >= 0) {
+      actions.getOne(id)
+    }
     console.log(id)
     return ({
       ...state,
-      data: [
-        ...deleteById(state.data, id),
-        {...data, lastRefresh: lastRefresh}
-      ]
+      selectedId: id
     })
   }
 })

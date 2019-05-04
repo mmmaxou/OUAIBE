@@ -12,10 +12,12 @@ export default {
   },
   members: {
     lastRefresh: 0,
+    selectedId: -1,
     data: []
   },
   sponsors: {
     lastRefresh: 0,
+    selectedId: -1,
     data: []
   }
 }
