@@ -56,7 +56,8 @@ html, body {
   --red-900 : #b71c1c;
 }
 
-/*BUTTONS*/
+/*SMALL COMPONENTS*/
+/*buttons*/
 .mdl-menu {
   background-color: var(--grey-600);
 }
@@ -67,12 +68,20 @@ html, body {
   background-color: var(--grey-700);
 }
 
+/*loading*/
 .bdi-loading {
   padding: 8px;
   margin: 8px;
   width: 100%;
   display: flex;
   justify-content: center;
+}
+.bdi-loading .mdl-spinner__layer {
+  border-color: var(--red);
+}
+
+.mdl-textfield__label {
+  color: var(--grey-500);
 }
 
 /*HEADER*/
