@@ -1,28 +1,33 @@
 import {
   CACHE_TIME
 } from '../../config.json'
+import eventbus from '../events'
 
 const isOutOfDate = (date) => (new Date() - date >= CACHE_TIME)
 const deleteById = (props, id) => props.filter(i => i.id !== id)
+// eslint-disable-next-line fp/no-mutating-methods
 const sortById = (props) => [...props].sort((a, b) => a.id > b.id)
 
-export default (promises) => ({
+export default (promises, helpers) => ({
   getAll: (forceRefresh = false) => (state, actions) => {
     if (isOutOfDate(state.lastRefresh) || forceRefresh) {
       promises.getAll()
         .then(response => actions.set(response.data))
-        .catch(err => console.log('error :', err.message))
+        .catch(helpers.injectError)
     }
     return state
   },
   getOne: (id, forceRefresh = false) => (state, actions) => {
-    const actualData = state.data.filter(i => i.id === id)[0] || false
+    const buggedID = 1000
+    const actualData = state.data.filter(i => i.id === buggedID)[0] || false
     if (!actualData || isOutOfDate(actualData.lastRefresh) || forceRefresh) {
-      promises.getOne(id)
-        .then(response => actions.setOne({id: id, data: response.data}))
-        .catch(err => console.log('error :', err.message))
-    } else {
-      console.log('no')
+      promises.getOne(buggedID)
+        .then(helpers.handleResponse)
+        .then(response => actions.setOne({id: buggedID, data: response.data}))
+        .catch(err => {
+          eventbus.emit('error', err)
+          helpers.injectError(err)
+        })
     }
     return state
   },
@@ -49,7 +54,6 @@ export default (promises) => ({
     if (id >= 0) {
       actions.getOne(id)
     }
-    console.log(id)
     return ({
       ...state,
       selectedId: id

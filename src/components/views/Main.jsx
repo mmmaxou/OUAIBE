@@ -2,6 +2,7 @@ import { h } from 'hyperapp'
 import Head from '../Head'
 import Header from '../Layout/Header'
 import Menu from '../Layout/Menu'
+import Message from '../Layout/Message'
 import { Route, Switch } from '@hyperapp/router'
 import Members from './Members'
 import Materials from './Materials'
@@ -20,6 +21,8 @@ export default (state, actions) => {
         <div class="mdl-layout__container">
           <div class="bdi-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <Header pageName={state.actualPage} />
+            <Message message={state.helpers.message}
+              discardMessage={actions.helpers.discardMessage} />
             <Menu />
             <main class="mdl-layout__content">
               <div class="mdl-grid bdi-content">
