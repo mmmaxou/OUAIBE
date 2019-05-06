@@ -151,19 +151,29 @@ html, body {
 .bdi-content {
   max-width: 1080px;
 }
-
+/*card*/
 .bdi-card {
   background-color: var(--grey-800);
   color: white;
   padding:0;
 }
+.bdi-card-header {
+  margin: 0px;
+  width:100%;
+  background-color: var(--grey-700);
+}
+.bdi-card-content {
+  margin: 0px;
+  width:100%;  
+}
+/*list*/
 .bdi-table-header {
   margin: 0px;
   padding:16px;
   width:100%;
   background-color: var(--grey-700);
 }
-.bdi-table-header button {
+.bdi-table-header button, .bdi-card button {
   align-self: flex-end;
   height:auto;
 }
