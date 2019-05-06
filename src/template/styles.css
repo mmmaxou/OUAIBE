@@ -67,6 +67,14 @@ html, body {
   background-color: var(--grey-700);
 }
 
+.bdi-loading {
+  padding: 8px;
+  margin: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /*HEADER*/
 .bdi-header {
   background-color: var(--grey-800);
