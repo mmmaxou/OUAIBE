@@ -8,6 +8,8 @@ import state from './state'
 import view from './components/views/Main'
 import runTestAPI from './API/Tests'
 
+// import 'material-design-lite/material' FIX ME
+
 /*
 RAPPEL :
 
@@ -30,6 +32,6 @@ Une application hyperapp prend 4 paramètres:
 
 runTestAPI()
 
-const main = app(state, actions, view, document)
+const main = app(state, actions, view, document.body)
 const unsubscribe = location.subscribe(main.location)
 console.assert('unsubscribe: ', unsubscribe)
