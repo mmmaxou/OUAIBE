@@ -16,7 +16,7 @@ export default (props) => {
         </div>
       </div>
 
-      <div class='bdi-table-content mdl-cell mdl-cell--12-col mdl-grid'>
+      <div class='bdi-table-content mdl-grid'>
         {
           // Loading bar
           props.isLoading ? <div id='p2' class='mdl-progress mdl-js-progress mdl-progress__indeterminate'></div> : ''
