@@ -8,6 +8,7 @@ export default (state, actions) => {
       <MembersHeader count={state.data.length} />
       <MembersList
         data={state.data}
+        isLoading={state.lastRefresh === 0}
         onElementClick={(id) => actions.select(id)}
         selectedId={state.selectedId}
       />

@@ -4,7 +4,7 @@ import MemberEntry from './MemberEntry'
 
 export default (props) => {
   return (
-    <div>
+    <div class='bdi-table-content'>
       <div class='bdi-table-titles mdl-cell mdl-cell--12-col mdl-grid'>
         <div class='bdi-table-line mdl-cell mdl-cell--12-col mdl-grid'>
           <div class='mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid'>
@@ -17,6 +17,10 @@ export default (props) => {
       </div>
 
       <div class='bdi-table-content mdl-cell mdl-cell--12-col mdl-grid'>
+        {
+          // Loading bar
+          props.isLoading ? <div id='p2' class='mdl-progress mdl-js-progress mdl-progress__indeterminate'></div> : ''
+        }
         {
           props.data.map(elem => {
             if (props.selectedId === elem.id) {
