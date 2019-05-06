@@ -2,7 +2,7 @@ import { h } from 'hyperapp'
 
 export default ({count}) => {
   return (
-    <div class='bdi-table-header mdl-cell mdl-cell--12-col mdl-grid'>
+    <div class='bdi-table-header mdl-grid'>
       <div class='mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-card__title-text'>
         {count} membres
       </div>

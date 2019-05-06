@@ -9,6 +9,8 @@ import view from './components/views/Main'
 import runTestAPI from './API/Tests'
 import eventbus from './events'
 
+// import 'material-design-lite/material' FIX ME
+
 /*
 RAPPEL :
 
@@ -30,7 +32,6 @@ Une application hyperapp prend 4 paramètres:
  */
 
 runTestAPI()
-
 const main = app(state, actions, view, document)
 
 // Event Error handling

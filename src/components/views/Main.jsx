@@ -1,5 +1,4 @@
 import { h } from 'hyperapp'
-import Head from '../Head'
 import Header from '../Layout/Header'
 import Menu from '../Layout/Menu'
 import Message from '../Layout/Message'
@@ -62,8 +61,8 @@ export default (state, actions) => {
               </div>
             </main>
           </div>
-        </div>
-      </body>
-    </html>
+        </main>
+      </div>
+    </div>
   )
 }
