@@ -8,7 +8,7 @@
 
 /// Regular font family
 /// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: 'Roboto', 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
@@ -39,6 +39,28 @@ $mid-grey: rgb(153, 153, 153) !default;
 $dark-grey: rgb(68, 68, 68) !default;
 
 
+/// User colors
+$blue-grey: #607D8B;
+
+$grey: #9E9E9E;
+$grey-50: #FAFAFA;
+$grey-400: #BDBDBD;
+$grey-500: $grey;
+$grey-600: #757575;
+$grey-700: #616161;
+$grey-800: #424242;
+$grey-900: #212121;
+
+$red: #f44336;
+
+$tranparent-white: rgba(255, 255, 255, 0.89);
+
+
+$spacing-very-small: 4px;
+$spacing-small: 8px;
+$spacing: 16px;
+$spacing-large: 32px;
+$spacing-very-large: 64px;
 
 
 

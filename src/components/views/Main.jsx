@@ -19,13 +19,13 @@ export default (state, actions) => {
       />
       <body>
         <div class="mdl-layout__container">
-          <div class="bdi-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-            <Header pageName={state.actualPage} />
-            <Message message={state.helpers.message}
-              discardMessage={actions.helpers.discardMessage} />
+          <div class="bdi-layout mdl-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
             <Menu />
             <main class="mdl-layout__content">
+              <Header pageName={state.actualPage} />
               <div class="mdl-grid bdi-content">
+                <Message message={state.helpers.message}
+                  discardMessage={actions.helpers.discardMessage} />
                 <Switch>
                   <Route path='/'
                     render={() => {

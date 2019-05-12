@@ -7,7 +7,7 @@ export default () => (
       <div class='mdl-layout__header-row'>
         <span class='mdl-layout-title mdl'>Trésorier</span>
         <div class='mdl-layout-spacer'></div>
-        <img src='./src/template/images/ios-desktop.png' class='bdi-avatar' />
+        <img src='/src/images/ios-desktop.png' class='bdi-avatar' />
       </div>
       <div class='bdi-avatar-dropdown'>
         <span><strong>Guillaume Lollier</strong></span>

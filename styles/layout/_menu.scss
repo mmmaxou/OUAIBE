@@ -1,0 +1,67 @@
+.mdl-menu {
+  background-color: d$grey-600;
+  .mdl-menu-item {
+    color: $grey-50;
+    &:hover {
+      background-color: $grey-700;
+    }
+  }
+}
+
+
+.bdi-drawer {
+  background-color: $grey-800;
+  color: $grey-50;
+  border: none;
+
+  .mdl-layout__header-row {
+    padding: 0;
+  }
+}
+
+.bdi-drawer-header {
+  padding: $spacing;
+  background-color: $grey-700;
+}
+
+.bdi-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.bdi-avatar-dropdown {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.bdi-navigation {
+  flex-grow: 1;
+  background-color: $grey-800;
+}
+
+.bdi-layout .bdi-navigation .mdl-navigation__link {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+
+  @include on-event {
+    text-decoration: none;
+  }
+}
+.bdi-layout .bdi-navigation .mdl-navigation__link:hover {
+  background-color: $red;
+}
+.bdi-navigation .mdl-navigation__link .material-icons {
+  font-size: 24px;
+  color: $grey;
+  margin-right: $spacing-large;
+}
+.bdi-layout .bdi-navigation .mdl-navigation__link:hover .material-icons {
+  color: $grey-50;
+}

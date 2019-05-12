@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "mocha -b --require @babel/register --colors -w test/**/*.js",
-    "start": "webpack-dashboard -m -- webpack-dev-server",
+    "start": "webpack-dev-server",
     "start:inline": "webpack-dev-server",
     "prod": "NODE_ENV=production webpack --progress"
   },
@@ -35,7 +35,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-register": "^7.0.0-beta.0",
     "css-hot-loader": "^1.4.4",
-    "css-loader": "^0.28.11",
+    "css-loader": "^2.1.1",
     "cssnano": "^4.1.10",
     "eslint": "^4.13.1",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -48,8 +48,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "node-libs-browser": "^2.0.0",
-    "node-sass": "^4.11.0",
-    "optimize-css-assets-webpack-plugin": "3.2.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.6.0",
     "rfs": "^8.0.3",
@@ -58,12 +58,12 @@
     "sugarss": "^2.0.0",
     "uglifyjs-webpack-plugin": "1",
     "webpack": "^3.10.0",
-    "webpack-dashboard": "^3.0.2",
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "@hyperapp/router": "^0.7.1",
     "dateformat": "^3.0.3",
-    "hyperapp": "^1.1.2"
+    "hyperapp": "^1.2.5",
+    "materialize-css": "^1.0.0-rc.2"
   }
 }

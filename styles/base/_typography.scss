@@ -18,3 +18,11 @@ h2 {
 h3 {
   @include rfs(30);
 }
+
+h4 {
+  @include rfs(26);
+}
+
+h5 {
+  @include rfs(22);
+}

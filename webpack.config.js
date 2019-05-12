@@ -4,7 +4,6 @@ const webpack = require('webpack')
 const path = require('path')
 const pkg = require('./package.json')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const DashboardPlugin = require('webpack-dashboard/plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin')
 const libraryName = pkg.name
@@ -57,8 +56,7 @@ const config = {
     new ExtractTextPlugin({
       filename: './bundle.css',
       allChunks: true
-    }),
-    new DashboardPlugin()
+    })
   ],
   devServer: {
     port: 4000,
