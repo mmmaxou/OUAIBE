@@ -10,12 +10,12 @@ const Dropdown = nestable(
     hide: () => () => ({ revealed: false }),
     switch: () => state => ({ revealed: !state.revealed })
   },
-  (state, actions) => ({ message, options }) => (
+  (state, actions) => ({ message, options, icon }) => (
     <div class='bdi-dropdown'>
       <div class='message'>
         <p>{message}</p>
         <button class='mdl-button mdl-js-ripple-effect mdl-button--icon' onclick={actions.switch}>
-          <i class='material-icons' role='presentation'>arrow_drop_down</i>
+          <i class='material-icons' role='presentation'>{ icon }</i>
         </button>
       </div>
       <ul class={'options bdi-navigation mdl-navigation mdl-shadow--2dp' + (state.revealed ? ' revealed' : '')}>

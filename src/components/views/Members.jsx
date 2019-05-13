@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
-import MembersHeader from '../Members/MembersHeader'
-import MembersList from '../Members/MembersList'
+import MembersHeader from '../Members/MembersHeader.jsx'
+import MembersList from '../Members/MembersList.jsx'
 
 export default (state, actions) => {
   return (
@@ -11,6 +11,7 @@ export default (state, actions) => {
         isLoading={state.lastRefresh === 0}
         onElementClick={(id) => actions.select(id)}
         selectedId={state.selectedId}
+        deleteOne={actions.deleteOne}
       />
     </div>
   )
