@@ -36,7 +36,7 @@ export default (props) => (
         icon='more_vert'
         options={[
           { message: 'éditer', handler: () => console.log('TODO') },
-          { message: 'supprimer', handler: () => console.log('TODO') }
+          { message: 'supprimer', handler: () => props.deleteOne(props.id) }
         ]} />
     </div>
   </div>

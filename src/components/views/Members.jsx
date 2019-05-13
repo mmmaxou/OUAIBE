@@ -11,6 +11,7 @@ export default (state, actions) => {
         isLoading={state.lastRefresh === 0}
         onElementClick={(id) => actions.select(id)}
         selectedId={state.selectedId}
+        deleteOne={actions.deleteOne}
       />
     </div>
   )

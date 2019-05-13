@@ -18,12 +18,12 @@ export default (promises, helpers) => ({
     return state
   },
   getOne: (id, forceRefresh = false) => (state, actions) => {
-    const buggedID = 1000
-    const actualData = state.data.filter(i => i.id === buggedID)[0] || false
+    const userId = id
+    const actualData = state.data.filter(i => i.id === userId)[0] || false
     if (!actualData || isOutOfDate(actualData.lastRefresh) || forceRefresh) {
-      promises.getOne(buggedID)
+      promises.getOne(userId)
         .then(helpers.handleResponse)
-        .then(response => actions.setOne({id: buggedID, data: response.data}))
+        .then(response => actions.setOne({id: userId, data: response.data}))
         .catch(err => {
           eventbus.emit('error', err)
           helpers.injectError(err)
@@ -58,5 +58,20 @@ export default (promises, helpers) => ({
       ...state,
       selectedId: id
     })
+  },
+  deleteOne: (id) => (state, actions) => {
+    const userId = id
+    console.log('Try to delete : ', id)
+    promises.delete(userId)
+      .then(helpers.handleResponse)
+      .then(res => {
+        if (res.successful) {
+          const newData = deleteById(state.data, id)
+          actions.set(newData)
+        } else {
+          helpers.injectError(res)
+        }
+      })
+    return state
   }
 })
