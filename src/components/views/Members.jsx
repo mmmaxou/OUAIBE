@@ -14,7 +14,7 @@ export default (state, actions) => {
         selectedId={state.members.selectedId}
         currentAction={state.members.currentAction}
         getRoles={actions.getRoles}
-        deleteOne={actions.deleteOne}
+        deleteOne={actions.members.deleteOne}
       />
     </div>
   )
