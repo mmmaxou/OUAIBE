@@ -17,13 +17,12 @@ export default (promises, helpers) => ({
     }
     return state
   },
-  getOne: (id, forceRefresh = false) => (state, actions) => {
-    const buggedID = 1000
-    const actualData = state.data.filter(i => i.id === buggedID)[0] || false
+  getOne: ({id, forceRefresh = false}) => (state, actions) => {
+    const actualData = state.data.filter(i => i.id === id)[0] || false
     if (!actualData || isOutOfDate(actualData.lastRefresh) || forceRefresh) {
-      promises.getOne(buggedID)
+      promises.getOne(id)
         .then(helpers.handleResponse)
-        .then(response => actions.setOne({id: buggedID, data: response.data}))
+        .then(response => actions.setOne({id: id, data: response.data}))
         .catch(err => {
           eventbus.emit('error', err)
           helpers.injectError(err)
@@ -50,12 +49,13 @@ export default (promises, helpers) => ({
       ])
     })
   },
-  select: (id) => (state, actions) => {
+  select: ({id, action = 'show'}) => (state, actions) => {
     if (id >= 0) {
-      actions.getOne(id)
+      actions.getOne({id: id, forceRefresh: true})
     }
     return ({
       ...state,
+      currentAction: action,
       selectedId: id
     })
   }

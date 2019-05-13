@@ -13,11 +13,19 @@ export default {
   members: {
     lastRefresh: 0,
     selectedId: -1,
+    currentAction: 'show',
+    data: []
+  },
+  roles: {
+    lastRefresh: 0,
+    selectedId: -1,
+    currentAction: 'show',
     data: []
   },
   sponsors: {
     lastRefresh: 0,
     selectedId: -1,
+    currentAction: 'show',
     data: []
   },
   helpers: {
