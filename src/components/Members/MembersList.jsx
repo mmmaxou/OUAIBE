@@ -24,7 +24,6 @@ export default (props) => {
         }
         {
           props.data.map(elem => {
-            console.log(elem.id)
             if (props.selectedId === elem.id && props.currentAction === 'show') {
               return (
                 <MemberEntry key={'membres-' + elem.id}
@@ -34,7 +33,7 @@ export default (props) => {
                   roleName={elem.role.name}
                   phoneNumber={elem.phoneNumber}
                   lastPaymentDate={elem.lastPaymentDate}
-                  id={elem.id}
+                  showDropDown={elem.id > 1}
                   delete={() => props.delete(elem.id)}
                   edit={() => props.select({id: elem.id, action: 'edit'})}
                 />
@@ -50,8 +49,6 @@ export default (props) => {
                   roleName={elem.role.name}
                   phoneNumber={elem.phoneNumber}
                   lastPaymentDate={elem.lastPaymentDate}
-                  role_id={elem.role_id}
-                  roles={props.roles}
                   role_id={elem.role_id}
                   roles={props.roles}
                 />

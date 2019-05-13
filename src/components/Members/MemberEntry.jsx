@@ -30,14 +30,19 @@ export default (props) => (
         <div>{props.lastPaymentDate}</div>
       </div>
     </div>
-    <div class="bdi-table-line-fields mdl-cell mdl-cell--5-col mdl-cell--1-col-desktop mdl-cell--3-col-phone mdl-grid">
-      <Dropdown
-        message=''
-        icon='more_vert'
-        options={[
-          { message: 'éditer', handler: () => props.edit() },
-          { message: 'supprimer', handler: () => props.delete() }
-        ]} />
-    </div>
+    {
+      props.showDropDown ? (
+        <div class="bdi-table-line-fields mdl-cell mdl-cell--5-col mdl-cell--1-col-desktop mdl-cell--3-col-phone mdl-grid">
+          <Dropdown
+            message=''
+            icon='more_vert'
+            options={[
+              { message: 'éditer', handler: () => props.edit() },
+              { message: 'supprimer', handler: () => props.delete() }
+            ]}
+          />
+        </div>
+      ) : ''
+    }
   </div>
 )
