@@ -64,6 +64,7 @@
     "@hyperapp/router": "^0.7.1",
     "dateformat": "^3.0.3",
     "hyperapp": "^1.2.5",
+    "hyperapp-nestable": "^1.1.0",
     "materialize-css": "^1.0.0-rc.2"
   }
 }
