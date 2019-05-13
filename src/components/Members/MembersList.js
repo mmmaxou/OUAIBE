@@ -37,7 +37,7 @@ export default (props) => {
             }
             return (
               <MemberShortEntry key={'membres-' + elem.id}
-                onclick={() => props.onElementClick(elem.id)} 
+                onclick={() => props.onElementClick(elem.id)}
                 firstName={elem.firstName}
                 lastName={elem.lastName}
                 email={elem.email}

@@ -19,5 +19,8 @@ export default {
     lastRefresh: 0,
     selectedId: -1,
     data: []
+  },
+  helpers: {
+    message: ''
   }
 }

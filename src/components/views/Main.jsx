@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
 import Header from '../Layout/Header'
 import Menu from '../Layout/Menu'
+import Message from '../Layout/Message'
 import { Route, Switch } from '@hyperapp/router'
 import Members from './Members'
 import Materials from './Materials'
@@ -15,6 +16,8 @@ export default (state, actions) => {
         <Header pageName={state.actualPage} />
         <Menu />
         <main class="mdl-layout__content">
+          <Message message={state.helpers.message}
+            discardMessage={actions.helpers.discardMessage} />
           <div class="mdl-grid bdi-content">
             <Switch>
               <Route path='/'

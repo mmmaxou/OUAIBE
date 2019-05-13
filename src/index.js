@@ -7,6 +7,7 @@ import actions from './actions'
 import state from './state'
 import view from './components/views/Main'
 import runTestAPI from './API/Tests'
+import eventbus from './events'
 
 // import 'material-design-lite/material' FIX ME
 
@@ -33,5 +34,10 @@ Une application hyperapp prend 4 paramètres:
 runTestAPI()
 
 const main = app(state, actions, view, document.body)
+
+// Event Error handling
+eventbus.on('error', err => main.helpers.injectError(err))
+
+// Router Hyperapp
 const unsubscribe = location.subscribe(main.location)
 console.assert('unsubscribe: ', unsubscribe)
