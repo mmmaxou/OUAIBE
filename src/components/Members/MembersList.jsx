@@ -51,6 +51,8 @@ export default (props) => {
                   lastPaymentDate={elem.lastPaymentDate}
                   role_id={elem.role_id}
                   roles={props.roles}
+                  update={() => props.update(elem.id)}
+                  onChange={(data) => props.onChange({id: elem.id, data: data})}
                 />
               )
             }

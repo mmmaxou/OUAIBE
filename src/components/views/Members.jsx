@@ -17,6 +17,8 @@ export default (state, actions) => {
         currentAction={state.members.currentAction}
         getRoles={actions.getRoles}
         delete={actions.members.deleteOne}
+        update={actions.members.update}
+        onChange={actions.members.setOne}
       />
     </div>
   )
