@@ -4,17 +4,19 @@ import MembersList from '../Members/MembersList.jsx'
 
 export default (state, actions) => {
   return (
-    <div key="members" class='bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid' oncreate={() => actions.getAll()}>
+    <div key="members" class='bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid' oncreate={() => actions.members.getAll()}>
       <MembersHeader
-        count={state.data.length}
-        copyMembersEmail={actions.copyMembersEmail}
-      />
+        count={state.members.data.length}
+        copyMembersEmail={actions.members.copyMembersEmail}/>
       <MembersList
-        data={state.data}
-        isLoading={state.lastRefresh === 0}
-        onElementClick={(id) => actions.select(id)}
-        selectedId={state.selectedId}
-        deleteOne={actions.deleteOne}
+        data={state.members.data}
+        roles={state.roles.data}
+        isLoading={state.members.lastRefresh === 0}
+        onElementClick={(id) => actions.members.select(id)}
+        selectedId={state.members.selectedId}
+        currentAction={state.members.currentAction}
+        getRoles={actions.getRoles}
+        deleteOne={actions.members.deleteOne}
       />
     </div>
   )

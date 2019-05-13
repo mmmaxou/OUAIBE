@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
-import MemberShortEntry from './MemberShortEntry.jsx'
-import MemberEntry from './MemberEntry.jsx'
+import MemberShortEntry from './MemberShortEntry'
+import MemberEntry from './MemberEntry'
+import MemberForm from './MemberForm'
 
 export default (props) => {
   return (
@@ -23,7 +24,7 @@ export default (props) => {
         }
         {
           props.data.map(elem => {
-            if (props.selectedId === elem.id) {
+            if (props.selectedId === elem.id && props.currentAction === 'show') {
               return (
                 <MemberEntry key={'membres-' + elem.id}
                   firstName={elem.firstName}
@@ -37,9 +38,26 @@ export default (props) => {
                 />
               )
             }
+            if (props.selectedId === elem.id && props.currentAction === 'edit') {
+              props.getRoles()
+              return (
+                <MemberForm key={'membres-' + elem.id}
+                  firstName={elem.firstName}
+                  lastName={elem.lastName}
+                  email={elem.email}
+                  roleName={elem.role.name}
+                  phoneNumber={elem.phoneNumber}
+                  lastPaymentDate={elem.lastPaymentDate}
+                  role_id={elem.role_id}
+                  roles={props.roles}
+                  role_id={elem.role_id}
+                  roles={props.roles}
+                />
+              )
+            }
             return (
               <MemberShortEntry key={'membres-' + elem.id}
-                onclick={() => props.onElementClick(elem.id)}
+                onclick={() => props.onElementClick({id: elem.id})}
                 firstName={elem.firstName}
                 lastName={elem.lastName}
                 email={elem.email}

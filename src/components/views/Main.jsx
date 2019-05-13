@@ -29,7 +29,10 @@ export default (state, actions) => {
               <Route path='/members'
                 render={() => {
                   actions.setPageName('Members')
-                  return Members(state.members, actions.members)
+                  return Members(
+                    {members: state.members, roles: state.roles},
+                    {members: actions.members, getRoles: actions.roles.getAll}
+                  )
                 }}
               />
               <Route path='/materials'
