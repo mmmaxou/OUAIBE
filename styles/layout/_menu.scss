@@ -33,6 +33,12 @@
 .bdi-navigation {
   flex-grow: 1;
   background-color: $grey-800;
+
+  .mdl-navigation__link .material-icons {
+    color: $grey;
+    margin-right: $spacing-large;
+  }
+
 }
 
 .bdi-layout .bdi-navigation .mdl-navigation__link {
@@ -45,15 +51,16 @@
   @include on-event {
     text-decoration: none;
   }
-}
-.bdi-layout .bdi-navigation .mdl-navigation__link:hover {
-  background-color: $red;
-}
-.bdi-navigation .mdl-navigation__link .material-icons {
-  font-size: 24px;
-  color: $grey;
-  margin-right: $spacing-large;
-}
-.bdi-layout .bdi-navigation .mdl-navigation__link:hover .material-icons {
-  color: $grey-50;
+
+  &:hover {
+    background-color: $red;
+  }
+  &:active {
+    background-color: darken($red, 10);
+  }
+  &:hover, &:active {
+    .material-icons {
+      color: $grey-50;
+    }
+  }
 }

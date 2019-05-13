@@ -41,9 +41,6 @@
       padding-bottom: $spacing;
       cursor: pointer;
       transition: color 200ms ease;
-      &:active {
-        background-color: darken($red, 10);
-      }
     }
   }
 }
