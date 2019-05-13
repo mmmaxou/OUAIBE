@@ -5,7 +5,10 @@ import MembersList from '../Members/MembersList.jsx'
 export default (state, actions) => {
   return (
     <div key="members" class='bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid' oncreate={() => actions.getAll()}>
-      <MembersHeader count={state.data.length} />
+      <MembersHeader
+        count={state.data.length}
+        copyMembersEmail={actions.copyMembersEmail}
+      />
       <MembersList
         data={state.data}
         isLoading={state.lastRefresh === 0}

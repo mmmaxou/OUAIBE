@@ -3,6 +3,7 @@ import { location } from '@hyperapp/router'
 import API from '../API/API'
 import CRUD from './CRUD'
 import helpers from './_helpers'
+import members from './members'
 
 export default {
   location: location.actions,
@@ -23,7 +24,7 @@ export default {
       actualPage: name
     })
   },
-  members: CRUD(API.Members, helpers),
+  members: {...CRUD(API.Members, helpers), ...members},
   sponsors: CRUD(API.Sponsors, helpers),
   helpers
 }
