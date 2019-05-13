@@ -61,8 +61,8 @@ export default (state, actions) => {
               </div>
             </main>
           </div>
-        </main>
-      </div>
-    </div>
+        </div>
+      </body>
+    </html>
   )
 }

@@ -1,0 +1,29 @@
+.bdi-options {
+  h3 {
+    margin: 0;
+  }
+
+  .mdl-checkbox__box-outline {
+    border-color: $tranparent-white;
+  }
+
+  ul {
+    margin: 0;
+    list-style-type: none;
+  }
+
+  li {
+    margin: $spacing-small 0;
+  }
+
+  .material-icons {
+    color: $tranparent-white;
+  }
+
+  .mdl-card__actions {
+    height: 64px;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+  }
+}

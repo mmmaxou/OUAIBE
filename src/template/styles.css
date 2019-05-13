@@ -15,7 +15,7 @@
  */
 
 
-
+/*
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 
@@ -55,9 +55,11 @@ html, body {
   --red-800 : #c62828;
   --red-900 : #b71c1c;
 }
+*/
 
 /*SMALL COMPONENTS*/
-/*buttons*/
+/*BUTTONS*/
+/*
 .mdl-menu {
   background-color: var(--grey-600);
 }
@@ -66,6 +68,23 @@ html, body {
 }
 .mdl-menu .mdl-menu__item:hover {
   background-color: var(--grey-700);
+}
+*/
+
+/*loading*/
+.bdi-loading {
+  padding: 8px;
+  margin: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.bdi-loading .mdl-spinner__layer {
+  border-color: var(--red);
+}
+
+.mdl-textfield__label {
+  color: var(--grey-500);
 }
 
 /*loading*/
@@ -85,12 +104,15 @@ html, body {
 }
 
 /*HEADER*/
+/*
 .bdi-header {
   background-color: var(--grey-800);
   color : var(--grey-400);
 }
+*/
 
 /*MENU*/
+/*
 .bdi-drawer {
   background-color: var(--grey-700);
   color: var(--grey-50);
@@ -143,15 +165,21 @@ html, body {
 .bdi-layout .bdi-navigation .mdl-navigation__link:hover .material-icons {
   color: var(--grey-50);
 }
+*/
+
 
 /*CONTENT*/
+/*
 .mdl-layout__content {
   background-color: var(--grey-900);
 }
 .bdi-content {
   max-width: 1080px;
 }
+
+
 /*card*/
+/*
 .bdi-card {
   background-color: var(--grey-800);
   color: white;
@@ -166,7 +194,19 @@ html, body {
   margin: 0px;
   width:100%;  
 }
+
+
+
 /*list*/
+.bdi-updates .mdl-card__title {
+  min-height: 200px;
+  background-image: url('images/dog.png');
+  background-position: 90% 100%;
+  background-repeat: no-repeat;
+}
+
+/* TABLES */
+/*
 .bdi-table-header {
   margin: 0px;
   padding:16px;
@@ -198,6 +238,10 @@ html, body {
   display:flex;
   justify-content: flex-end;
 }
+*/
+
+/* CHARTS*/
+/*
 .bdi-chart:nth-child(1) {
   color: #ACEC00;
 }
@@ -222,7 +266,16 @@ html, body {
 .bdi-graph:nth-child(2) {
   color: #d9006e;
 }
+*/
 
+
+/* CARDS */
+/*
+.bdi-card {
+  background-color: var(--grey-800);
+  color: white;
+  padding: 0;
+}
 .bdi-cards {
   align-items: flex-start;
   align-content: flex-start;
@@ -241,17 +294,15 @@ html, body {
 .bdi-cards h3 {
   font-size: 1em;
 }
-.bdi-updates .mdl-card__title {
-  min-height: 200px;
-  background-image: url('images/dog.png');
-  background-position: 90% 100%;
-  background-repeat: no-repeat;
-}
 .bdi-cards .mdl-card__actions a {
   color: #00BCD4;
   text-decoration: none;
 }
+*/
 
+
+/* OPTIONS */
+/*
 .bdi-options h3 {
   margin: 0;
 }
@@ -279,3 +330,5 @@ html, body {
   width: 100%;
   height: 10px;
 }
+*/
+

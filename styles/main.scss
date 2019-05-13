@@ -22,7 +22,18 @@
 
 // 4. Layout-related sections
 @import 'layout/header',
+'layout/menu',
 'layout/footer';
 
 // 5. Components
-@import 'components/button';
+@import 'components/button',
+'components/cards',
+'components/charts',
+'components/dropdown',
+'components/error',
+'components/options',
+'components/tables',
+'components/updates';
+
+// 6. Page
+@import 'page/pages'
