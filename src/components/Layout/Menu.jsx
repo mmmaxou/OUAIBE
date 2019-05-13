@@ -15,6 +15,7 @@ export default () => (
       </div>
       <Dropdown
         message='Guillaume Lollier'
+        icon='expand_more'
         options={[
           { message: 'Déconnexion', handler: fakeGenericDisconnectHandler }
         ]} />

@@ -58,5 +58,20 @@ export default (promises, helpers) => ({
       currentAction: action,
       selectedId: id
     })
+  },
+  deleteOne: (id) => (state, actions) => {
+    const userId = id
+    console.log('Try to delete : ', id)
+    promises.delete(userId)
+      .then(helpers.handleResponse)
+      .then(res => {
+        if (res.successful) {
+          const newData = deleteById(state.data, id)
+          actions.set(newData)
+        } else {
+          helpers.injectError(res)
+        }
+      })
+    return state
   }
 })

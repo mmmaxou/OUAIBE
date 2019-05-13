@@ -33,6 +33,8 @@ export default (props) => {
                   roleName={elem.role.name}
                   phoneNumber={elem.phoneNumber}
                   lastPaymentDate={elem.lastPaymentDate}
+                  id={elem.id}
+                  deleteOne={props.deleteOne}
                 />
               )
             }

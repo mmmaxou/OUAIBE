@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
-import MembersHeader from '../Members/MembersHeader'
-import MembersList from '../Members/MembersList'
+import MembersHeader from '../Members/MembersHeader.jsx'
+import MembersList from '../Members/MembersList.jsx'
 
 export default (state, actions) => {
   return (
@@ -14,6 +14,7 @@ export default (state, actions) => {
         selectedId={state.members.selectedId}
         currentAction={state.members.currentAction}
         getRoles={actions.getRoles}
+        deleteOne={actions.deleteOne}
       />
     </div>
   )
