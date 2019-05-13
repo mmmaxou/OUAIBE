@@ -18,6 +18,11 @@
   .options {
     list-style: none;
     margin: $spacing;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
 
     background-color: $grey-600;
     padding: 0;
@@ -38,9 +43,12 @@
     }
 
     .item {
+      padding: $spacing $spacing-large;
+      margin: 0;
       padding-bottom: $spacing;
       cursor: pointer;
       transition: color 200ms ease;
+      flex-shrink: 0;
     }
   }
 }

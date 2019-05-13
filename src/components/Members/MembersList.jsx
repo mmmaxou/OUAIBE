@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
-import MemberShortEntry from './MemberShortEntry'
-import MemberEntry from './MemberEntry'
+import MemberShortEntry from './MemberShortEntry.jsx'
+import MemberEntry from './MemberEntry.jsx'
 
 export default (props) => {
   return (
