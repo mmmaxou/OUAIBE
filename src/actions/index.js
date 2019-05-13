@@ -24,6 +24,7 @@ export default {
     })
   },
   members: CRUD(API.Members, helpers),
+  roles: CRUD(API.Roles, helpers),
   sponsors: CRUD(API.Sponsors, helpers),
   helpers
 }

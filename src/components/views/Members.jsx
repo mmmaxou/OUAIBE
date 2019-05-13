@@ -4,13 +4,16 @@ import MembersList from '../Members/MembersList'
 
 export default (state, actions) => {
   return (
-    <div key="members" class='bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid' oncreate={() => actions.getAll()}>
-      <MembersHeader count={state.data.length} />
+    <div key="members" class='bdi-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid' oncreate={() => actions.members.getAll()}>
+      <MembersHeader count={state.members.data.length} />
       <MembersList
-        data={state.data}
-        isLoading={state.lastRefresh === 0}
-        onElementClick={(id) => actions.select(id)}
-        selectedId={state.selectedId}
+        data={state.members.data}
+        roles={state.roles.data}
+        isLoading={state.members.lastRefresh === 0}
+        onElementClick={(id) => actions.members.select(id)}
+        selectedId={state.members.selectedId}
+        currentAction={state.members.currentAction}
+        getRoles={actions.getRoles}
       />
     </div>
   )
