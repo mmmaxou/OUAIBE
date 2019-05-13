@@ -32,7 +32,8 @@ Une application hyperapp prend 4 paramètres:
  */
 
 runTestAPI()
-const main = app(state, actions, view, document)
+
+const main = app(state, actions, view, document.body)
 
 // Event Error handling
 eventbus.on('error', err => main.helpers.injectError(err))
