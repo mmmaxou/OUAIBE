@@ -12,11 +12,11 @@ export default (state, actions) => {
         data={state.members.data}
         roles={state.roles.data}
         isLoading={state.members.lastRefresh === 0}
-        onElementClick={(id) => actions.members.select(id)}
+        select={(id) => actions.members.select(id)}
         selectedId={state.members.selectedId}
         currentAction={state.members.currentAction}
         getRoles={actions.getRoles}
-        deleteOne={actions.members.deleteOne}
+        delete={actions.members.deleteOne}
       />
     </div>
   )

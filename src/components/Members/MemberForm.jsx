@@ -2,7 +2,6 @@ import { h } from 'hyperapp'
 import MemberChange from './MemberChange'
 
 export default (props) => {
-  console.log(props.roles)
   return (
     <div class="bdi-table-line bdi-table-line-open mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
       <div class="bdi-table-line-fields mdl-cell mdl-cell--7-col mdl-cell--11-col-desktop mdl-cell--3-col-phone mdl-grid">

@@ -24,6 +24,7 @@ export default (props) => {
         }
         {
           props.data.map(elem => {
+            console.log(elem.id)
             if (props.selectedId === elem.id && props.currentAction === 'show') {
               return (
                 <MemberEntry key={'membres-' + elem.id}
@@ -34,7 +35,8 @@ export default (props) => {
                   phoneNumber={elem.phoneNumber}
                   lastPaymentDate={elem.lastPaymentDate}
                   id={elem.id}
-                  deleteOne={props.deleteOne}
+                  delete={() => props.delete(elem.id)}
+                  edit={() => props.select({id: elem.id, action: 'edit'})}
                 />
               )
             }
@@ -57,7 +59,7 @@ export default (props) => {
             }
             return (
               <MemberShortEntry key={'membres-' + elem.id}
-                onclick={() => props.onElementClick({id: elem.id})}
+                onclick={() => props.select({id: elem.id})}
                 firstName={elem.firstName}
                 lastName={elem.lastName}
                 email={elem.email}
