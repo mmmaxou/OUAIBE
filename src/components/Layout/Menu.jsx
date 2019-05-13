@@ -33,6 +33,10 @@ export default () => (
         <i class='material-icons' role='presentation'>shopping_cart</i>
         Materials
       </Link>
+      <Link to='/transactions' class='mdl-navigation__link'>
+        <i class='material-icons' role='presentation'>monetization_on</i>
+        Transactions
+      </Link>
       <Link to='/roles' class='mdl-navigation__link'>
         <i class='material-icons' role='presentation'>supervisor_account</i>
         Roles
