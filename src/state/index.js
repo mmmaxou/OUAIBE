@@ -46,6 +46,7 @@ export default {
   },
   helpers: {
     message: '',
-    error: ''
+    error: '',
+    timeout: 0
   }
 }

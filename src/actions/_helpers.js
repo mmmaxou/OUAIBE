@@ -14,22 +14,26 @@ export default {
     })
   },
   injectMessage: message => (state, actions) => {
-    setTimeout(actions.discardMessage, 20000)
+    clearTimeout(state.timeout)
     return {
       ...state,
+      timeout: setTimeout(actions.discardMessage, 20000),
       message
     }
   },
   injectError: error => (state, actions) => {
-    setTimeout(actions.discardMessage, 20000)
+    clearTimeout(state.timeout)
     return {
       ...state,
+      timeout: setTimeout(actions.discardMessage, 20000),
       error: error.data.message
     }
   },
   discardMessage: () => state => {
+    clearTimeout(state.timeout)
     return {
       ...state,
+      timeout: 0,
       message: '',
       error: ''
     }

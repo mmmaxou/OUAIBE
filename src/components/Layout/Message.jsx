@@ -17,15 +17,11 @@ export default ({error, message, discardMessage}) => {
       </button>
     </div>
   </div>
-  if (message && error) {
-    return <div>
-      withMessage
-      withError
+  if (message || error) {
+    return <div id='message-wrapper' class='mdl-grid'>
+      {message ? withMessage : null}
+      {error ? withError : null}
     </div>
-  } else if (message) {
-    return withMessage
-  } else if (error) {
-    return withError
   } else {
     return <div />
   }

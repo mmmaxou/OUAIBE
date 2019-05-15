@@ -15,8 +15,6 @@ export default (state, actions) => {
       actions.transactions.getAll()
     }} class='mdl-grid'>
 
-      {console.log(state.transactions)}
-
       <MembersCard
         data={state.members.data}
         copyMembersEmail={actions.members.copyMembersEmail}/>
@@ -31,17 +29,16 @@ export default (state, actions) => {
         </div>
 
         <div class='bdi-card-content mdl-grid'>
-          <div class='mdl-cell mdl-cell--6-col'>
+          <div class='mdl-cell mdl-cell--12-col'>
             <span class='bank'>{lastElementOf(state.transactions.chartData.datasets[0].data) || 0}€</span>
           </div>
-          <div class='mdl-cell mdl-cell--6-col'>
-                100 000 000€ de dettes au BDE ESIPE
-          </div>
-          <button class='mdl-cell mdl-cell--2-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                Déposer le bilan
+          <button class='mdl-cell mdl-cell--3-col mdl-button mdl-button--raised'>
+            Déposer le bilan
           </button>
-          <button class='mdl-cell mdl-cell--2-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                Appeler Sylvie Donard à l'aide
+          <button
+            onclick={() => actions.helpers.injectError({data: { message: 'Elle est occupée :/' }})}
+            class='mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>
+            Appeler Sylvie Donard à l'aide
           </button>
           <TransactionChart
             data={state.transactions.chartData}/>
@@ -65,10 +62,10 @@ export default (state, actions) => {
               Plein de rouleux de PQ jsp pourquoi
             </div>
             <button class='mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-              commander de la race
+              Commander de la race
             </button>
             <button class='mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-              vendre la sangria
+              Vendre la sangria
             </button>
           </div>
         </div>
@@ -88,10 +85,10 @@ export default (state, actions) => {
                 Plein de rouleux de PQ jsp pourquoi
             </div>
             <button class='mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                commander de la race
+                Commander de la race
             </button>
             <button class='mdl-cell mdl-cell--6-col mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
-                vendre la sangria
+                Vendre la sangria
             </button>
           </div>
         </div>

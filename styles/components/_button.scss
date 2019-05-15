@@ -2,6 +2,16 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 
+.mdl-button--raised {
+  background-color: $grey-500;
+}
+
+.mdl-button--raised.mdl-button--raised.mdl-button--accent {
+  @include on-event {
+    background-color: darken($color: $red, $amount: 5);
+  }
+}
+
 .mdl-button {
   @include on-event {
     text-decoration: none;

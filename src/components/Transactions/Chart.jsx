@@ -43,7 +43,6 @@ const initChartJS = (e) => {
   })
 }
 const updateChartJS = (data) => {
-  console.log('From chart : Data : ', data)
   if (data.labels.length === 0) {
     return
   }
