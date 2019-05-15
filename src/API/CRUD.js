@@ -69,7 +69,7 @@ export default (endpoint) => {
         const token = await Connect.getToken()
         const url = createUri(endpoint + '/' + id, { token, ...obj })
         const opt = createOpt('PUT')
-        console.log('opt : ', opt)
+        // console.log('opt : ', opt)
         fetch(url, opt)
           .then(handleServerResponse(resolve))
           .catch(handleServerError(reject))

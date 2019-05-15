@@ -9,12 +9,9 @@ const copyToClipboard = str => {
 }
 
 export default {
-  copyMembersEmail: () => (state, actions) => {
-    console.log(state)
-    console.log(actions)
+  copyMembersEmail: () => (state) => {
     const clipboard = state.data.map(m => m.email).join('\t')
-    console.log('copyMembersEmail')
-    console.log('Clipboard : ', clipboard)
     copyToClipboard(clipboard)
+    return state
   }
 }

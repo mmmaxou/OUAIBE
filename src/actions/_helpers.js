@@ -4,11 +4,24 @@ export default {
       if (response.successful) {
         resolve(response)
       } else {
-        reject(response.data)
+        // eslint-disable-next-line prefer-promise-reject-errors
+        reject({
+          data: {
+            message: JSON.stringify(response.data).replace(/\{"'\}/g, '')
+          }
+        })
       }
     })
   },
-  injectError: error => state => {
+  injectMessage: message => (state, actions) => {
+    setTimeout(actions.discardMessage, 20000)
+    return {
+      ...state,
+      message
+    }
+  },
+  injectError: error => (state, actions) => {
+    setTimeout(actions.discardMessage, 20000)
     return {
       ...state,
       message: error.data.message

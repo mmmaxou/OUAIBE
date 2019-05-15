@@ -2,6 +2,9 @@ import {
   CACHE_TIME
 } from '../../config.json'
 import eventbus from '../events'
+import {
+  Structures
+} from '../structures/Structures'
 
 const isOutOfDate = (date) => (new Date() - date >= CACHE_TIME)
 const deleteById = (props, id) => props.filter(i => i.id !== id)
@@ -26,22 +29,29 @@ export default (promises, helpers) => ({
         .then(response => actions.setOne({id: id, data: response.data, refresh: true}))
         .catch(err => {
           eventbus.emit('error', err)
-          helpers.injectError(err)
         })
     }
     return state
   },
-  update: (id) => (state) => {
-    const actualData = getById(state.data, id)[0] || false
-    if (actualData) {
-      promises.update(id, actualData)
-        .then(helpers.handleResponse)
-        .then(res => {
-          if (res.successful) {
-            console.log('update : ' + res)
-          } else {
-            helpers.injectError(res)
-          }
+  update: (id) => async (state, actions) => {
+    console.log('id: ', id)
+    console.log('state: ', state)
+    const m = getById(state.data, id)[0] || false
+    console.log('actual Data : ', m)
+    if (m) {
+      const updatedMember = Structures.Member.createNew(m.email, m.firstName, m.lastName, m.phoneNumber, m.role_id)
+      console.log('updated member : ', updatedMember)
+      const res = await promises.update(id, updatedMember)
+      console.log('res :', res)
+      const handled = helpers.handleResponse(res)
+        .then(success => {
+          console.log('success: ', success)
+          eventbus.emit('message', `L'utilisateur ${success.data.firstName} ${success.data.lastName} à bien été modifié`)
+          actions.setOne({ id, data: success.data, refresh: true, deselect: true })
+        })
+        .catch(err => {
+          console.log(err)
+          eventbus.emit('error', err)
         })
     }
     return state
@@ -55,11 +65,12 @@ export default (promises, helpers) => ({
       data: sortById(dataWithRefresh)
     })
   },
-  setOne: ({id, data, refresh = false}) => (state) => {
+  setOne: ({id, data, refresh = false, deselect = false}) => (state) => {
     const newLastRefresh = new Date().getTime()
     const newData = {...getById(state.data, id)[0] || {}, ...data}
     return ({
       ...state,
+      selectedId: deselect ? -1 : state.selectedId,
       data: sortById([
         ...deleteById(state.data, id),
         {
@@ -81,15 +92,15 @@ export default (promises, helpers) => ({
   },
   deleteOne: (id) => (state, actions) => {
     const userId = id
-    console.log('Try to delete : ', id)
     promises.delete(userId)
       .then(helpers.handleResponse)
       .then(res => {
         if (res.successful) {
           const newData = deleteById(state.data, id)
           actions.set(newData)
+          eventbus.emit('message', 'L\'utilisateur à bien été supprimé')
         } else {
-          helpers.injectError(res)
+          eventbus.emit('error', res)
         }
       })
     return state

@@ -37,6 +37,7 @@ const main = app(state, actions, view, document.body)
 
 // Event Error handling
 eventbus.on('error', err => main.helpers.injectError(err))
+eventbus.on('message', message => main.helpers.injectMessage(message))
 
 // Router Hyperapp
 const unsubscribe = location.subscribe(main.location)

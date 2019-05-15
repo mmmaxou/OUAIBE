@@ -12,7 +12,7 @@ export default (state, actions) => {
           <div oncreate={() => actions.members.getAll()}>
             <MembersCard data={state.members.data}/>
           </div>
-          
+
           <div class="bdi-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop mdl-grid">
             <div class="bdi-card-header mdl-grid">
               <div class="mdl-cell mdl-cell--12-col mdl-card__title-text">

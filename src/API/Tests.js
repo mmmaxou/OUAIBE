@@ -49,7 +49,7 @@ async function testMembers () {
     console.log('    = #getOne =', await API.Members.getOne(1))
     console.log('    = #count =', await API.Members.count())
     console.log('    = #images =', await API.Members.images(1))
-    console.log('    = #update =', await API.Members.update(2, updatedMember))
+    console.log('    = #update =', await API.Members.update(10, updatedMember))
     console.log('    = #create =', await API.Members.create(member))
     console.log('    = #create =', await API.Members.create(member2))
     console.log('    = #delete =', await API.Members.delete(58))

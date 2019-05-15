@@ -3,6 +3,8 @@ import MemberShortEntry from './MemberShortEntry'
 import MemberEntry from './MemberEntry'
 import MemberForm from './MemberForm'
 
+import Loader from '../Generic/Loader'
+
 export default (props) => {
   return (
     <div class='bdi-table-content'>
@@ -20,7 +22,7 @@ export default (props) => {
       <div class='bdi-table-content mdl-grid'>
         {
           // Loading bar
-          props.isLoading ? <div id='p2' class='mdl-progress mdl-js-progress mdl-progress__indeterminate'></div> : ''
+          props.isLoading ? <Loader /> : ''
         }
         {
           props.data.map(elem => {
@@ -69,6 +71,7 @@ export default (props) => {
           })
         }
       </div>
+
     </div>
   )
 }
