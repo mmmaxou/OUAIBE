@@ -11,7 +11,6 @@ export default (props) => {
       return isOutOfDate(new Date(e.lastPaymentDate))
     }
   })
-  console.log('unpaying :', unpayingArray)
   const unpaying = unpayingArray.length
   const percent = unpaying / props.data.length * 100
 

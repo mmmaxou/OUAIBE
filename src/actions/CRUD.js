@@ -2,9 +2,6 @@ import {
   CACHE_TIME
 } from '../../config.json'
 import eventbus from '../events'
-import {
-  Structures
-} from '../structures/Structures'
 
 const isOutOfDate = (date) => (new Date() - date >= CACHE_TIME)
 const deleteById = (props, id) => props.filter(i => i.id !== id)
@@ -36,11 +33,11 @@ export default (promises, helpers) => ({
   update: (id) => async (state, actions) => {
     const m = getById(state.data, id)[0] || false
     if (m) {
-      const updatedMember = Structures.Member.createNew(m.email, m.firstName, m.lastName, m.phoneNumber, m.role_id)
-      const res = await promises.update(id, updatedMember)
-      const handled = helpers.handleResponse(res)
+      const generated = actions.generator(m)
+      const res = await promises.update(id, generated)
+      helpers.handleResponse(res)
         .then(success => {
-          eventbus.emit('message', `L'utilisateur ${success.data.firstName} ${success.data.lastName} à bien été modifié`)
+          eventbus.emit('message', `L'entrée à bien été modifié`)
           actions.setOne({ id, data: success.data, refresh: true, deselect: true })
         })
         .catch(err => {
@@ -50,18 +47,23 @@ export default (promises, helpers) => ({
     return state
   },
   add: () => async (state, actions) => {
-    const data = {...state.newElement}
-    const addMember = Structures.Member.createNew(data.email, data.firstName, data.lastName, data.phoneNumber, data.role_id)
-    console.log('add member : ', addMember)
-    const res = await promises.create(addMember)
-    const handled = helpers.handleResponse(res)
+    const data = {
+      ...state.newElement
+    }
+    const generated = actions.generator(data)
+    console.log(generated)
+    if (!generated) {
+      eventbus.emit('error', { data: { message: 'L\'entrée que vous souhaitez créer est invalide :/' } })
+      return state
+    }
+    const res = await promises.create(generated)
+    helpers.handleResponse(res)
       .then(success => {
         console.log('success: ', success)
-        eventbus.emit('message', `L'utilisateur ${success.data.firstName} ${success.data.lastName} à bien été ajouté`)
-        actions.setOne({id: success.data.id, data: success.data})
+        eventbus.emit('message', `L'entrée à bien été ajouté`)
+        actions.getAll()
       })
       .catch(err => {
-        console.log(err)
         eventbus.emit('error', err)
       })
     return state
@@ -115,7 +117,7 @@ export default (promises, helpers) => ({
         if (res.successful) {
           const newData = deleteById(state.data, id)
           actions.set(newData)
-          eventbus.emit('message', 'L\'utilisateur à bien été supprimé')
+          eventbus.emit('message', 'L\'entrée à bien été supprimé')
         } else {
           eventbus.emit('error', res)
         }

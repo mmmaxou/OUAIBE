@@ -1,3 +1,9 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+
+.mdl-button {
+  @include on-event {
+    text-decoration: none;
+  }
+}

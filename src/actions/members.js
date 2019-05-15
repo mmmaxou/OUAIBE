@@ -1,4 +1,5 @@
 import eventbus from '../events'
+import {Structures} from '../structures/Structures'
 
 const copyToClipboard = str => {
   const el = document.createElement('textarea')
@@ -16,5 +17,8 @@ export default {
     copyToClipboard(clipboard)
     eventbus.emit('message', 'Les mails ont été copiés')
     return state
+  },
+  generator: (m) => {
+    return Structures.Member.createNew(m.email, m.firstName, m.lastName, m.phoneNumber, m.role_id)
   }
 }

@@ -55,7 +55,7 @@ export default (props) => {
           <div class="mdl-typography--title">Téléphone</div>
           <form action="#">
             <div class="mdl-textfield mdl-js-textfield is-upgraded" data-upgraded=",MaterialTextfield">
-              <input class="mdl-textfield__input" type="text" id="member4phone"
+              <input class="mdl-textfield__input" type="tel" id="member4phone"
                 value={props.phoneNumber || ''}
                 oninput={(e) => props.onChange({phoneNumber: e.target.value})}
               />
@@ -66,7 +66,7 @@ export default (props) => {
           <div class="mdl-typography--title">Mail</div>
           <form action="#">
             <div class="mdl-textfield mdl-js-textfield is-upgraded" data-upgraded=",MaterialTextfield">
-              <input class="mdl-textfield__input" type="text" id="member4mail"
+              <input class="mdl-textfield__input" type="email" id="member4mail"
                 value={props.email || ''}
                 oninput={(e) => props.onChange({email: e.target.value})}
               />
@@ -74,11 +74,11 @@ export default (props) => {
           </form>
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone">
-          <div class="mdl-typography--title">Dernier paiment</div>
+          <div class="mdl-typography--title">Dernier paiement</div>
           <form action="#">
             <div class="mdl-textfield mdl-js-textfield is-upgraded" data-upgraded=",MaterialTextfield">
-              <input class="mdl-textfield__input" type="text" id="member4lastpayment"
-                value={props.lastPaymentDate || ''}
+              <input class="mdl-textfield__input" type="date" id="member4lastpayment"
+                value={props.lastPaymentDate || null}
                 oninput={(e) => props.onChange({lastPaymentDate: e.target.value})}
               />
             </div>
