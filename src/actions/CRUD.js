@@ -34,23 +34,16 @@ export default (promises, helpers) => ({
     return state
   },
   update: (id) => async (state, actions) => {
-    console.log('id: ', id)
-    console.log('state: ', state)
     const m = getById(state.data, id)[0] || false
-    console.log('actual Data : ', m)
     if (m) {
       const updatedMember = Structures.Member.createNew(m.email, m.firstName, m.lastName, m.phoneNumber, m.role_id)
-      console.log('updated member : ', updatedMember)
       const res = await promises.update(id, updatedMember)
-      console.log('res :', res)
       const handled = helpers.handleResponse(res)
         .then(success => {
-          console.log('success: ', success)
           eventbus.emit('message', `L'utilisateur ${success.data.firstName} ${success.data.lastName} à bien été modifié`)
           actions.setOne({ id, data: success.data, refresh: true, deselect: true })
         })
         .catch(err => {
-          console.log(err)
           eventbus.emit('error', err)
         })
     }

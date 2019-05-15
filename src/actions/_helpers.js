@@ -24,13 +24,14 @@ export default {
     setTimeout(actions.discardMessage, 20000)
     return {
       ...state,
-      message: error.data.message
+      error: error.data.message
     }
   },
   discardMessage: () => state => {
     return {
       ...state,
-      message: ''
+      message: '',
+      error: ''
     }
   }
 }
