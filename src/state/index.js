@@ -14,18 +14,21 @@ export default {
     lastRefresh: 0,
     selectedId: -1,
     currentAction: 'show',
+    newElement: {},
     data: []
   },
   roles: {
     lastRefresh: 0,
     selectedId: -1,
     currentAction: 'show',
+    newElement: {},
     data: []
   },
   sponsors: {
     lastRefresh: 0,
     selectedId: -1,
     currentAction: 'show',
+    newElement: {},
     data: []
   },
   helpers: {

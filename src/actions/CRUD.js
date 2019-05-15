@@ -56,6 +56,23 @@ export default (promises, helpers) => ({
     }
     return state
   },
+  add: () => async (state, actions) => {
+    const data = {...state.newElement}
+    const addMember = Structures.Member.createNew(data.email, data.firstName, data.lastName, data.phoneNumber, data.role_id)
+    console.log('add member : ', addMember)
+    const res = await promises.create(addMember)
+    const handled = helpers.handleResponse(res)
+      .then(success => {
+        console.log('success: ', success)
+        eventbus.emit('message', `L'utilisateur ${success.data.firstName} ${success.data.lastName} à bien été ajouté`)
+        actions.setOne({id: success.data.id, data: success.data})
+      })
+      .catch(err => {
+        console.log(err)
+        eventbus.emit('error', err)
+      })
+    return state
+  },
   set: (data) => (state) => {
     const lastRefresh = new Date().getTime()
     const dataWithRefresh = data.map(elem => ({...elem, lastRefresh: lastRefresh}))
@@ -63,6 +80,13 @@ export default (promises, helpers) => ({
       ...state,
       lastRefresh: lastRefresh,
       data: sortById(dataWithRefresh)
+    })
+  },
+  setNew: (data) => (state) => {
+    const newElement = {...state.newElement, ...data}
+    return ({
+      ...state,
+      newElement: newElement
     })
   },
   setOne: ({id, data, refresh = false, deselect = false}) => (state) => {

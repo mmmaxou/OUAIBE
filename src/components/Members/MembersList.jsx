@@ -42,18 +42,17 @@ export default (props) => {
               )
             }
             if (props.selectedId === elem.id && props.currentAction === 'edit') {
-              props.getRoles()
               return (
                 <MemberForm key={'membres-' + elem.id}
                   firstName={elem.firstName}
                   lastName={elem.lastName}
                   email={elem.email}
-                  roleName={elem.role.name}
                   phoneNumber={elem.phoneNumber}
                   lastPaymentDate={elem.lastPaymentDate}
                   role_id={elem.role_id}
+                  getRoles={props.getRoles}
                   roles={props.roles}
-                  update={() => props.update(elem.id)}
+                  save={() => props.update(elem.id)}
                   onChange={(data) => props.onChange({id: elem.id, data: data})}
                   cancel={() => props.select({id: elem.id, action: 'show'})}
                 />

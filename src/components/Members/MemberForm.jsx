@@ -34,7 +34,9 @@ export default (props) => {
           <div class="mdl-typography--title">Rôle</div>
           <form action="#">
             <div class="mdl-textfield mdl-js-textfield is-upgraded" data-upgraded=",MaterialTextfield">
-              <select id="member4role" onchange={(e) => { props.onChange({role_id: e.target.value}) }} >
+              <select id="member4role"
+                oncreate={() => props.getRoles()}
+                onchange={(e) => { props.onChange({role_id: e.target.value}) }} >
                 {
                   props.roles.map(elem => {
                     return (
@@ -82,7 +84,7 @@ export default (props) => {
             </div>
           </form>
         </div>
-        <button onclick={() => props.update()}
+        <button onclick={() => props.save()}
           class="mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop mdl-cell--2-col-phone mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-upgraded=",MaterialButton,MaterialRipple">
           Enregistrer
           <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
