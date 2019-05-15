@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import MembersCard from '../Members/MembersCard'
+import LinksCard from '../Home/LinksCard'
 
 export default (state, actions) => {
   return (
@@ -9,10 +10,12 @@ export default (state, actions) => {
         data={state.members.data}
         copyMembersEmail={actions.members.copyMembersEmail}/>
 
+      <LinksCard />
+
       <div class="bdi-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-grid">
         <div class="bdi-card-header mdl-grid">
           <div class="mdl-cell mdl-cell--12-col mdl-card__title-text">
-                Trésorerie
+            Trésorerie
           </div>
         </div>
 

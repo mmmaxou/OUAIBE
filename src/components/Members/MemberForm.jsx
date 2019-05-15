@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import MemberChange from './MemberChange'
+import Dropdown from '../Generic/Dropdown'
 
 export default (props) => {
   return (
@@ -87,18 +88,18 @@ export default (props) => {
           <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
         </button>
       </div>
-      <div class="bdi-table-line-edit mdl-cell mdl-cell--1-col mdl-grid">
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="memberbtn4" data-upgraded=",MaterialButton,MaterialRipple">
-          <i class="material-icons">more_vert</i>
-          <span class="mdl-button__ripple-container"><span class="mdl-ripple is-animating" style="width: 92.5097px; height: 92.5097px; transform: translate(-50%, -50%) translate(15px, 14px);"></span></span>
-        </button>
-        <div class="mdl-menu__container is-upgraded" style="right: 73.25px; top: 856px; width: 124px; height: 112px;"><div class="mdl-menu__outline mdl-menu--bottom-right" style="width: 124px; height: 112px;"></div>
-          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right mdl-js-ripple-effect--ignore-events" for="memberbtn4" data-upgraded=",MaterialMenu,MaterialRipple" style="clip: rect(0px, 124px, 0px, 124px);">
-            <li class="mdl-menu__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple" style="">éditer<span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li>
-            <li class="mdl-menu__item mdl-js-ripple-effect" tabindex="-1" data-upgraded=",MaterialRipple" style="">supprimer<span class="mdl-menu__item-ripple-container"><span class="mdl-ripple"></span></span></li>
-          </ul>
+      {
+        <div class="bdi-table-line-fields mdl-cell mdl-cell--5-col mdl-cell--1-col-desktop mdl-cell--3-col-phone mdl-grid">
+          <Dropdown
+            message=''
+            icon='more_vert'
+            options={[
+              { message: 'annuler', handler: () => props.cancel() },
+              { message: 'supprimer', handler: () => props.delete() }
+            ]}
+          />
         </div>
-      </div>
+      }
     </div>
   )
 }
