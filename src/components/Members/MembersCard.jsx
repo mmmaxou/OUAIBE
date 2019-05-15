@@ -8,9 +8,9 @@ export default (data) => {
           Membres
         </div>
       </div>
-      {console.log(data)}
       <div class="bdi-card-content mdl-grid">
         <div class="mdl-cell mdl-cell--6-col">
+          {console.log(data)}
           {data.length || '0'} membres
         </div>
         <div class="mdl-cell mdl-cell--6-col">
