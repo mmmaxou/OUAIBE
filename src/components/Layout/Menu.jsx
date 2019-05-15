@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
 import { Link } from '@hyperapp/router'
 import Dropdown from '../Generic/Dropdown'
+import Dog from '../../images/ios-desktop.png'
 
 /** EXEMPLE */
 const fakeGenericDisconnectHandler = () => console.log('TODO !!!')
@@ -11,7 +12,7 @@ export default () => (
       <div class='mdl-layout__header-row'>
         <span class='mdl-layout-title mdl'>Trésorier</span>
         <div class='mdl-layout-spacer'></div>
-        <img src='/src/images/ios-desktop.png' class='bdi-avatar' />
+        <img src={Dog} class='bdi-avatar' />
       </div>
       <Dropdown
         message='Guillaume Lollier'

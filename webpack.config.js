@@ -8,6 +8,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin')
 const libraryName = pkg.name
 
+const env = 'development' || 'production'
+
 const config = {
   entry: [
     path.resolve(__dirname, './src/index.js'),
@@ -15,7 +17,7 @@ const config = {
   ],
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, '/lib/'),
+    path: path.resolve(__dirname, 'lib/'),
     filename: 'bundle.js',
     library: libraryName,
     libraryTarget: 'umd',
@@ -23,6 +25,10 @@ const config = {
   },
   module: {
     rules: [{},
+      {
+        test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/,
+        loader: 'file-loader'
+      },
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel-loader',
@@ -58,13 +64,16 @@ const config = {
       allChunks: true
     })
   ],
+  stats: {
+    colors: true
+  },
   devServer: {
     port: 4000,
     open: true,
     historyApiFallback: true
   }
 }
-if (process.env.NODE_ENV === 'production') {
+if (env === 'production') {
   config.plugins.push(new UglifyJSPlugin())
   config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
   config.plugins.push(new OptimizeCSSAssets())
