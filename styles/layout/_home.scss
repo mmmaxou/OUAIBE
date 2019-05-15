@@ -1,0 +1,13 @@
+.mdl-grid-flat {
+  margin: 0;
+  flex-direction: column;
+
+  &>.mdl-cell {
+    margin: 0;
+    margin-bottom: $spacing;
+  }
+}
+
+.bank {
+  @include rfs(100);
+}

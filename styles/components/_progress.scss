@@ -1,0 +1,27 @@
+
+.progress {
+  width: 100%;
+  position: relative;
+
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: white;
+
+  .bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  .progressbar {
+    background-color: $red;
+    z-index: 2;
+  }
+
+  .bufferbar  {
+    width: 100%;
+    background-color: rgba($red, 0.2);
+    z-index: 1;
+  }
+}

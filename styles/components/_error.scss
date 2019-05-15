@@ -1,0 +1,13 @@
+.message-error {
+  background-color: rgb(255, 223, 118);
+}
+.message-valid {
+  background-color: rgb(86, 233, 86);
+}
+#message-wrapper {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  & > div {
+    margin-bottom: 0;
+  }
+}

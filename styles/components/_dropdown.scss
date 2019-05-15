@@ -1,0 +1,54 @@
+.bdi-dropdown {
+  position: relative;
+
+  .message {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+
+    p {
+      margin: 0;
+      font-weight: bold;
+      line-height: $spacing-large;
+    }
+  }
+  .options {
+    list-style: none;
+    margin: $spacing;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    background-color: $grey-600;
+    padding: 0;
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    z-index: 2;
+
+    /* Hides sub menu */
+    max-height: 0;
+    transition: max-height 400ms ease-in-out;
+    overflow: hidden;
+
+    &.revealed {
+      /* shows sub-menu */
+      max-height: 500px;
+      transition-duration: 200ms;
+    }
+
+    .item {
+      padding: $spacing $spacing-large;
+      margin: 0;
+      padding-bottom: $spacing;
+      cursor: pointer;
+      transition: color 200ms ease;
+      flex-shrink: 0;
+    }
+  }
+}

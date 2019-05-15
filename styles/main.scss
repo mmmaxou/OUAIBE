@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+
+// Librairies
+// Automatic font resizing on every device
+// See : https://github.com/twbs/rfs
+
+@import "~rfs/scss";
+
+// 1. Configuration and helpers
+@import 'abstracts/variables',
+'abstracts/functions',
+'abstracts/mixins';
+
+// 2. Vendors
+@import 'vendors/normalize';
+
+// 3. Base stuff
+@import 'base/base',
+'base/fonts',
+'base/typography',
+'base/helpers';
+
+// 4. Layout-related sections
+@import 'layout/header',
+'layout/home',
+'layout/menu',
+'layout/footer';
+
+// 5. Components
+@import 'components/button',
+'components/cards',
+'components/charts',
+'components/dropdown',
+'components/error',
+'components/loader',
+'components/options',
+'components/progress',
+'components/tables',
+'components/updates';
+
+// 6. Page
+@import 'page/pages'

@@ -1,0 +1,66 @@
+.mdl-menu {
+  background-color: d$grey-600;
+  .mdl-menu-item {
+    color: $grey-50;
+    &:hover {
+      background-color: $grey-700;
+    }
+  }
+}
+
+
+.bdi-drawer {
+  background-color: $grey-800;
+  color: $grey-50;
+  border: none;
+
+  .mdl-layout__header-row {
+    padding: 0;
+  }
+}
+
+.bdi-drawer-header {
+  padding: $spacing;
+  background-color: $grey-700;
+}
+
+.bdi-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.bdi-navigation {
+  flex-grow: 1;
+  background-color: $grey-800;
+
+  .mdl-navigation__link .material-icons {
+    color: $grey;
+    margin-right: $spacing-large;
+  }
+
+}
+
+.bdi-layout .bdi-navigation .mdl-navigation__link {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+
+  @include on-event {
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: $red;
+  }
+  &:active {
+    background-color: darken($red, 10);
+  }
+  &:hover, &:active {
+    .material-icons {
+      color: $grey-50;
+    }
+  }
+}
