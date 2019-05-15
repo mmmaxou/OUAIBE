@@ -4,6 +4,7 @@ import API from '../API/API'
 import CRUD from './CRUD'
 import helpers from './_helpers'
 import members from './members'
+import transactions from './transactions'
 
 export default {
   location: location.actions,
@@ -19,6 +20,6 @@ export default {
   members: {...CRUD(API.Members, helpers), ...members},
   roles: CRUD(API.Roles, helpers),
   sponsors: CRUD(API.Sponsors, helpers),
-  transactions: CRUD(API.Transactions, helpers),
+  transactions: {...CRUD(API.Transactions, helpers), ...transactions},
   helpers
 }

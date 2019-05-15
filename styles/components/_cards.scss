@@ -2,6 +2,10 @@
   color: white;
   background-color: darken($color: $grey, $amount: 30);
   padding: 0;
+
+  .bdi-card-content {
+    width: 100%;
+  }
 }
 
 .bdi-cards {
@@ -25,9 +29,5 @@
   .mdl-card__actions a {
     color: #00BCD4;
     text-decoration: none;
-  }
-
-  .bdi-card-content {
-    width: 100%;
   }
 }

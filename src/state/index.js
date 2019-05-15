@@ -35,6 +35,12 @@ export default {
     lastRefresh: 0,
     selectedId: -1,
     currentAction: 'show',
+    chartData: {
+      labels: [],
+      datasets: [{
+        data: []
+      }]
+    },
     newElement: {},
     data: []
   },
