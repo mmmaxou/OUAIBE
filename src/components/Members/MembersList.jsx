@@ -55,6 +55,7 @@ export default (props) => {
                   roles={props.roles}
                   update={() => props.update(elem.id)}
                   onChange={(data) => props.onChange({id: elem.id, data: data})}
+                  cancel={() => props.select({id: elem.id, action: 'show'})}
                 />
               )
             }
