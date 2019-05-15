@@ -31,7 +31,15 @@ export default {
     newElement: {},
     data: []
   },
+  transactions: {
+    lastRefresh: 0,
+    selectedId: -1,
+    currentAction: 'show',
+    newElement: {},
+    data: []
+  },
   helpers: {
-    message: ''
+    message: '',
+    error: ''
   }
 }

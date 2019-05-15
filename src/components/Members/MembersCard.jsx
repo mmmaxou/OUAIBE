@@ -20,7 +20,6 @@ export default (props) => {
         <div class="mdl-cell mdl-cell--12-col mdl-card__title-text">Membres</div>
       </div>
 
-      {console.log(props)}
       <div class="bdi-card-content mdl-grid">
         <div class="mdl-cell mdl-cell--6-col">
           Il y a {props.data.length || '0'} membres
