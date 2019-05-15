@@ -1,3 +1,5 @@
+import eventbus from '../events'
+
 const copyToClipboard = str => {
   const el = document.createElement('textarea')
   // eslint-disable-next-line fp/no-mutation
@@ -12,6 +14,7 @@ export default {
   copyMembersEmail: () => (state) => {
     const clipboard = state.data.map(m => m.email).join('\t')
     copyToClipboard(clipboard)
+    eventbus.emit('message', 'Les mails ont été copiés')
     return state
   }
 }

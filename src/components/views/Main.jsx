@@ -16,46 +16,46 @@ export default (state, actions) => {
         <Menu />
         <main class="mdl-layout__content">
           <Header pageName={state.actualPage} />
-          <Message message={state.helpers.message}
+          <Message
+            error={state.helpers.error}
+            message={state.helpers.message}
             discardMessage={actions.helpers.discardMessage} />
-          <div class="mdl-grid bdi-content">
-            <Switch>
-              <Route path='/'
-                render={() => {
-                  actions.setPageName('')
-                  return Home(state, actions)
-                }}
-              />
-              <Route path='/members'
-                render={() => {
-                  actions.setPageName('Members')
-                  return Members(
-                    {members: state.members, roles: state.roles},
-                    {members: actions.members, getRoles: actions.roles.getAll}
-                  )
-                }}
-              />
-              <Route path='/materials'
-                render={() => {
-                  actions.setPageName('Materials')
-                  return Materials(state, actions)
-                }}
-              />
-              <Route path='/roles'
-                render={() => {
-                  actions.setPageName('Roles')
-                  return Roles(state, actions)
-                }}
-              />
-              <Route path='/sponsors'
-                render={() => {
-                  actions.setPageName('Sponsors')
-                  return Sponsors(state, actions)
-                }}
-              />
-              <Route path='/members/:id' render={Members}></Route>
-            </Switch>
-          </div>
+          <Switch>
+            <Route path='/'
+              render={() => {
+                actions.setPageName('')
+                return Home(state, actions)
+              }}
+            />
+            <Route path='/members'
+              render={() => {
+                actions.setPageName('Members')
+                return Members(
+                  {members: state.members, roles: state.roles},
+                  {members: actions.members, getRoles: actions.roles.getAll}
+                )
+              }}
+            />
+            <Route path='/materials'
+              render={() => {
+                actions.setPageName('Materials')
+                return Materials(state, actions)
+              }}
+            />
+            <Route path='/roles'
+              render={() => {
+                actions.setPageName('Roles')
+                return Roles(state, actions)
+              }}
+            />
+            <Route path='/sponsors'
+              render={() => {
+                actions.setPageName('Sponsors')
+                return Sponsors(state, actions)
+              }}
+            />
+            <Route path='/members/:id' render={Members}></Route>
+          </Switch>
         </main>
       </div>
     </div>
