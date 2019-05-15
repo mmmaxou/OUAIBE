@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import MembersCard from '../Members/MembersCard'
+import LinksCard from '../Home/LinksCard'
 
 export default (state, actions) => {
   return (
@@ -9,10 +10,10 @@ export default (state, actions) => {
       <main class="mdl-layout__content">
         <div class="mdl-grid bdi-content">
 
-          <div oncreate={() => actions.members.getAll()}>
-            <MembersCard data={state.members.data}/>
-          </div>
-
+          <LinksCard/>
+          
+          <MembersCard data={state.members.data} oncreate={() => actions.members.getAll()}/>
+          
           <div class="bdi-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop mdl-grid">
             <div class="bdi-card-header mdl-grid">
               <div class="mdl-cell mdl-cell--12-col mdl-card__title-text">
